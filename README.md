@@ -5,6 +5,7 @@ Paper trading platform for NEPSE
 Install required packages
 ```
 $ pip install -r requirements.txt
+$ npm i
 ```
 Initialize database:
 ```
