@@ -1,5 +1,7 @@
 # IDE configs
 .vscode
+.vscode/*
+!.vscode/extensions.json
 .idea
 
 # Python cache and db files
@@ -15,3 +17,24 @@ media/profile_pics
 
 # Misc
 .DS_Store
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
