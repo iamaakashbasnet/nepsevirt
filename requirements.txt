@@ -1,14 +1,17 @@
 asgiref==3.7.2
 astroid==2.15.6
 autopep8==2.0.2
+beautifulsoup4==4.12.2
 dill==0.3.6
 Django==4.2.3
 isort==5.12.0
 lazy-object-proxy==1.9.0
+lxml==4.9.3
 mccabe==0.7.0
 platformdirs==3.9.1
 pycodestyle==2.10.0
 pylint==2.17.4
+soupsieve==2.4.1
 sqlparse==0.4.4
 tomlkit==0.11.8
 wrapt==1.15.0
