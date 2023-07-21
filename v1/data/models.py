@@ -9,7 +9,7 @@ class StockName(models.Model):
 
 
 class StockData(models.Model):
-    name = models.OneToOneField(StockName, on_delete=models.CASCADE, primary_key=True,)
+    name = models.OneToOneField(StockName, on_delete=models.CASCADE, primary_key=True, unique=True)
     open = models.FloatField()
     high = models.FloatField()
     low  = models.FloatField()
