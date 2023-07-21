@@ -10,18 +10,19 @@ childtag = namelist.find('table')
 childchildtag = childtag.find('tbody')
 gettrtag = childchildtag.find_all('tr')
 
-data = {}
+data = []
 for elements in gettrtag:
     tdtag = elements.find_all('td')
     name = tdtag[0].text.strip()
     row_data = {
+        'name': tdtag[0].text.strip(),
         'open': tdtag[1].text.strip(),
         'high': tdtag[2].text.strip(),
         'low': tdtag[3].text.strip(),
         'close': tdtag[4].text.strip(),
         'quantity': tdtag[5].text.strip()
     }
-    data[name] = row_data
+    data.append(row_data)
 
 json_data = json.dumps(data, indent=4)
 
