@@ -16,9 +16,9 @@ class StockData(models.Model):
     close = models.FloatField()
 
     class Meta: 
-        ordering = ['-name']
+        ordering = ['name']
         indexes = [
-            models.Index(fields=['-name'])
+            models.Index(fields=['name'])
         ]
 
     def __str__(self):
