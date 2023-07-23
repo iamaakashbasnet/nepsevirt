@@ -14,3 +14,4 @@ class StockDataAdmin(admin.ModelAdmin):
     list_display = ['name', 'open', 'high', 'low', 'close']
     list_filter = ['name']
     search_fields = ['name']
+    ordering = ['name']
