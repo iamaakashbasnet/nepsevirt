@@ -5,18 +5,24 @@
 <p align="center">Paper trading platform for NEPSE</p>
 
 ## Project Setup
+
 Install required packages
+
 ```
 $ pip install -r requirements.txt
 $ npm i
 ```
+
 Initialize database:
+
 ```
 $ python manage.py makemigrations
 $ python manage.py migrate
 ```
 
 ## Contributors
+
 - Aakash Basnet
 - Avinash Lamichhane
 - Jibesh Shrestha
+- Bhaskar Neupane
