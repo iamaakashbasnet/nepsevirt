@@ -1,0 +1,2202 @@
+[
+    {
+        "name": "ACLBSL",
+        "open": "563.00",
+        "high": "-2.09",
+        "low": "572.00",
+        "close": "560.00",
+        "quantity": "567.00"
+    },
+    {
+        "name": "ADBL",
+        "open": "260.10",
+        "high": "-1.1",
+        "low": "264.00",
+        "close": "260.00",
+        "quantity": "261.00"
+    },
+    {
+        "name": "ADBLD83",
+        "open": "955.00",
+        "high": "-1.95",
+        "low": "955.00",
+        "close": "954.60",
+        "quantity": "954.60"
+    },
+    {
+        "name": "AHL",
+        "open": "303.10",
+        "high": "-3.78",
+        "low": "315.10",
+        "close": "302.60",
+        "quantity": "308.70"
+    },
+    {
+        "name": "AHPC",
+        "open": "211.00",
+        "high": "-3.43",
+        "low": "219.90",
+        "close": "210.00",
+        "quantity": "218.00"
+    },
+    {
+        "name": "AKJCL",
+        "open": "161.10",
+        "high": "-2.36",
+        "low": "167.00",
+        "close": "160.30",
+        "quantity": "166.00"
+    },
+    {
+        "name": "AKPL",
+        "open": "185.60",
+        "high": "-2.88",
+        "low": "194.90",
+        "close": "185.00",
+        "quantity": "190.00"
+    },
+    {
+        "name": "ALBSL",
+        "open": "724.00",
+        "high": "-4.49",
+        "low": "750.00",
+        "close": "715.60",
+        "quantity": "750.00"
+    },
+    {
+        "name": "ALICL",
+        "open": "698.00",
+        "high": "-1.41",
+        "low": "716.00",
+        "close": "694.00",
+        "quantity": "709.90"
+    },
+    {
+        "name": "ANLB",
+        "open": "2,065.00",
+        "high": "-2.57",
+        "low": "2,100.00",
+        "close": "2,065.00",
+        "quantity": "2,100.00"
+    },
+    {
+        "name": "API",
+        "open": "176.50",
+        "high": "-2.49",
+        "low": "183.00",
+        "close": "175.00",
+        "quantity": "182.00"
+    },
+    {
+        "name": "AVYAN",
+        "open": "622.00",
+        "high": "-1.74",
+        "low": "637.00",
+        "close": "621.00",
+        "quantity": "621.10"
+    },
+    {
+        "name": "BARUN",
+        "open": "214.00",
+        "high": "-1.83",
+        "low": "220.00",
+        "close": "213.00",
+        "quantity": "220.00"
+    },
+    {
+        "name": "BBC",
+        "open": "3,929.00",
+        "high": "-1.16",
+        "low": "4,019.90",
+        "close": "3,875.00",
+        "quantity": "4,019.90"
+    },
+    {
+        "name": "BEDC",
+        "open": "183.90",
+        "high": "-4.07",
+        "low": "194.20",
+        "close": "182.00",
+        "quantity": "191.70"
+    },
+    {
+        "name": "BFC",
+        "open": "311.70",
+        "high": "-3.77",
+        "low": "326.00",
+        "close": "311.70",
+        "quantity": "317.50"
+    },
+    {
+        "name": "BHDC",
+        "open": "312.00",
+        "high": "0.32",
+        "low": "322.30",
+        "close": "306.10",
+        "quantity": "306.10"
+    },
+    {
+        "name": "BHL",
+        "open": "209.00",
+        "high": "-4.13",
+        "low": "219.00",
+        "close": "208.80",
+        "quantity": "213.80"
+    },
+    {
+        "name": "BHPL",
+        "open": "424.00",
+        "high": "-3.64",
+        "low": "440.00",
+        "close": "423.20",
+        "quantity": "435.00"
+    },
+    {
+        "name": "BNHC",
+        "open": "293.00",
+        "high": "-5.45",
+        "low": "306.00",
+        "close": "293.00",
+        "quantity": "303.80"
+    },
+    {
+        "name": "BNT",
+        "open": "13,525.00",
+        "high": "-3.32",
+        "low": "14,000.00",
+        "close": "13,525.00",
+        "quantity": "14,000.00"
+    },
+    {
+        "name": "BPCL",
+        "open": "311.00",
+        "high": "-1.89",
+        "low": "315.00",
+        "close": "308.00",
+        "quantity": "311.10"
+    },
+    {
+        "name": "BPW",
+        "open": "1,150.10",
+        "high": "-3.6",
+        "low": "1,195.00",
+        "close": "1,150.00",
+        "quantity": "1,190.00"
+    },
+    {
+        "name": "C30MF",
+        "open": "8.10",
+        "high": "-1.58",
+        "low": "8.23",
+        "close": "7.94",
+        "quantity": "8.07"
+    },
+    {
+        "name": "CBBL",
+        "open": "967.00",
+        "high": "-0.92",
+        "low": "980.00",
+        "close": "967.00",
+        "quantity": "969.00"
+    },
+    {
+        "name": "CBLD88",
+        "open": "926.00",
+        "high": "1.99",
+        "low": "926.00",
+        "close": "926.00",
+        "quantity": "926.00"
+    },
+    {
+        "name": "CFCL",
+        "open": "332.00",
+        "high": "-3.49",
+        "low": "344.70",
+        "close": "330.20",
+        "quantity": "339.00"
+    },
+    {
+        "name": "CGH",
+        "open": "1,268.00",
+        "high": "-2.08",
+        "low": "1,300.00",
+        "close": "1,268.00",
+        "quantity": "1,295.00"
+    },
+    {
+        "name": "CHCL",
+        "open": "492.00",
+        "high": "-1.09",
+        "low": "504.00",
+        "close": "491.10",
+        "quantity": "504.00"
+    },
+    {
+        "name": "CHDC",
+        "open": "1,020.00",
+        "high": "-1.16",
+        "low": "1,040.00",
+        "close": "1,013.00",
+        "quantity": "1,020.00"
+    },
+    {
+        "name": "CHL",
+        "open": "217.10",
+        "high": "-4.66",
+        "low": "227.70",
+        "close": "217.10",
+        "quantity": "227.70"
+    },
+    {
+        "name": "CIT",
+        "open": "2,050.00",
+        "high": "-0.24",
+        "low": "2,069.00",
+        "close": "2,045.00",
+        "quantity": "2,060.00"
+    },
+    {
+        "name": "CITY",
+        "open": "678.00",
+        "high": "-3.07",
+        "low": "700.00",
+        "close": "677.00",
+        "quantity": "698.00"
+    },
+    {
+        "name": "CMF1",
+        "open": "7.90",
+        "high": "-1.99",
+        "low": "8.00",
+        "close": "7.90",
+        "quantity": "8.00"
+    },
+    {
+        "name": "CMF2",
+        "open": "8.33",
+        "high": "-0.12",
+        "low": "8.50",
+        "close": "8.33",
+        "quantity": "8.50"
+    },
+    {
+        "name": "CORBL",
+        "open": "319.00",
+        "high": "-0.93",
+        "low": "330.00",
+        "close": "317.00",
+        "quantity": "328.40"
+    },
+    {
+        "name": "CYCL",
+        "open": "1,199.90",
+        "high": "0",
+        "low": "1,199.90",
+        "close": "1,168.00",
+        "quantity": "1,180.00"
+    },
+    {
+        "name": "CZBIL",
+        "open": "188.00",
+        "high": "-1",
+        "low": "193.00",
+        "close": "187.00",
+        "quantity": "187.00"
+    },
+    {
+        "name": "DDBL",
+        "open": "735.70",
+        "high": "-1.97",
+        "low": "758.00",
+        "close": "735.50",
+        "quantity": "750.00"
+    },
+    {
+        "name": "DHPL",
+        "open": "157.00",
+        "high": "-1.26",
+        "low": "162.00",
+        "close": "156.80",
+        "quantity": "159.00"
+    },
+    {
+        "name": "DLBS",
+        "open": "655.00",
+        "high": "-1.65",
+        "low": "667.00",
+        "close": "654.00",
+        "quantity": "654.00"
+    },
+    {
+        "name": "DOLTI",
+        "open": "190.00",
+        "high": "-6.86",
+        "low": "203.00",
+        "close": "190.00",
+        "quantity": "200.00"
+    },
+    {
+        "name": "DORDI",
+        "open": "218.00",
+        "high": "1.87",
+        "low": "219.30",
+        "close": "206.00",
+        "quantity": "210.00"
+    },
+    {
+        "name": "EBL",
+        "open": "612.30",
+        "high": "-0.62",
+        "low": "624.00",
+        "close": "610.50",
+        "quantity": "623.90"
+    },
+    {
+        "name": "EBLD86",
+        "open": "790.00",
+        "high": "0.64",
+        "low": "790.00",
+        "close": "790.00",
+        "quantity": "790.00"
+    },
+    {
+        "name": "EDBL",
+        "open": "312.50",
+        "high": "-2.34",
+        "low": "323.00",
+        "close": "312.50",
+        "quantity": "315.50"
+    },
+    {
+        "name": "EHPL",
+        "open": "304.70",
+        "high": "-2.09",
+        "low": "323.30",
+        "close": "287.20",
+        "quantity": "317.00"
+    },
+    {
+        "name": "ENL",
+        "open": "980.00",
+        "high": "-2.44",
+        "low": "1,060.00",
+        "close": "970.10",
+        "quantity": "1,010.00"
+    },
+    {
+        "name": "FMDBL",
+        "open": "655.00",
+        "high": "-1.8",
+        "low": "674.50",
+        "close": "652.00",
+        "quantity": "663.10"
+    },
+    {
+        "name": "FOWAD",
+        "open": "1,280.00",
+        "high": "-1.54",
+        "low": "1,307.00",
+        "close": "1,275.10",
+        "quantity": "1,281.00"
+    },
+    {
+        "name": "GBBL",
+        "open": "376.00",
+        "high": "-2.57",
+        "low": "387.90",
+        "close": "375.10",
+        "quantity": "381.00"
+    },
+    {
+        "name": "GBD80/81",
+        "open": "990.00",
+        "high": "1.68",
+        "low": "990.00",
+        "close": "990.00",
+        "quantity": "990.00"
+    },
+    {
+        "name": "GBILD86/87",
+        "open": "787.00",
+        "high": "1.94",
+        "low": "787.00",
+        "close": "787.00",
+        "quantity": "787.00"
+    },
+    {
+        "name": "GBIME",
+        "open": "206.00",
+        "high": "-1.9",
+        "low": "210.50",
+        "close": "205.50",
+        "quantity": "209.00"
+    },
+    {
+        "name": "GBLBS",
+        "open": "520.00",
+        "high": "-0.95",
+        "low": "525.00",
+        "close": "514.50",
+        "quantity": "525.00"
+    },
+    {
+        "name": "GCIL",
+        "open": "508.00",
+        "high": "-0.39",
+        "low": "520.20",
+        "close": "500.00",
+        "quantity": "520.20"
+    },
+    {
+        "name": "GFCL",
+        "open": "447.00",
+        "high": "-1.32",
+        "low": "452.70",
+        "close": "436.00",
+        "quantity": "444.00"
+    },
+    {
+        "name": "GHL",
+        "open": "179.00",
+        "high": "-3.71",
+        "low": "187.00",
+        "close": "177.00",
+        "quantity": "187.00"
+    },
+    {
+        "name": "GIBF1",
+        "open": "8.39",
+        "high": "-7.8",
+        "low": "8.92",
+        "close": "8.39",
+        "quantity": "8.92"
+    },
+    {
+        "name": "GILB",
+        "open": "861.00",
+        "high": "0.47",
+        "low": "874.00",
+        "close": "841.00",
+        "quantity": "874.00"
+    },
+    {
+        "name": "GLBSL",
+        "open": "729.10",
+        "high": "-0.8",
+        "low": "729.10",
+        "close": "707.60",
+        "quantity": "729.00"
+    },
+    {
+        "name": "GLH",
+        "open": "230.00",
+        "high": "0",
+        "low": "232.00",
+        "close": "220.00",
+        "quantity": "230.00"
+    },
+    {
+        "name": "GMFBS",
+        "open": "686.00",
+        "high": "-3.45",
+        "low": "696.40",
+        "close": "685.10",
+        "quantity": "696.40"
+    },
+    {
+        "name": "GMFIL",
+        "open": "343.90",
+        "high": "-3.48",
+        "low": "357.00",
+        "close": "341.10",
+        "quantity": "355.00"
+    },
+    {
+        "name": "GRDBL",
+        "open": "310.00",
+        "high": "-0.13",
+        "low": "313.50",
+        "close": "307.00",
+        "quantity": "313.50"
+    },
+    {
+        "name": "GUFL",
+        "open": "532.00",
+        "high": "-2.92",
+        "low": "558.90",
+        "close": "527.00",
+        "quantity": "558.90"
+    },
+    {
+        "name": "GVL",
+        "open": "355.00",
+        "high": "-4.83",
+        "low": "378.00",
+        "close": "353.10",
+        "quantity": "373.00"
+    },
+    {
+        "name": "HBL",
+        "open": "208.00",
+        "high": "-0.91",
+        "low": "211.30",
+        "close": "206.60",
+        "quantity": "209.90"
+    },
+    {
+        "name": "HDHPC",
+        "open": "136.90",
+        "high": "-2.21",
+        "low": "142.80",
+        "close": "135.00",
+        "quantity": "142.80"
+    },
+    {
+        "name": "HDL",
+        "open": "1,970.10",
+        "high": "-1",
+        "low": "2,007.40",
+        "close": "1,965.10",
+        "quantity": "1,992.10"
+    },
+    {
+        "name": "HEI",
+        "open": "584.00",
+        "high": "-2.18",
+        "low": "601.00",
+        "close": "577.40",
+        "quantity": "590.00"
+    },
+    {
+        "name": "HHL",
+        "open": "201.00",
+        "high": "-1.95",
+        "low": "205.00",
+        "close": "198.00",
+        "quantity": "205.00"
+    },
+    {
+        "name": "HIDCL",
+        "open": "169.80",
+        "high": "-2.58",
+        "low": "175.40",
+        "close": "169.80",
+        "quantity": "172.00"
+    },
+    {
+        "name": "HIDCLP",
+        "open": "98.50",
+        "high": "-0.61",
+        "low": "100.00",
+        "close": "98.00",
+        "quantity": "99.90"
+    },
+    {
+        "name": "HLBSL",
+        "open": "611.00",
+        "high": "-1.13",
+        "low": "618.00",
+        "close": "601.00",
+        "quantity": "618.00"
+    },
+    {
+        "name": "HLI",
+        "open": "442.00",
+        "high": "-2.43",
+        "low": "456.00",
+        "close": "440.60",
+        "quantity": "453.00"
+    },
+    {
+        "name": "HPPL",
+        "open": "234.60",
+        "high": "-2.21",
+        "low": "242.80",
+        "close": "230.00",
+        "quantity": "235.20"
+    },
+    {
+        "name": "HURJA",
+        "open": "224.80",
+        "high": "-2.68",
+        "low": "235.60",
+        "close": "220.00",
+        "quantity": "231.00"
+    },
+    {
+        "name": "ICFC",
+        "open": "464.00",
+        "high": "-3.51",
+        "low": "490.50",
+        "close": "463.20",
+        "quantity": "490.50"
+    },
+    {
+        "name": "IGI",
+        "open": "504.00",
+        "high": "-3.08",
+        "low": "528.00",
+        "close": "502.30",
+        "quantity": "525.80"
+    },
+    {
+        "name": "IHL",
+        "open": "229.50",
+        "high": "0",
+        "low": "229.50",
+        "close": "217.00",
+        "quantity": "225.00"
+    },
+    {
+        "name": "ILBS",
+        "open": "625.00",
+        "high": "-0.95",
+        "low": "631.00",
+        "close": "608.00",
+        "quantity": "631.00"
+    },
+    {
+        "name": "ILI",
+        "open": "570.20",
+        "high": "-1.54",
+        "low": "590.00",
+        "close": "570.00",
+        "quantity": "580.00"
+    },
+    {
+        "name": "JALPA",
+        "open": "1,294.00",
+        "high": "-1.6",
+        "low": "1,341.00",
+        "close": "1,294.00",
+        "quantity": "1,341.00"
+    },
+    {
+        "name": "JBBL",
+        "open": "307.00",
+        "high": "-2.85",
+        "low": "321.00",
+        "close": "307.00",
+        "quantity": "321.00"
+    },
+    {
+        "name": "JBLB",
+        "open": "1,436.00",
+        "high": "-1.03",
+        "low": "1,458.00",
+        "close": "1,430.00",
+        "quantity": "1,435.00"
+    },
+    {
+        "name": "JFL",
+        "open": "358.90",
+        "high": "-1.91",
+        "low": "369.00",
+        "close": "355.00",
+        "quantity": "369.00"
+    },
+    {
+        "name": "JFLPO",
+        "open": "198.00",
+        "high": "0",
+        "low": "198.00",
+        "close": "198.00",
+        "quantity": "198.00"
+    },
+    {
+        "name": "JOSHI",
+        "open": "213.80",
+        "high": "-3.69",
+        "low": "222.50",
+        "close": "213.80",
+        "quantity": "222.50"
+    },
+    {
+        "name": "JSLBB",
+        "open": "945.00",
+        "high": "-1.56",
+        "low": "979.20",
+        "close": "943.00",
+        "quantity": "979.20"
+    },
+    {
+        "name": "KBL",
+        "open": "159.80",
+        "high": "-0.75",
+        "low": "164.20",
+        "close": "159.00",
+        "quantity": "164.20"
+    },
+    {
+        "name": "KBSH",
+        "open": "701.10",
+        "high": "9.99",
+        "low": "701.10",
+        "close": "650.10",
+        "quantity": "650.10"
+    },
+    {
+        "name": "KDBY",
+        "open": "8.35",
+        "high": "0.24",
+        "low": "8.49",
+        "close": "8.17",
+        "quantity": "8.17"
+    },
+    {
+        "name": "KDL",
+        "open": "906.00",
+        "high": "-2.58",
+        "low": "947.90",
+        "close": "905.00",
+        "quantity": "912.00"
+    },
+    {
+        "name": "KEF",
+        "open": "9.02",
+        "high": "-1.1",
+        "low": "9.13",
+        "close": "8.96",
+        "quantity": "8.96"
+    },
+    {
+        "name": "KKHC",
+        "open": "178.00",
+        "high": "-2.2",
+        "low": "185.00",
+        "close": "178.00",
+        "quantity": "185.00"
+    },
+    {
+        "name": "KLBSL",
+        "open": "809.90",
+        "high": "1.49",
+        "low": "809.90",
+        "close": "774.00",
+        "quantity": "783.10"
+    },
+    {
+        "name": "KMCDB",
+        "open": "627.00",
+        "high": "-0.48",
+        "low": "632.40",
+        "close": "619.00",
+        "quantity": "631.00"
+    },
+    {
+        "name": "KPCL",
+        "open": "341.90",
+        "high": "0.56",
+        "low": "342.00",
+        "close": "335.60",
+        "quantity": "335.60"
+    },
+    {
+        "name": "KRBL",
+        "open": "272.90",
+        "high": "-2.88",
+        "low": "286.60",
+        "close": "271.20",
+        "quantity": "286.60"
+    },
+    {
+        "name": "KSBBL",
+        "open": "313.00",
+        "high": "-1.88",
+        "low": "323.70",
+        "close": "312.00",
+        "quantity": "315.00"
+    },
+    {
+        "name": "LBBL",
+        "open": "395.00",
+        "high": "-2.47",
+        "low": "413.00",
+        "close": "393.00",
+        "quantity": "413.00"
+    },
+    {
+        "name": "LEC",
+        "open": "238.00",
+        "high": "-7.03",
+        "low": "252.00",
+        "close": "235.20",
+        "quantity": "252.00"
+    },
+    {
+        "name": "LEMF",
+        "open": "8.30",
+        "high": "0",
+        "low": "8.62",
+        "close": "8.29",
+        "quantity": "8.46"
+    },
+    {
+        "name": "LICN",
+        "open": "1,437.00",
+        "high": "-2.97",
+        "low": "1,498.00",
+        "close": "1,430.00",
+        "quantity": "1,493.00"
+    },
+    {
+        "name": "LLBS",
+        "open": "697.90",
+        "high": "1",
+        "low": "700.00",
+        "close": "671.00",
+        "quantity": "690.00"
+    },
+    {
+        "name": "LUK",
+        "open": "8.20",
+        "high": "-2.15",
+        "low": "8.22",
+        "close": "8.20",
+        "quantity": "8.22"
+    },
+    {
+        "name": "MAKAR",
+        "open": "269.00",
+        "high": "5.99",
+        "low": "270.00",
+        "close": "242.00",
+        "quantity": "249.00"
+    },
+    {
+        "name": "MBJC",
+        "open": "277.10",
+        "high": "-1.7",
+        "low": "282.00",
+        "close": "277.00",
+        "quantity": "277.30"
+    },
+    {
+        "name": "MBL",
+        "open": "275.00",
+        "high": "-0.36",
+        "low": "278.00",
+        "close": "272.20",
+        "quantity": "278.00"
+    },
+    {
+        "name": "MCHL",
+        "open": "183.00",
+        "high": "-5.18",
+        "low": "196.80",
+        "close": "178.20",
+        "quantity": "196.80"
+    },
+    {
+        "name": "MDB",
+        "open": "403.00",
+        "high": "-0.49",
+        "low": "408.50",
+        "close": "399.10",
+        "quantity": "405.00"
+    },
+    {
+        "name": "MEL",
+        "open": "171.00",
+        "high": "-6.04",
+        "low": "182.00",
+        "close": "170.60",
+        "quantity": "180.00"
+    },
+    {
+        "name": "MEN",
+        "open": "905.00",
+        "high": "-3.1",
+        "low": "952.40",
+        "close": "900.00",
+        "quantity": "952.40"
+    },
+    {
+        "name": "MERO",
+        "open": "550.00",
+        "high": "-1.79",
+        "low": "570.00",
+        "close": "543.00",
+        "quantity": "570.00"
+    },
+    {
+        "name": "MFIL",
+        "open": "519.10",
+        "high": "-2.94",
+        "low": "541.00",
+        "close": "518.00",
+        "quantity": "535.00"
+    },
+    {
+        "name": "MHCL",
+        "open": "162.70",
+        "high": "-8.54",
+        "low": "176.60",
+        "close": "162.70",
+        "quantity": "174.50"
+    },
+    {
+        "name": "MHL",
+        "open": "275.00",
+        "high": "0.36",
+        "low": "275.00",
+        "close": "258.00",
+        "quantity": "268.60"
+    },
+    {
+        "name": "MHNL",
+        "open": "180.50",
+        "high": "-4.5",
+        "low": "192.70",
+        "close": "180.30",
+        "quantity": "187.00"
+    },
+    {
+        "name": "MKHC",
+        "open": "194.00",
+        "high": "-5.37",
+        "low": "209.10",
+        "close": "193.10",
+        "quantity": "209.10"
+    },
+    {
+        "name": "MKHL",
+        "open": "253.00",
+        "high": "-4.17",
+        "low": "269.00",
+        "close": "245.30",
+        "quantity": "269.00"
+    },
+    {
+        "name": "MKJC",
+        "open": "326.00",
+        "high": "-2.69",
+        "low": "330.00",
+        "close": "326.00",
+        "quantity": "330.00"
+    },
+    {
+        "name": "MKLB",
+        "open": "682.00",
+        "high": "0.89",
+        "low": "682.00",
+        "close": "655.00",
+        "quantity": "665.00"
+    },
+    {
+        "name": "MLBBL",
+        "open": "839.00",
+        "high": "-2.44",
+        "low": "842.80",
+        "close": "826.00",
+        "quantity": "842.80"
+    },
+    {
+        "name": "MLBL",
+        "open": "313.50",
+        "high": "-2.37",
+        "low": "327.40",
+        "close": "313.20",
+        "quantity": "327.40"
+    },
+    {
+        "name": "MLBS",
+        "open": "663.00",
+        "high": "-3.91",
+        "low": "693.00",
+        "close": "663.00",
+        "quantity": "690.00"
+    },
+    {
+        "name": "MLBSL",
+        "open": "1,830.00",
+        "high": "-1.61",
+        "low": "1,851.00",
+        "close": "1,830.00",
+        "quantity": "1,850.00"
+    },
+    {
+        "name": "MMF1",
+        "open": "7.00",
+        "high": "-0.43",
+        "low": "7.15",
+        "close": "6.90",
+        "quantity": "6.90"
+    },
+    {
+        "name": "MMFDB",
+        "open": "616.90",
+        "high": "-0.18",
+        "low": "618.00",
+        "close": "608.00",
+        "quantity": "617.00"
+    },
+    {
+        "name": "MNBBL",
+        "open": "393.00",
+        "high": "-1.5",
+        "low": "400.00",
+        "close": "392.10",
+        "quantity": "393.00"
+    },
+    {
+        "name": "MPFL",
+        "open": "305.00",
+        "high": "-1.93",
+        "low": "314.00",
+        "close": "297.00",
+        "quantity": "314.00"
+    },
+    {
+        "name": "MSLB",
+        "open": "827.00",
+        "high": "0.61",
+        "low": "834.00",
+        "close": "780.00",
+        "quantity": "805.60"
+    },
+    {
+        "name": "NABBC",
+        "open": "375.00",
+        "high": "-3.85",
+        "low": "390.00",
+        "close": "375.00",
+        "quantity": "390.00"
+    },
+    {
+        "name": "NABIL",
+        "open": "592.50",
+        "high": "-1.09",
+        "low": "600.00",
+        "close": "591.10",
+        "quantity": "595.00"
+    },
+    {
+        "name": "NADEP",
+        "open": "529.00",
+        "high": "-1.67",
+        "low": "555.00",
+        "close": "520.10",
+        "quantity": "548.00"
+    },
+    {
+        "name": "NBF2",
+        "open": "8.37",
+        "high": "-0.71",
+        "low": "8.37",
+        "close": "8.30",
+        "quantity": "8.30"
+    },
+    {
+        "name": "NBF3",
+        "open": "7.10",
+        "high": "-0.28",
+        "low": "7.20",
+        "close": "7.04",
+        "quantity": "7.05"
+    },
+    {
+        "name": "NBL",
+        "open": "250.00",
+        "high": "-0.4",
+        "low": "253.00",
+        "close": "248.60",
+        "quantity": "248.60"
+    },
+    {
+        "name": "NBLD87",
+        "open": "769.00",
+        "high": "-1.42",
+        "low": "780.00",
+        "close": "769.00",
+        "quantity": "780.00"
+    },
+    {
+        "name": "NEF",
+        "open": "9.70",
+        "high": "0",
+        "low": "9.80",
+        "close": "9.70",
+        "quantity": "9.75"
+    },
+    {
+        "name": "NESDO",
+        "open": "1,860.00",
+        "high": "-1.32",
+        "low": "1,917.60",
+        "close": "1,860.00",
+        "quantity": "1,880.00"
+    },
+    {
+        "name": "NFS",
+        "open": "308.00",
+        "high": "-2.62",
+        "low": "314.00",
+        "close": "305.00",
+        "quantity": "314.00"
+    },
+    {
+        "name": "NGPL",
+        "open": "205.00",
+        "high": "-1.44",
+        "low": "216.20",
+        "close": "204.00",
+        "quantity": "207.00"
+    },
+    {
+        "name": "NHDL",
+        "open": "349.10",
+        "high": "-4.07",
+        "low": "371.10",
+        "close": "349.10",
+        "quantity": "371.10"
+    },
+    {
+        "name": "NHPC",
+        "open": "149.00",
+        "high": "-3.87",
+        "low": "158.10",
+        "close": "148.20",
+        "quantity": "158.10"
+    },
+    {
+        "name": "NIBLGF",
+        "open": "7.78",
+        "high": "0.26",
+        "low": "7.92",
+        "close": "7.77",
+        "quantity": "7.91"
+    },
+    {
+        "name": "NIBLPF",
+        "open": "9.10",
+        "high": "-0.11",
+        "low": "9.20",
+        "close": "9.10",
+        "quantity": "9.19"
+    },
+    {
+        "name": "NIBSF2",
+        "open": "7.00",
+        "high": "0",
+        "low": "7.14",
+        "close": "7.00",
+        "quantity": "7.00"
+    },
+    {
+        "name": "NICA",
+        "open": "794.50",
+        "high": "-0.69",
+        "low": "807.10",
+        "close": "794.00",
+        "quantity": "800.00"
+    },
+    {
+        "name": "NICBF",
+        "open": "9.24",
+        "high": "1.99",
+        "low": "9.24",
+        "close": "9.10",
+        "quantity": "9.13"
+    },
+    {
+        "name": "NICFC",
+        "open": "8.09",
+        "high": "0.75",
+        "low": "8.09",
+        "close": "8.01",
+        "quantity": "8.01"
+    },
+    {
+        "name": "NICGF",
+        "open": "10.16",
+        "high": "0.1",
+        "low": "10.16",
+        "close": "9.97",
+        "quantity": "9.97"
+    },
+    {
+        "name": "NICL",
+        "open": "788.00",
+        "high": "-1.99",
+        "low": "815.00",
+        "close": "781.00",
+        "quantity": "815.00"
+    },
+    {
+        "name": "NICLBSL",
+        "open": "663.00",
+        "high": "-1.34",
+        "low": "685.00",
+        "close": "660.00",
+        "quantity": "661.00"
+    },
+    {
+        "name": "NICSF",
+        "open": "8.32",
+        "high": "1.84",
+        "low": "8.32",
+        "close": "8.01",
+        "quantity": "8.01"
+    },
+    {
+        "name": "NIFRA",
+        "open": "203.30",
+        "high": "-2.31",
+        "low": "210.00",
+        "close": "203.00",
+        "quantity": "210.00"
+    },
+    {
+        "name": "NIL",
+        "open": "855.00",
+        "high": "-2.4",
+        "low": "887.00",
+        "close": "855.00",
+        "quantity": "872.00"
+    },
+    {
+        "name": "NIMB",
+        "open": "179.20",
+        "high": "-0.17",
+        "low": "183.00",
+        "close": "176.00",
+        "quantity": "176.00"
+    },
+    {
+        "name": "NIMBPO",
+        "open": "148.00",
+        "high": "-3.9",
+        "low": "154.00",
+        "close": "148.00",
+        "quantity": "151.00"
+    },
+    {
+        "name": "NLBBL",
+        "open": "609.00",
+        "high": "-0.98",
+        "low": "626.00",
+        "close": "600.00",
+        "quantity": "625.00"
+    },
+    {
+        "name": "NLG",
+        "open": "793.00",
+        "high": "-1.66",
+        "low": "805.00",
+        "close": "785.30",
+        "quantity": "795.00"
+    },
+    {
+        "name": "NLIC",
+        "open": "691.50",
+        "high": "-2.19",
+        "low": "708.40",
+        "close": "690.00",
+        "quantity": "707.00"
+    },
+    {
+        "name": "NLICL",
+        "open": "594.00",
+        "high": "-2.13",
+        "low": "610.50",
+        "close": "593.00",
+        "quantity": "605.00"
+    },
+    {
+        "name": "NMB",
+        "open": "226.00",
+        "high": "0",
+        "low": "230.00",
+        "close": "225.00",
+        "quantity": "228.00"
+    },
+    {
+        "name": "NMB50",
+        "open": "10.56",
+        "high": "-0.38",
+        "low": "10.75",
+        "close": "10.55",
+        "quantity": "10.55"
+    },
+    {
+        "name": "NMBD87/88",
+        "open": "775.00",
+        "high": "-1.9",
+        "low": "775.00",
+        "close": "775.00",
+        "quantity": "775.00"
+    },
+    {
+        "name": "NMBHF1",
+        "open": "11.07",
+        "high": "0",
+        "low": "11.25",
+        "close": "11.07",
+        "quantity": "11.24"
+    },
+    {
+        "name": "NMBMF",
+        "open": "515.00",
+        "high": "-1.34",
+        "low": "530.00",
+        "close": "514.00",
+        "quantity": "515.00"
+    },
+    {
+        "name": "NMFBS",
+        "open": "1,140.00",
+        "high": "-1.53",
+        "low": "1,180.00",
+        "close": "1,112.50",
+        "quantity": "1,180.00"
+    },
+    {
+        "name": "NRIC",
+        "open": "703.00",
+        "high": "-2.36",
+        "low": "725.00",
+        "close": "698.00",
+        "quantity": "707.20"
+    },
+    {
+        "name": "NRM",
+        "open": "263.00",
+        "high": "-3.59",
+        "low": "274.00",
+        "close": "259.70",
+        "quantity": "270.00"
+    },
+    {
+        "name": "NRN",
+        "open": "445.00",
+        "high": "-1.77",
+        "low": "460.00",
+        "close": "440.00",
+        "quantity": "450.00"
+    },
+    {
+        "name": "NSIF2",
+        "open": "8.83",
+        "high": "-1.34",
+        "low": "8.85",
+        "close": "8.80",
+        "quantity": "8.80"
+    },
+    {
+        "name": "NTC",
+        "open": "875.00",
+        "high": "-0.35",
+        "low": "889.00",
+        "close": "866.00",
+        "quantity": "875.00"
+    },
+    {
+        "name": "NUBL",
+        "open": "608.00",
+        "high": "-1.62",
+        "low": "625.00",
+        "close": "606.50",
+        "quantity": "625.00"
+    },
+    {
+        "name": "NYADI",
+        "open": "225.00",
+        "high": "-4.09",
+        "low": "232.00",
+        "close": "225.00",
+        "quantity": "232.00"
+    },
+    {
+        "name": "OHL",
+        "open": "779.00",
+        "high": "-1.39",
+        "low": "793.90",
+        "close": "770.00",
+        "quantity": "780.10"
+    },
+    {
+        "name": "PBD88",
+        "open": "887.00",
+        "high": "-1.99",
+        "low": "887.00",
+        "close": "887.00",
+        "quantity": "887.00"
+    },
+    {
+        "name": "PCBL",
+        "open": "184.50",
+        "high": "-0.27",
+        "low": "186.50",
+        "close": "182.60",
+        "quantity": "185.50"
+    },
+    {
+        "name": "PFL",
+        "open": "354.20",
+        "high": "-3.75",
+        "low": "363.00",
+        "close": "354.10",
+        "quantity": "363.00"
+    },
+    {
+        "name": "PHCL",
+        "open": "258.00",
+        "high": "-4.41",
+        "low": "275.00",
+        "close": "255.00",
+        "quantity": "265.00"
+    },
+    {
+        "name": "PMHPL",
+        "open": "168.50",
+        "high": "-2.43",
+        "low": "172.60",
+        "close": "166.10",
+        "quantity": "170.00"
+    },
+    {
+        "name": "PPCL",
+        "open": "238.00",
+        "high": "-2.42",
+        "low": "247.90",
+        "close": "234.40",
+        "quantity": "247.90"
+    },
+    {
+        "name": "PPL",
+        "open": "222.00",
+        "high": "-4.93",
+        "low": "242.80",
+        "close": "220.70",
+        "quantity": "229.00"
+    },
+    {
+        "name": "PRIN",
+        "open": "684.50",
+        "high": "-1.23",
+        "low": "704.80",
+        "close": "675.50",
+        "quantity": "681.10"
+    },
+    {
+        "name": "PROFL",
+        "open": "300.00",
+        "high": "-4.15",
+        "low": "315.60",
+        "close": "299.00",
+        "quantity": "314.00"
+    },
+    {
+        "name": "PRSF",
+        "open": "8.17",
+        "high": "-1.33",
+        "low": "8.17",
+        "close": "8.16",
+        "quantity": "8.16"
+    },
+    {
+        "name": "PRVU",
+        "open": "163.10",
+        "high": "-1.15",
+        "low": "166.70",
+        "close": "162.20",
+        "quantity": "166.00"
+    },
+    {
+        "name": "PSF",
+        "open": "8.71",
+        "high": "-1.8",
+        "low": "8.92",
+        "close": "8.71",
+        "quantity": "8.75"
+    },
+    {
+        "name": "RADHI",
+        "open": "217.50",
+        "high": "-0.68",
+        "low": "223.90",
+        "close": "215.10",
+        "quantity": "219.10"
+    },
+    {
+        "name": "RAWA",
+        "open": "310.00",
+        "high": "-7.74",
+        "low": "340.00",
+        "close": "307.40",
+        "quantity": "334.00"
+    },
+    {
+        "name": "RBCL",
+        "open": "15,022.00",
+        "high": "-3.08",
+        "low": "15,500.00",
+        "close": "15,022.00",
+        "quantity": "15,500.00"
+    },
+    {
+        "name": "RBCLPO",
+        "open": "13,175.00",
+        "high": "-1.99",
+        "low": "13,575.00",
+        "close": "13,175.00",
+        "quantity": "13,575.00"
+    },
+    {
+        "name": "RFPL",
+        "open": "220.30",
+        "high": "0.59",
+        "low": "222.30",
+        "close": "211.00",
+        "quantity": "219.00"
+    },
+    {
+        "name": "RHGCL",
+        "open": "212.10",
+        "high": "1.53",
+        "low": "223.10",
+        "close": "206.00",
+        "quantity": "208.90"
+    },
+    {
+        "name": "RHPL",
+        "open": "279.30",
+        "high": "-2",
+        "low": "288.00",
+        "close": "279.30",
+        "quantity": "282.00"
+    },
+    {
+        "name": "RIDI",
+        "open": "209.00",
+        "high": "-3.24",
+        "low": "218.00",
+        "close": "208.10",
+        "quantity": "214.00"
+    },
+    {
+        "name": "RLFL",
+        "open": "319.00",
+        "high": "-3.22",
+        "low": "336.00",
+        "close": "316.00",
+        "quantity": "333.20"
+    },
+    {
+        "name": "RMF1",
+        "open": "7.45",
+        "high": "-1.97",
+        "low": "7.60",
+        "close": "7.45",
+        "quantity": "7.60"
+    },
+    {
+        "name": "RMF2",
+        "open": "10.23",
+        "high": "-1.92",
+        "low": "10.23",
+        "close": "10.23",
+        "quantity": "10.23"
+    },
+    {
+        "name": "RSDC",
+        "open": "550.00",
+        "high": "-3.51",
+        "low": "572.00",
+        "close": "550.00",
+        "quantity": "570.00"
+    },
+    {
+        "name": "RURU",
+        "open": "778.00",
+        "high": "-1.27",
+        "low": "793.00",
+        "close": "775.10",
+        "quantity": "788.00"
+    },
+    {
+        "name": "SABSL",
+        "open": "615.00",
+        "high": "-2.23",
+        "low": "630.00",
+        "close": "605.20",
+        "quantity": "617.00"
+    },
+    {
+        "name": "SADBL",
+        "open": "303.00",
+        "high": "-3.78",
+        "low": "314.00",
+        "close": "303.00",
+        "quantity": "308.70"
+    },
+    {
+        "name": "SAEF",
+        "open": "11.16",
+        "high": "-0.36",
+        "low": "11.30",
+        "close": "11.15",
+        "quantity": "11.30"
+    },
+    {
+        "name": "SAGF",
+        "open": "7.90",
+        "high": "-1.25",
+        "low": "7.91",
+        "close": "7.90",
+        "quantity": "7.91"
+    },
+    {
+        "name": "SAHAS",
+        "open": "437.00",
+        "high": "-2.5",
+        "low": "450.00",
+        "close": "430.00",
+        "quantity": "444.00"
+    },
+    {
+        "name": "SALICO",
+        "open": "711.00",
+        "high": "-1.93",
+        "low": "733.00",
+        "close": "710.20",
+        "quantity": "733.00"
+    },
+    {
+        "name": "SAMAJ",
+        "open": "69.90",
+        "high": "1.9",
+        "low": "69.90",
+        "close": "69.90",
+        "quantity": "69.90"
+    },
+    {
+        "name": "SANIMA",
+        "open": "299.00",
+        "high": "-1.32",
+        "low": "307.50",
+        "close": "298.20",
+        "quantity": "307.50"
+    },
+    {
+        "name": "SAPDBL",
+        "open": "236.00",
+        "high": "-2.88",
+        "low": "242.00",
+        "close": "234.00",
+        "quantity": "242.00"
+    },
+    {
+        "name": "SBCF",
+        "open": "7.48",
+        "high": "0.13",
+        "low": "7.48",
+        "close": "7.37",
+        "quantity": "7.37"
+    },
+    {
+        "name": "SBD87",
+        "open": "785.00",
+        "high": "0.13",
+        "low": "785.00",
+        "close": "785.00",
+        "quantity": "785.00"
+    },
+    {
+        "name": "SBI",
+        "open": "331.00",
+        "high": "-2.07",
+        "low": "344.00",
+        "close": "328.00",
+        "quantity": "344.00"
+    },
+    {
+        "name": "SBID83",
+        "open": "940.00",
+        "high": "-1.16",
+        "low": "940.00",
+        "close": "940.00",
+        "quantity": "940.00"
+    },
+    {
+        "name": "SBL",
+        "open": "266.00",
+        "high": "-1.08",
+        "low": "269.60",
+        "close": "264.40",
+        "quantity": "269.00"
+    },
+    {
+        "name": "SCB",
+        "open": "560.00",
+        "high": "-1.11",
+        "low": "567.90",
+        "close": "560.00",
+        "quantity": "565.00"
+    },
+    {
+        "name": "SDLBSL",
+        "open": "630.00",
+        "high": "-1.87",
+        "low": "639.00",
+        "close": "629.20",
+        "quantity": "636.00"
+    },
+    {
+        "name": "SEF",
+        "open": "8.25",
+        "high": "-1.67",
+        "low": "8.31",
+        "close": "8.25",
+        "quantity": "8.28"
+    },
+    {
+        "name": "SFCL",
+        "open": "273.00",
+        "high": "-3.19",
+        "low": "282.50",
+        "close": "270.90",
+        "quantity": "282.00"
+    },
+    {
+        "name": "SFEF",
+        "open": "7.91",
+        "high": "-1.25",
+        "low": "8.05",
+        "close": "7.90",
+        "quantity": "7.90"
+    },
+    {
+        "name": "SFMF",
+        "open": "11.35",
+        "high": "0.89",
+        "low": "11.39",
+        "close": "11.25",
+        "quantity": "11.25"
+    },
+    {
+        "name": "SGHC",
+        "open": "224.00",
+        "high": "-1.75",
+        "low": "227.00",
+        "close": "213.00",
+        "quantity": "223.50"
+    },
+    {
+        "name": "SGIC",
+        "open": "585.00",
+        "high": "-4.1",
+        "low": "615.00",
+        "close": "583.30",
+        "quantity": "599.00"
+    },
+    {
+        "name": "SHEL",
+        "open": "227.00",
+        "high": "-7.35",
+        "low": "244.00",
+        "close": "227.00",
+        "quantity": "240.10"
+    },
+    {
+        "name": "SHINE",
+        "open": "381.00",
+        "high": "-2.06",
+        "low": "392.00",
+        "close": "379.00",
+        "quantity": "389.00"
+    },
+    {
+        "name": "SHIVM",
+        "open": "518.00",
+        "high": "-3",
+        "low": "539.40",
+        "close": "517.00",
+        "quantity": "534.00"
+    },
+    {
+        "name": "SHL",
+        "open": "455.10",
+        "high": "-1.71",
+        "low": "470.00",
+        "close": "453.80",
+        "quantity": "463.00"
+    },
+    {
+        "name": "SHLB",
+        "open": "991.00",
+        "high": "-0.9",
+        "low": "1,020.00",
+        "close": "988.10",
+        "quantity": "1,000.00"
+    },
+    {
+        "name": "SHPC",
+        "open": "343.00",
+        "high": "-2",
+        "low": "356.80",
+        "close": "341.50",
+        "quantity": "350.00"
+    },
+    {
+        "name": "SICL",
+        "open": "782.00",
+        "high": "-1.51",
+        "low": "808.00",
+        "close": "770.00",
+        "quantity": "808.00"
+    },
+    {
+        "name": "SIFC",
+        "open": "337.00",
+        "high": "-3.16",
+        "low": "348.00",
+        "close": "336.00",
+        "quantity": "348.00"
+    },
+    {
+        "name": "SIGS2",
+        "open": "8.50",
+        "high": "0",
+        "low": "8.60",
+        "close": "8.50",
+        "quantity": "8.50"
+    },
+    {
+        "name": "SIKLES",
+        "open": "363.80",
+        "high": "-1.94",
+        "low": "370.00",
+        "close": "350.30",
+        "quantity": "363.60"
+    },
+    {
+        "name": "SINDU",
+        "open": "256.00",
+        "high": "-1.08",
+        "low": "262.00",
+        "close": "248.00",
+        "quantity": "262.00"
+    },
+    {
+        "name": "SJCL",
+        "open": "270.00",
+        "high": "-3.57",
+        "low": "280.00",
+        "close": "270.00",
+        "quantity": "280.00"
+    },
+    {
+        "name": "SJLIC",
+        "open": "549.00",
+        "high": "-2.16",
+        "low": "565.00",
+        "close": "544.00",
+        "quantity": "561.10"
+    },
+    {
+        "name": "SKBBL",
+        "open": "921.00",
+        "high": "-0.75",
+        "low": "935.00",
+        "close": "915.00",
+        "quantity": "922.10"
+    },
+    {
+        "name": "SLBBL",
+        "open": "642.00",
+        "high": "-3.39",
+        "low": "669.00",
+        "close": "640.00",
+        "quantity": "651.30"
+    },
+    {
+        "name": "SLBSL",
+        "open": "820.00",
+        "high": "1.99",
+        "low": "820.00",
+        "close": "772.50",
+        "quantity": "788.20"
+    },
+    {
+        "name": "SLCF",
+        "open": "7.75",
+        "high": "-1.65",
+        "low": "7.80",
+        "close": "7.75",
+        "quantity": "7.80"
+    },
+    {
+        "name": "SMATA",
+        "open": "625.00",
+        "high": "-8.09",
+        "low": "693.60",
+        "close": "625.00",
+        "quantity": "693.60"
+    },
+    {
+        "name": "SMFBS",
+        "open": "1,100.00",
+        "high": "-2.65",
+        "low": "1,111.00",
+        "close": "1,066.50",
+        "quantity": "1,111.00"
+    },
+    {
+        "name": "SMH",
+        "open": "585.00",
+        "high": "-3.78",
+        "low": "608.00",
+        "close": "578.00",
+        "quantity": "608.00"
+    },
+    {
+        "name": "SMHL",
+        "open": "345.00",
+        "high": "-3.63",
+        "low": "366.00",
+        "close": "343.30",
+        "quantity": "351.00"
+    },
+    {
+        "name": "SMJC",
+        "open": "237.80",
+        "high": "-2.14",
+        "low": "240.00",
+        "close": "234.10",
+        "quantity": "240.00"
+    },
+    {
+        "name": "SPC",
+        "open": "376.80",
+        "high": "-3.29",
+        "low": "383.00",
+        "close": "370.40",
+        "quantity": "381.90"
+    },
+    {
+        "name": "SPDL",
+        "open": "179.90",
+        "high": "-2.65",
+        "low": "186.00",
+        "close": "177.40",
+        "quantity": "181.20"
+    },
+    {
+        "name": "SPHL",
+        "open": "348.00",
+        "high": "-0.29",
+        "low": "348.90",
+        "close": "335.50",
+        "quantity": "342.10"
+    },
+    {
+        "name": "SPIL",
+        "open": "747.00",
+        "high": "-1.06",
+        "low": "777.00",
+        "close": "747.00",
+        "quantity": "760.00"
+    },
+    {
+        "name": "SPL",
+        "open": "645.00",
+        "high": "-0.03",
+        "low": "658.10",
+        "close": "645.00",
+        "quantity": "658.10"
+    },
+    {
+        "name": "SRLI",
+        "open": "530.00",
+        "high": "-2.75",
+        "low": "547.50",
+        "close": "529.50",
+        "quantity": "542.00"
+    },
+    {
+        "name": "SSHL",
+        "open": "154.00",
+        "high": "-4.41",
+        "low": "164.90",
+        "close": "152.90",
+        "quantity": "158.00"
+    },
+    {
+        "name": "STC",
+        "open": "5,303.00",
+        "high": "-1.52",
+        "low": "5,438.00",
+        "close": "5,302.00",
+        "quantity": "5,385.00"
+    },
+    {
+        "name": "SWBBL",
+        "open": "767.00",
+        "high": "-2.78",
+        "low": "792.00",
+        "close": "767.00",
+        "quantity": "780.00"
+    },
+    {
+        "name": "SWMF",
+        "open": "632.20",
+        "high": "-5.78",
+        "low": "657.60",
+        "close": "632.20",
+        "quantity": "657.60"
+    },
+    {
+        "name": "TAMOR",
+        "open": "248.60",
+        "high": "-4.38",
+        "low": "265.00",
+        "close": "248.50",
+        "quantity": "255.00"
+    },
+    {
+        "name": "TPC",
+        "open": "325.00",
+        "high": "-6.07",
+        "low": "352.80",
+        "close": "320.50",
+        "quantity": "352.00"
+    },
+    {
+        "name": "TRH",
+        "open": "780.90",
+        "high": "-0.61",
+        "low": "796.00",
+        "close": "768.90",
+        "quantity": "796.00"
+    },
+    {
+        "name": "TSHL",
+        "open": "257.00",
+        "high": "-3.38",
+        "low": "263.00",
+        "close": "254.30",
+        "quantity": "261.00"
+    },
+    {
+        "name": "UAIL",
+        "open": "596.00",
+        "high": "-1.32",
+        "low": "610.00",
+        "close": "584.00",
+        "quantity": "610.00"
+    },
+    {
+        "name": "UHEWA",
+        "open": "284.00",
+        "high": "-5.02",
+        "low": "300.00",
+        "close": "284.00",
+        "quantity": "298.50"
+    },
+    {
+        "name": "ULBSL",
+        "open": "1,296.10",
+        "high": "-1.81",
+        "low": "1,330.00",
+        "close": "1,296.10",
+        "quantity": "1,315.00"
+    },
+    {
+        "name": "UMHL",
+        "open": "187.00",
+        "high": "-3.11",
+        "low": "194.00",
+        "close": "185.10",
+        "quantity": "192.00"
+    },
+    {
+        "name": "UMRH",
+        "open": "385.00",
+        "high": "-3.75",
+        "low": "405.00",
+        "close": "385.00",
+        "quantity": "405.00"
+    },
+    {
+        "name": "UNHPL",
+        "open": "164.50",
+        "high": "-4.36",
+        "low": "175.40",
+        "close": "163.00",
+        "quantity": "169.00"
+    },
+    {
+        "name": "UNL",
+        "open": "35,888.00",
+        "high": "-0.03",
+        "low": "36,000.00",
+        "close": "35,402.00",
+        "quantity": "35,899.00"
+    },
+    {
+        "name": "UNLB",
+        "open": "1,180.00",
+        "high": "0.43",
+        "low": "1,180.00",
+        "close": "1,105.00",
+        "quantity": "1,157.00"
+    },
+    {
+        "name": "UPCL",
+        "open": "186.80",
+        "high": "-3.71",
+        "low": "195.50",
+        "close": "185.50",
+        "quantity": "193.10"
+    },
+    {
+        "name": "UPPER",
+        "open": "226.50",
+        "high": "-1.48",
+        "low": "240.00",
+        "close": "226.40",
+        "quantity": "232.00"
+    },
+    {
+        "name": "USHEC",
+        "open": "227.00",
+        "high": "-2.16",
+        "low": "241.30",
+        "close": "222.00",
+        "quantity": "236.60"
+    },
+    {
+        "name": "USHL",
+        "open": "299.00",
+        "high": "-2.76",
+        "low": "309.00",
+        "close": "293.50",
+        "quantity": "301.50"
+    },
+    {
+        "name": "USLB",
+        "open": "744.00",
+        "high": "0.54",
+        "low": "744.00",
+        "close": "730.20",
+        "quantity": "730.20"
+    },
+    {
+        "name": "VLBS",
+        "open": "593.00",
+        "high": "-2.79",
+        "low": "613.00",
+        "close": "591.00",
+        "quantity": "610.00"
+    },
+    {
+        "name": "WNLB",
+        "open": "722.00",
+        "high": "-4.24",
+        "low": "765.00",
+        "close": "722.00",
+        "quantity": "764.00"
+    }
+]
