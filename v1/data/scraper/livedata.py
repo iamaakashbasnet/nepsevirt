@@ -1,4 +1,5 @@
 import json
+import csv
 from urllib.request import urlopen
 from django.conf import settings
 from bs4 import BeautifulSoup
@@ -30,8 +31,12 @@ def get_live_data():
     json_data = json.dumps(data, indent=4)
 
     # Write JSON data to a file
-    with open(f'{settings.BASE_DIR}/v1/data/json/data.json', 'w') as file:
+    with open(f'{settings.BASE_DIR}/v1/data/json/livedata.json', 'w', encoding='UTF-8') as file:
         file.write(json_data)
 
-
-get_live_data()
+    header = data[0].keys()
+    # Write JSON data to csv
+    with open(f'{settings.BASE_DIR}/v1/data/csv/livedata.csv', 'w', encoding='UTF-8') as file:
+        writer = csv.DictWriter(file, fieldnames=header)
+        writer.writeheader()
+        writer.writerows(data)
