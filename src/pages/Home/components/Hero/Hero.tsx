@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
 
         <section className="z-20 bg-transparent">
           <div className="mx-auto max-w-screen-xl px-4 py-8 text-center lg:py-16">
-            <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-6xl">
+            <h1 className="mb-4 font-heading text-4xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-6xl">
               <span className="bg-gradient-to-r from-sky-400 to-emerald-600 bg-clip-text text-transparent">
                 Paper Trading Platform{' '}
               </span>
