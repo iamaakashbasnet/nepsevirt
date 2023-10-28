@@ -3,8 +3,8 @@ import { LuCheckCircle } from 'react-icons/lu';
 import { PiPlugsConnectedFill } from 'react-icons/pi';
 import { LuLayoutDashboard } from 'react-icons/lu';
 
-import Footer from 'components/shared/Footer';
 import Hero from './components/Hero/Hero';
+import { Footer } from 'components';
 import dashboardMockupDark from 'assets/dashboard-mockup-dark.svg';
 import dashboardMockupLight from 'assets/dashboard-mockup-light.svg';
 
