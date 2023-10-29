@@ -5,8 +5,9 @@ import { routerType } from 'types/routerTypes';
 const Home = lazy(() => import('pages/Home'));
 const Login = lazy(() => import('pages/Login'));
 const Signup = lazy(() => import('pages/Signup'));
+const Dashboard = lazy(() => import('pages/Dashboard'));
 
-const routerData: routerType[] = [
+export const basicRoutes: routerType[] = [
   {
     title: 'Home',
     path: '',
@@ -16,4 +17,4 @@ const routerData: routerType[] = [
   { title: 'Signup', path: 'signup', element: <Signup /> },
 ];
 
-export default routerData;
+export const dashboardRoutes: routerType[] = [{ title: 'Dashboard', path: 'dashboard', element: <Dashboard /> }];
