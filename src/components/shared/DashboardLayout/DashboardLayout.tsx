@@ -4,11 +4,16 @@ import { Header, Footer } from 'components';
 
 const DashboardLayout: React.FC = () => {
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <Header />
-      <Outlet />
-      <Footer />
-    </>
+      <main className="h-auto flex-grow p-4 pt-20 md:ml-64">
+        <Outlet />
+      </main>
+      {/* Wrapping footer to shift to middle */}
+      <div className="md:ml-64">
+        <Footer />
+      </div>
+    </div>
   );
 };
 
