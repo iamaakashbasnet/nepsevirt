@@ -1,11 +1,14 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Router from 'pages/router';
+import { FallbackLoading } from 'components';
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <Router />
+      <React.Suspense fallback={<FallbackLoading />}>
+        <Router />
+      </React.Suspense>
     </BrowserRouter>
   );
 };
