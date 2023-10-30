@@ -3,14 +3,36 @@ from rest_framework_simplejwt.serializers import (
     TokenRefreshSerializer,
     TokenVerifySerializer,
 )
+from rest_framework_simplejwt.exceptions import InvalidToken
 
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
-    pass
+    # Confused if to send user data in token itself or separately
+    # @classmethod
+    # def get_token(cls, user):
+    #     token = super().get_token(user)
+    #     token['name'] = user.username
+    #     return token
+
+    # For now sending data separately
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        user = self.user
+        data['username'] = user.username
+
+        return data
 
 
 class CustomTokenRefreshSerializer(TokenRefreshSerializer):
-    pass
+    # This ensures we don't need refresh token in body
+    refresh = None
+
+    def validate(self, attrs):
+        attrs['refresh'] = self.context['request'].COOKIES.get('rt')
+        if attrs['refresh']:
+            return super().validate(attrs)
+        else:
+            raise InvalidToken('No valid token found.')
 
 
 class CustomTokenVerifySerializer(TokenVerifySerializer):
