@@ -10,14 +10,13 @@
         localStorage.theme === 'dark' ||
         (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
       ) {
-        document.documentElement.classList.add('dark');
+        document.documentElement.setAttribute('data-theme', 'dark');
       } else {
-        document.documentElement.classList.remove('dark');
+        document.documentElement.setAttribute('data-theme', 'dark');
       }
     </script>
-    <script src="node_modules/flowbite/dist/flowbite.min.js"></script>
   </head>
-  <body class="bg-slate-50 dark:bg-gray-900 dark:text-white">
+  <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

@@ -1,7 +1,5 @@
 import React from 'react';
-import { Button } from 'flowbite-react';
 import { Link } from 'react-router-dom';
-
 import styles from './Hero.module.css';
 import herobg from 'assets/hero-bg.mp4';
 
@@ -25,9 +23,9 @@ const Hero: React.FC = () => {
             </p>
             <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-x-4 sm:space-y-0">
               <Link to="/login">
-                <Button color="blue">Get Started</Button>
+                <button className="btn btn-primary">Get Started</button>
               </Link>
-              <Button color="gray">Learn More</Button>
+              <button className="btn btn-outline">Learn More</button>
             </div>
           </div>
         </section>

@@ -1,19 +1,40 @@
-import React from 'react';
-import { TbSquareRoundedChevronDownFilled } from 'react-icons/tb';
+import React, { useEffect, useRef } from 'react';
 
 const Sidebar: React.FC = () => {
+  const sideNavRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        sideNavRef.current &&
+        !sideNavRef.current.contains(event.target as Node) &&
+        !document.querySelector('#sidebar-toggler')?.contains(event.target as Node)
+      ) {
+        document.querySelector('#drawer-navigation')?.classList.remove('translate-x-0');
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // Remove event listener when the component unmounts
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
     <>
       <aside
-        className="fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full border-r border-gray-200 bg-white pt-14 transition-transform dark:border-gray-700 dark:bg-gray-800 md:translate-x-0"
+        className="fixed left-0 top-0 z-10 h-screen w-64 -translate-x-full pt-14 transition-transform md:translate-x-0"
         id="drawer-navigation"
+        ref={sideNavRef}
       >
-        <div className="h-full overflow-y-auto bg-white px-3 py-5 dark:bg-gray-800">
+        <div className="h-full overflow-y-auto bg-white px-3 py-5 dark:bg-base-300">
           <ul className="space-y-2">
             <li>
               <a
                 href="#"
-                className="group flex items-center rounded-lg p-2 text-base font-medium text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                className="group flex items-center rounded-lg p-2 text-base font-medium text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-800"
               >
                 <span className="ml-3">Overview</span>
               </a>
@@ -21,46 +42,10 @@ const Sidebar: React.FC = () => {
             <li>
               <a
                 href="#"
-                className="group flex items-center rounded-lg p-2 text-base font-medium text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                className="group flex items-center rounded-lg p-2 text-base font-medium text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-800"
               >
                 <span className="ml-3 flex-1 whitespace-nowrap">Portfolio</span>
               </a>
-            </li>
-            <li>
-              <button
-                type="button"
-                className="group flex w-full items-center rounded-lg p-2 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                data-collapse-toggle="dropdown-pages"
-              >
-                <span className="ml-3 flex-1 whitespace-nowrap text-left">Position</span>
-                <TbSquareRoundedChevronDownFilled />
-              </button>
-              <ul id="dropdown-pages" className="hidden space-y-2 py-2">
-                <li>
-                  <a
-                    href="#"
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  >
-                    Buy/Sell
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  >
-                    Trading History
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="group flex w-full items-center rounded-lg p-2 pl-11 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  >
-                    Account History
-                  </a>
-                </li>
-              </ul>
             </li>
           </ul>
         </div>

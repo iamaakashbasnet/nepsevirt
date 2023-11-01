@@ -17,4 +17,4 @@ export const basicRoutes: routerType[] = [
   { title: 'Signup', path: 'signup', element: <Signup /> },
 ];
 
-export const dashboardRoutes: routerType[] = [{ title: 'Dashboard', path: 'dashboard', element: <Dashboard /> }];
+export const dashboardRoutes: routerType[] = [{ title: 'Dashboard', path: '', element: <Dashboard /> }];
