@@ -22,10 +22,12 @@ const Hero: React.FC = () => {
               financial success!
             </p>
             <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-x-4 sm:space-y-0">
-              <Link to="/login">
-                <button className="btn btn-primary">Get Started</button>
+              <Link to="/login" className="btn btn-primary">
+                Get Started
               </Link>
-              <button className="btn btn-outline">Learn More</button>
+              <Link to="#" className="btn btn-outline">
+                Learn More
+              </Link>
             </div>
           </div>
         </section>

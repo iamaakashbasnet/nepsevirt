@@ -6,7 +6,7 @@ import dashboardMockupDark from 'assets/dashboard-mockup-dark.svg';
 import dashboardMockupLight from 'assets/dashboard-mockup-light.svg';
 
 const Intro: React.FC = () => {
-  const isDarkMode = document.documentElement.classList.contains('dark');
+  const isDarkMode = document.documentElement.getAttribute('data-theme') === `dark` ? true : false;
   return (
     <>
       <div className="-mt-32 flex flex-col items-center justify-center">
