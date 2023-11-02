@@ -1,8 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import logo from 'assets/logo.png';
+import { AppDispatch } from 'state/store';
+import { loginAsync } from 'state/user/authSlice';
+
+type LoginData = {
+  email: '';
+  password: '';
+};
 
 const Login: React.FC = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const [loginData, setLoginData] = useState<LoginData>({ email: '', password: '' });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLoginData((prevLoginData) => ({ ...prevLoginData, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.SyntheticEvent) => {
+    await dispatch(loginAsync(loginData));
+    e.preventDefault();
+  };
+
   return (
     <>
       <div className="mx-auto flex h-screen flex-col items-center justify-center">
@@ -24,6 +44,7 @@ const Login: React.FC = () => {
                 className="input input-bordered w-full max-w-xs"
                 id="email"
                 name="email"
+                onChange={handleChange}
                 placeholder="example@example.com"
                 required
               />
@@ -38,6 +59,7 @@ const Login: React.FC = () => {
                 className="input input-bordered w-full max-w-xs"
                 id="password"
                 name="password"
+                onChange={handleChange}
                 placeholder="••••••••"
                 required
               />
@@ -58,9 +80,9 @@ const Login: React.FC = () => {
               </Link>
             </div>
 
-            <Link to="#" className="btn btn-primary">
+            <button onClick={handleSubmit} className="btn btn-primary">
               Login
-            </Link>
+            </button>
             <p className="my-3 text-sm">
               Don&apos;t have an account yet?{' '}
               <Link to="/signup" className="link-primary link">
