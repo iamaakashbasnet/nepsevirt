@@ -38,6 +38,7 @@ const authSlice = createSlice({
 export const loginAsync = createAsyncThunk('auth/loginAsync', async (data: { email: string; password: string }) => {
   try {
     const response = await axios.post<UserState>('/api/accounts/token/', data);
+    axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.at as string}`;
     return response.data;
   } catch (err) {
     console.log(err);
