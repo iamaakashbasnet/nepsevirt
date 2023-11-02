@@ -2,9 +2,14 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { AuthState, UserState } from 'types/state/user/authSlice';
 
+interface FormData {
+  email: string;
+  password: string;
+}
+
 const initialState: AuthState = {
   isLoading: false,
-  isAuthenticated: null,
+  isAuthenticated: false,
   user: null,
 };
 
@@ -20,12 +25,7 @@ const authSlice = createSlice({
       .addCase(loginAsync.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isAuthenticated = true;
-        state.user = {
-          firstname: action.payload?.firstname,
-          lastname: action.payload?.lastname,
-          email: action.payload?.email,
-          username: action.payload?.username,
-        };
+        state.user = action.payload;
       })
       .addCase(loginAsync.rejected, (state) => {
         state.isLoading = false;
@@ -35,13 +35,13 @@ const authSlice = createSlice({
   },
 });
 
-export const loginAsync = createAsyncThunk('auth/loginAsync', async (data: { email: string; password: string }) => {
+export const loginAsync = createAsyncThunk('auth/loginAsync', async (formData: FormData, thunkAPI) => {
   try {
-    const response = await axios.post<UserState>('/api/accounts/token/', data);
+    const response = await axios.post<UserState>('/api/accounts/token/', formData);
     axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.at as string}`;
     return response.data;
   } catch (err) {
-    console.log(err);
+    return thunkAPI.rejectWithValue('Credentials invalid.');
   }
 });
 

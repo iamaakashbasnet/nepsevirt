@@ -8,8 +8,8 @@ interface UserState {
 
 interface AuthState {
   isLoading: boolean;
-  isAuthenticated: null | boolean;
-  user: null | UserState;
+  isAuthenticated: boolean;
+  user?: null | UserState;
 }
 
 export type { UserState, AuthState };
