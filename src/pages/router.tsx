@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { basicRoutes, dashboardRoutes } from './routerData';
 import { routerType } from 'types/routerTypes';
 import { DashboardLayout } from 'components';
+import PrivateRoutes from 'utils/PrivateRoutes';
 
 const Router = () => {
   const _basicRoutes = basicRoutes.map(({ path, title, element }: routerType) => {
@@ -16,7 +17,7 @@ const Router = () => {
     <Routes>
       {_basicRoutes}
       <Route path="dashboard" element={<DashboardLayout />}>
-        {_dashboardRoutes}
+        <Route element={<PrivateRoutes />}>{_dashboardRoutes}</Route>
       </Route>
     </Routes>
   );

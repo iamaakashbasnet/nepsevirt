@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { Link, Navigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import logo from 'assets/logo.png';
-import { AppDispatch } from 'state/store';
+import { AppDispatch, RootState } from 'state/store';
 import { loginAsync } from 'state/user/authSlice';
 
 type LoginData = {
@@ -12,6 +12,8 @@ type LoginData = {
 
 const Login: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
+
   const [loginData, setLoginData] = useState<LoginData>({ email: '', password: '' });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,6 +27,8 @@ const Login: React.FC = () => {
 
   return (
     <>
+      {isAuthenticated && <Navigate to="/dashboard" />}
+
       <div className="mx-auto flex h-screen flex-col items-center justify-center">
         <h1 className="mb-6 flex items-center font-heading text-3xl font-semibold">
           <img className="mr-2 h-8 w-8" src={logo} alt="logo" />
