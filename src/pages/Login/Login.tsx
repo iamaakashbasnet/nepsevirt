@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import logo from 'assets/logo.png';
 import { AppDispatch, RootState } from 'state/store';
@@ -10,10 +10,14 @@ type LoginData = {
   password: '';
 };
 
+type LocationState = {
+  next: string;
+};
+
 const Login: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const location = useLocation();
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
-
   const [loginData, setLoginData] = useState<LoginData>({ email: '', password: '' });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,9 +29,11 @@ const Login: React.FC = () => {
     e.preventDefault();
   };
 
+  const state = location.state as LocationState;
+
   return (
     <>
-      {isAuthenticated && <Navigate to="/dashboard" />}
+      {isAuthenticated && (location.state ? <Navigate to={state.next} /> : <Navigate to="/dashboard" />)}
 
       <div className="mx-auto flex h-screen flex-col items-center justify-center">
         <h1 className="mb-6 flex items-center font-heading text-3xl font-semibold">

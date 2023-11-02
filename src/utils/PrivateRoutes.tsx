@@ -6,7 +6,7 @@ const PrivateRoutes = () => {
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
   const location = useLocation();
 
-  return isAuthenticated ? <Outlet /> : <Navigate to="/login" state={{ from: location }} replace />;
+  return isAuthenticated ? <Outlet /> : <Navigate to="/login" state={{ next: location.pathname }} replace />;
 };
 
 export default PrivateRoutes;
