@@ -4,6 +4,7 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
     TokenVerifyView
 )
+
 from v1.accounts.serializers.token import (
     CustomTokenObtainPairSerializer,
     CustomTokenRefreshSerializer,

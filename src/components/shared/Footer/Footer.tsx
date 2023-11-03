@@ -1,7 +1,6 @@
-import React from 'react';
 import logo from 'assets/logo.png';
 
-const Footer: React.FC = () => {
+const Footer = () => {
   return (
     <footer className="mt-4">
       <div className="mx-auto w-full max-w-screen-xl p-4 md:py-8">

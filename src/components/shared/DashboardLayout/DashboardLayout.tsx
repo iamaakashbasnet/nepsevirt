@@ -1,8 +1,8 @@
-import React from 'react';
 import { Outlet } from 'react-router-dom';
+
 import { Header, Footer } from 'components';
 
-const DashboardLayout: React.FC = () => {
+const DashboardLayout = () => {
   return (
     <div className="flex min-h-screen flex-col">
       <Header />

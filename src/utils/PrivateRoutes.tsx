@@ -1,5 +1,6 @@
 import { useLocation, Navigate, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+
 import { RootState } from 'state/store';
 
 const PrivateRoutes = () => {

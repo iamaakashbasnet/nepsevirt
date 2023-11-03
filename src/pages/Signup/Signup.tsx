@@ -1,8 +1,8 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
+
 import logo from 'assets/logo.png';
 
-const Signup: React.FC = () => {
+const Signup = () => {
   return (
     <>
       <div className="mx-auto flex h-screen flex-col items-center justify-center">

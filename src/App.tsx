@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import { useDispatch } from 'react-redux';
+
 import Router from 'pages/router';
 import { FallbackLoading } from 'components';
 import { reAuthAsync } from 'state/user/authSlice';
 import { AppDispatch } from 'state/store';
 
-const App: React.FC = () => {
+const App = () => {
   const queryClient = new QueryClient();
   const dispatch = useDispatch<AppDispatch>();
 

@@ -1,5 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { lazy } from 'react';
+
 import { routerType } from 'types/routerTypes';
 
 const Home = lazy(() => import('pages/Home'));

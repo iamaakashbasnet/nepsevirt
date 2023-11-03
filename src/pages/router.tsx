@@ -1,8 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
+
 import { basicRoutes, dashboardRoutes } from './routerData';
 import { routerType } from 'types/routerTypes';
-import { DashboardLayout } from 'components';
 import PrivateRoutes from 'utils/PrivateRoutes';
+import { DashboardLayout } from 'components';
 
 const Router = () => {
   const _basicRoutes = basicRoutes.map(({ path, title, element }: routerType) => {

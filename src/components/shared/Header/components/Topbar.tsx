@@ -1,9 +1,9 @@
-import React from 'react';
-import { FiMenu } from 'react-icons/fi';
-import logo from 'assets/logo.png';
 import { Link } from 'react-router-dom';
+import { FiMenu } from 'react-icons/fi';
 
-const Topbar: React.FC = () => {
+import logo from 'assets/logo.png';
+
+const Topbar = () => {
   return (
     <nav className="navbar z-20 bg-base-300">
       <div className="flex-1">

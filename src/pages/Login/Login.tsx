@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, Navigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+
 import logo from 'assets/logo.png';
 import { AppDispatch, RootState } from 'state/store';
 import { loginAsync } from 'state/user/authSlice';
@@ -14,7 +15,7 @@ type LocationState = {
   next: string;
 };
 
-const Login: React.FC = () => {
+const Login = () => {
   const dispatch = useDispatch<AppDispatch>();
   const location = useLocation();
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
