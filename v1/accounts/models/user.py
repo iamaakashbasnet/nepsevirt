@@ -13,8 +13,8 @@ class User(AbstractBaseUser, PermissionsMixin):
                               max_length=120, unique=True)
     username = models.CharField(
         verbose_name='Username', max_length=30, unique=True)
-    first_name = models.CharField(verbose_name='First name', max_length=30)
-    last_name = models.CharField(verbose_name='Last name', max_length=30)
+    firstname = models.CharField(verbose_name='First name', max_length=30)
+    lastname = models.CharField(verbose_name='Last name', max_length=30)
     avatar = models.ImageField(default='default.jpg', upload_to='profile_pics')
 
     is_active = models.BooleanField(default=True)
@@ -26,7 +26,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_login = models.DateTimeField(verbose_name='Last login', auto_now=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
+    REQUIRED_FIELDS = ['username', 'firstname', 'lastname']
 
     objects = UserManager()
 
