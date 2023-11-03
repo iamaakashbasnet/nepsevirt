@@ -2,6 +2,7 @@ from rest_framework_simplejwt.serializers import (
     TokenObtainPairSerializer,
     TokenRefreshSerializer,
     TokenVerifySerializer,
+    TokenBlacklistSerializer,
 )
 from rest_framework_simplejwt.exceptions import InvalidToken
 
@@ -40,3 +41,14 @@ class CustomTokenRefreshSerializer(TokenRefreshSerializer):
 
 class CustomTokenVerifySerializer(TokenVerifySerializer):
     pass
+
+
+class CustomTokenBlacklistSerializer(TokenBlacklistSerializer):
+    refresh = None
+
+    def validate(self, attrs):
+        attrs['refresh'] = self.context['request'].COOKIES.get('rt')
+        if attrs['refresh']:
+            return super().validate(attrs)
+        else:
+            raise InvalidToken('No valid token found.')

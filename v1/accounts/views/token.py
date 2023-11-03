@@ -2,13 +2,15 @@ from django.conf import settings
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
-    TokenVerifyView
+    TokenVerifyView,
+    TokenBlacklistView,
 )
 
 from v1.accounts.serializers.token import (
     CustomTokenObtainPairSerializer,
     CustomTokenRefreshSerializer,
     CustomTokenVerifySerializer,
+    CustomTokenBlacklistSerializer,
 )
 
 
@@ -46,3 +48,8 @@ class CustomTokenRefreshView(TokenRefreshView):
 
 class CustomTokenVerifyView(TokenVerifyView):
     serializer_class = CustomTokenVerifySerializer
+
+
+class CustomTokenBlacklistView(TokenBlacklistView):
+    serializer_class = CustomTokenBlacklistSerializer
+    refresh = None
