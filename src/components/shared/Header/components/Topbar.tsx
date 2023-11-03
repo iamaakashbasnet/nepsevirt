@@ -1,9 +1,19 @@
 import { Link } from 'react-router-dom';
 import { FiMenu } from 'react-icons/fi';
+import { useDispatch, useSelector } from 'react-redux';
 
 import logo from 'assets/logo.png';
+import { AppDispatch, RootState } from 'state/store';
+import { logoutAsync } from 'state/user/authSlice';
 
 const Topbar = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const user = useSelector((state: RootState) => state.auth.user);
+
+  const logoutHandler = async () => {
+    await dispatch(logoutAsync());
+  };
+
   return (
     <nav className="navbar z-20 bg-base-300">
       <div className="flex-1">
@@ -29,6 +39,9 @@ const Topbar = () => {
             </div>
           </summary>
           <ul tabIndex={0} className="menu dropdown-content rounded-box z-[1] mt-3 w-52 bg-base-300 p-2 shadow">
+            <span className="mb-3 text-center font-bold text-white">
+              Signed in as {user?.firstname} {user?.lastname}
+            </span>
             <li>
               <Link to="test">Profile</Link>
             </li>
@@ -36,7 +49,7 @@ const Topbar = () => {
               <a>Settings</a>
             </li>
             <li>
-              <a>Logout</a>
+              <button onClick={logoutHandler}>Logout</button>
             </li>
           </ul>
         </details>

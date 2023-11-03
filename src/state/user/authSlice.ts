@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { AuthState, UserState } from 'types/state/user/authSlice';
@@ -66,6 +66,21 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isAuthenticated = false;
         state.user = null;
+      })
+
+      /*
+        Logout
+      */
+      .addCase(logoutAsync.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(logoutAsync.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isAuthenticated = false;
+        state.user = null;
+      })
+      .addCase(logoutAsync.rejected, (state) => {
+        state.isLoading = false;
       });
   },
 });
@@ -98,6 +113,17 @@ export const reAuthAsync = createAsyncThunk('auth/reAuthAsync', async (_, thunkA
     })
     .catch(() => {
       return thunkAPI.rejectWithValue('Re authentication failed.');
+    });
+});
+
+export const logoutAsync = createAsyncThunk('auth/logoutAsync', async (_, thunkAPI) => {
+  return axios
+    .post<{ res: AxiosResponse }>('/api/accounts/token/blacklist/')
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return thunkAPI.rejectWithValue('Something went wrong, cannot logout.');
     });
 });
 
