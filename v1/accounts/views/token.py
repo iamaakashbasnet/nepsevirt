@@ -21,7 +21,7 @@ class CustomTokenObtainPairView(TokenObtainPairView):
         if response.data.get('refresh'):
             cookie_max_age = settings.SIMPLE_JWT.get('REFRESH_TOKEN_LIFETIME')
             response.set_cookie(
-                'rt', response.data['refresh'], max_age=cookie_max_age, httponly=True)
+                'rt', response.data['refresh'], max_age=cookie_max_age, httponly=True, secure=True)
             del response.data['refresh']
 
         return super().finalize_response(request, response, *args, **kwargs)
@@ -38,7 +38,7 @@ class CustomTokenRefreshView(TokenRefreshView):
         if response.data.get('refresh'):
             cookie_max_age = settings.SIMPLE_JWT.get('REFRESH_TOKEN_LIFETIME')
             response.set_cookie(
-                'rt', response.data['refresh'], max_age=cookie_max_age, httponly=True)
+                'rt', response.data['refresh'], max_age=cookie_max_age, httponly=True, secure=True)
             del response.data['refresh']
         return super().finalize_response(request, response, *args, **kwargs)
 
