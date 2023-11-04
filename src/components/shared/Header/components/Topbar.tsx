@@ -35,7 +35,7 @@ const Topbar = () => {
         <details className="dropdown dropdown-end">
           <summary tabIndex={0} className="avatar btn btn-circle btn-ghost">
             <div className="w-10 rounded-full">
-              <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gough.png" />
+              <img src={user?.avatar} />
             </div>
           </summary>
           <ul tabIndex={0} className="menu dropdown-content rounded-box z-[1] mt-3 w-52 bg-base-300 p-2 shadow">

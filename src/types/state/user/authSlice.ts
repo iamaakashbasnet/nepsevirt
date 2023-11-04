@@ -3,6 +3,7 @@ interface UserState {
   lastname: string | undefined;
   username: string | undefined;
   email: string | undefined;
+  avatar: string | undefined;
   at?: string | undefined;
 }
 
