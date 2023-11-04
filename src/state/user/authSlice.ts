@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 import { AuthState, UserState } from 'types/state/user/authSlice';
 
@@ -89,6 +90,7 @@ export const loginAsync = createAsyncThunk('auth/loginAsync', async (formData: F
   try {
     const response = await axios.post<UserState>('/api/accounts/token/', formData);
     axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.at as string}`;
+    toast.success('Login successful');
     return response.data;
   } catch (err) {
     return thunkAPI.rejectWithValue('Credentials invalid.');
@@ -110,6 +112,7 @@ export const reAuthAsync = createAsyncThunk('auth/reAuthAsync', async (_, thunkA
     .then(async (response) => {
       axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.at as string}`;
       await thunkAPI.dispatch(loadUserDataAsync());
+      toast.success(`Welcome back`);
     })
     .catch(() => {
       return thunkAPI.rejectWithValue('Re authentication failed.');
@@ -122,7 +125,7 @@ export const logoutAsync = createAsyncThunk('auth/logoutAsync', async (_, thunkA
     .then((res) => {
       return res.data;
     })
-    .catch((err) => {
+    .catch(() => {
       return thunkAPI.rejectWithValue('Something went wrong, cannot logout.');
     });
 });
