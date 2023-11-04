@@ -23,6 +23,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         data['lastname'] = user.lastname
         data['username'] = user.username
         data['email'] = user.email
+        data['avatar'] = user.avatar.url
 
         return data
 
