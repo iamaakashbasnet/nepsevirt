@@ -24,9 +24,6 @@ const Hero = () => {
             <Link to="/login" className="btn btn-primary">
               Get Started
             </Link>
-            <Link to="#" className="btn btn-outline">
-              Learn More
-            </Link>
           </div>
         </div>
       </section>
