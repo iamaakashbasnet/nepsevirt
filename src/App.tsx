@@ -37,7 +37,6 @@ const App = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme={isDarkMode ? 'dark' : 'light'}
       />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

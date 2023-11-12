@@ -15,7 +15,7 @@ const Topbar = () => {
   };
 
   return (
-    <nav className="navbar z-20 bg-base-300">
+    <nav className="navbar z-20 bg-slate-100 dark:bg-base-300">
       <div className="flex-1">
         <a
           className="btn btn-ghost font-heading text-xl normal-case md:hidden"
@@ -38,8 +38,12 @@ const Topbar = () => {
               <img src={user?.avatar} />
             </div>
           </summary>
-          <ul tabIndex={0} className="menu dropdown-content rounded-box z-[1] mt-3 w-52 bg-base-300 p-2 shadow">
-            <span className="mb-3 text-center font-bold text-white">
+
+          <ul
+            tabIndex={0}
+            className="menu dropdown-content rounded-box z-[1] mt-3 w-52 bg-slate-100 p-2 dark:bg-base-300"
+          >
+            <span className="text-grey-900 mb-3 text-center font-bold dark:text-white">
               Signed in as {user?.firstname} {user?.lastname}
             </span>
             <li>

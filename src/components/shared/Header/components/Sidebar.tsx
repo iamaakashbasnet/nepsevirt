@@ -27,12 +27,12 @@ const Sidebar = () => {
       id="drawer-navigation"
       ref={sideNavRef}
     >
-      <div className="h-full overflow-y-auto bg-white px-3 py-5 dark:bg-base-300">
+      <div className="h-full overflow-y-auto bg-slate-100 px-3 py-5 dark:bg-base-300">
         <ul className="space-y-2">
           <li>
             <a
               href="#"
-              className="group flex items-center rounded-lg p-2 text-base font-medium text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-800"
+              className="group flex items-center rounded-lg p-2 text-base font-medium text-gray-900 hover:bg-slate-200 dark:text-white dark:hover:bg-gray-800"
             >
               <span className="ml-3">Overview</span>
             </a>
@@ -40,7 +40,7 @@ const Sidebar = () => {
           <li>
             <a
               href="#"
-              className="group flex items-center rounded-lg p-2 text-base font-medium text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-800"
+              className="group flex items-center rounded-lg p-2 text-base font-medium text-gray-900 hover:bg-slate-200 dark:text-white dark:hover:bg-gray-800"
             >
               <span className="ml-3 flex-1 whitespace-nowrap">Portfolio</span>
             </a>

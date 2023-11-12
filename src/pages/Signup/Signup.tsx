@@ -11,7 +11,7 @@ const Signup = () => {
           NEPSE Virt
         </h1>
 
-        <div className="card w-96 bg-neutral text-neutral-content">
+        <div className="card w-96 bg-slate-100 dark:bg-neutral dark:text-neutral-content">
           <div className="card-body">
             <h2 className="card-title m-auto">Create an account</h2>
             <div>
