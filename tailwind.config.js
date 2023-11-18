@@ -38,14 +38,5 @@ export default {
     extend: {},
   },
   // eslint-disable-next-line no-undef, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment
-  plugins: [require('@tailwindcss/typography'), require('daisyui')],
-  daisyui: {
-    themes: ['light', 'dark'],
-    base: true,
-    styled: true,
-    utils: true,
-    rtl: false,
-    prefix: '',
-    logs: true,
-  },
+  plugins: [require('@tailwindcss/typography')],
 };

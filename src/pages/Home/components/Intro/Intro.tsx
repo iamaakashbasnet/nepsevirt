@@ -6,10 +6,10 @@ import dashboardMockupDark from 'assets/dashboard-mockup-dark.svg';
 import dashboardMockupLight from 'assets/dashboard-mockup-light.svg';
 
 const Intro = () => {
-  const isDarkMode = document.documentElement.getAttribute('data-theme') === `dark` ? true : false;
   return (
     <div className="-mt-16 flex flex-col items-center justify-center md:-mt-32">
-      <img className="z-50 block w-2/4" src={isDarkMode ? dashboardMockupDark : dashboardMockupLight} />
+      <img className="z-50 block w-2/4 dark:hidden" src={dashboardMockupLight} />
+      <img className="z-50 hidden w-2/4 dark:block" src={dashboardMockupDark} />
 
       <div className="px-4 text-center md:max-w-screen-md lg:max-w-screen-lg lg:px-36">
         <div className="my-12 flex flex-wrap items-center justify-center">

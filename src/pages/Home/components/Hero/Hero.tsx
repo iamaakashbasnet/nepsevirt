@@ -21,7 +21,10 @@ const Hero = () => {
             financial success!
           </p>
           <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-x-4 sm:space-y-0">
-            <Link to="/login" className="btn btn-primary">
+            <Link
+              to="/login"
+              className="mb-2 me-2 rounded-lg bg-blue-700 px-5 py-2.5 font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
               Get Started
             </Link>
           </div>

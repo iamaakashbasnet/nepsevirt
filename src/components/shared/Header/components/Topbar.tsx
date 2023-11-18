@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiMenu } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,6 +8,7 @@ import { AppDispatch, RootState } from 'state/store';
 import { logoutAsync } from 'state/user/authSlice';
 
 const Topbar = () => {
+  const [open, setOpen] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
   const user = useSelector((state: RootState) => state.auth.user);
 
@@ -14,51 +16,85 @@ const Topbar = () => {
     await dispatch(logoutAsync());
   };
 
-  return (
-    <nav className="navbar z-20 bg-slate-100 dark:bg-base-300">
-      <div className="flex-1">
-        <a
-          className="btn btn-ghost font-heading text-xl normal-case md:hidden"
-          id="sidebar-toggler"
-          onClick={() => {
-            document.querySelector('#drawer-navigation')?.classList.toggle('translate-x-0');
-          }}
-        >
-          <FiMenu />
-        </a>
-        <a className="btn btn-ghost font-heading text-xl normal-case">
-          <img className="h-8" src={logo} alt="NEPSE Virt logo" />
-          NEPSE Virt
-        </a>
-      </div>
-      <div className="flex-none">
-        <details className="dropdown dropdown-end">
-          <summary tabIndex={0} className="avatar btn btn-circle btn-ghost">
-            <div className="w-10 rounded-full">
-              <img src={user?.avatar} />
-            </div>
-          </summary>
+  const dropdownHandler = () => {
+    setOpen(!open);
+  };
 
-          <ul
-            tabIndex={0}
-            className="menu dropdown-content rounded-box z-[1] mt-3 w-52 bg-slate-100 p-2 dark:bg-base-300"
-          >
-            <span className="text-grey-900 mb-3 text-center font-bold dark:text-white">
-              Signed in as {user?.firstname} {user?.lastname}
-            </span>
-            <li>
-              <Link to="test">Profile</Link>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <button onClick={logoutHandler}>Logout</button>
-            </li>
-          </ul>
-        </details>
-      </div>
-    </nav>
+  return (
+    <>
+      <nav className="fixed left-0 right-0 top-0 z-50 border-b border-gray-200 bg-white px-4 py-2.5 dark:border-gray-700 dark:bg-gray-800">
+        <div className="flex flex-wrap items-center justify-between">
+          <div className="flex items-center justify-start">
+            <button
+              id="sidebar-toggler"
+              onClick={() => {
+                document.querySelector('#drawer-navigation')?.classList.toggle('translate-x-0');
+              }}
+              className="mr-2 cursor-pointer rounded-lg p-2 text-2xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:ring-2 focus:ring-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:bg-gray-700 dark:focus:ring-gray-700 md:hidden"
+            >
+              <FiMenu />
+            </button>
+
+            <a href="/" className="mr-4 flex items-center justify-between">
+              <img src={logo} className="mr-3 h-8" alt="Flowbite Logo" />
+              <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">NEPSE Virt</span>
+            </a>
+          </div>
+          <div className="flex items-center lg:order-2">
+            <button
+              type="button"
+              className="mx-3 flex rounded-full bg-gray-800 text-sm focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 md:mr-0"
+              id="user-menu-button"
+              onClick={dropdownHandler}
+            >
+              <span className="sr-only">Open user menu</span>
+              <img className="h-8 w-8 rounded-full" src={user?.avatar} alt="User photo" />
+            </button>
+
+            {/* Dropdown menu  */}
+            <div
+              className={`absolute right-2 top-10 z-50 my-4 ${
+                // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+                !open && 'hidden'
+              } w-56 list-none divide-y divide-gray-100 rounded bg-white text-base shadow dark:divide-gray-600 dark:bg-gray-700`}
+              id="dropdown"
+            >
+              <div className="px-4 py-3">
+                <span className="block text-sm font-semibold text-gray-900 dark:text-white">
+                  {user?.firstname} {user?.lastname}
+                </span>
+              </div>
+              <ul className="py-1 text-gray-700 dark:text-gray-300">
+                <li>
+                  <Link
+                    to="profile"
+                    className="block px-4 py-2 text-sm hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    My profile
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="settings"
+                    className="block px-4 py-2 text-sm hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    Account settings
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    onClick={logoutHandler}
+                    className="block w-full px-4 py-2 text-left text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    Sign out
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </>
   );
 };
 

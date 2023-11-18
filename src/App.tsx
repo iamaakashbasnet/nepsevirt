@@ -14,7 +14,7 @@ import { AppDispatch } from 'state/store';
 const App = () => {
   const queryClient = new QueryClient();
   const dispatch = useDispatch<AppDispatch>();
-  const isDarkMode = document.documentElement.getAttribute('data-theme') === `dark` ? true : false;
+  const isDarkMode = document.documentElement.classList.contains('dark');
 
   useEffect(() => {
     void dispatch(reAuthAsync());
@@ -37,6 +37,7 @@ const App = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
+        theme={isDarkMode ? 'dark' : 'light'}
       />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
