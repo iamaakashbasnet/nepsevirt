@@ -1,17 +1,19 @@
 from django.contrib import admin
 from django.contrib.auth import get_user_model
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin  # commit 5a59e13
 
 
-class UserAdmin(admin.ModelAdmin):
+@admin.register(get_user_model())
+class UserAdmin(BaseUserAdmin):
     fieldsets = (
         ('Account Information', {
             'fields': (
-                ('email', 'username', 'password',),
+                ('username', 'email', 'password',),
             )
         },),
         (('Personal Information'), {
             'fields': (
-                ('avatar', 'firstname', 'lastname',),
+                ('firstname', 'lastname', 'avatar',),
             )
         },),
         (('Permissions'), {
@@ -33,13 +35,11 @@ class UserAdmin(admin.ModelAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'username', 'firstname', 'lastname', 'password1', 'password2',),
+            'fields': ('username', 'email', 'firstname', 'lastname', 'password1', 'password2',),
         },),
     )
 
-    readonly_fields = ('date_joined', 'last_login',)
-    search_fields = ('username',)
+    list_display = ('username', 'firstname', 'lastname', 'email',)
     ordering = ('username',)
-
-
-admin.site.register(get_user_model(), UserAdmin)
+    search_fields = ('username',)
+    readonly_fields = ('date_joined', 'last_login',)
