@@ -7,6 +7,7 @@ const Home = lazy(() => import('pages/Home'));
 const Login = lazy(() => import('pages/Login'));
 const Signup = lazy(() => import('pages/Signup'));
 const Dashboard = lazy(() => import('pages/Dashboard'));
+const LiveMarket = lazy(() => import('pages/LiveMarket'));
 
 export const basicRoutes: routerType[] = [
   {
@@ -18,4 +19,7 @@ export const basicRoutes: routerType[] = [
   { title: 'Signup', path: 'signup', element: <Signup /> },
 ];
 
-export const dashboardRoutes: routerType[] = [{ title: 'Dashboard', path: '', element: <Dashboard /> }];
+export const dashboardRoutes: routerType[] = [
+  { title: 'Dashboard', path: '', element: <Dashboard /> },
+  { title: 'Live Market', path: 'live-market', element: <LiveMarket /> },
+];
