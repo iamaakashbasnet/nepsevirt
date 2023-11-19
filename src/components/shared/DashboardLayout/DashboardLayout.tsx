@@ -6,7 +6,7 @@ const DashboardLayout = () => {
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
-      <main className="h-auto flex-grow p-4 md:ml-64">
+      <main className="h-auto flex-grow p-4 pt-20 md:ml-64">
         <Outlet />
       </main>
       {/* Wrapping footer to shift to middle */}
