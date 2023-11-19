@@ -4,7 +4,7 @@ from django.contrib.postgres.indexes import GinIndex
 
 
 class StockName(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
 
     if settings.DEBUG is False:
         class Meta:

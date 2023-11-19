@@ -4,8 +4,7 @@ from .stock_name import StockName
 
 
 class StockData(models.Model):
-    name = models.OneToOneField(
-        StockName, on_delete=models.CASCADE, unique=True)
+    name = models.OneToOneField(StockName, on_delete=models.CASCADE)
     open = models.FloatField()
     high = models.FloatField()
     low = models.FloatField()
