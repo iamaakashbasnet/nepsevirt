@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { BsPieChart, BsCardList, BsActivity, BsCart2 } from 'react-icons/bs';
 
 const Sidebar = () => {
   const sideNavRef = useRef<HTMLElement | null>(null);
@@ -26,14 +27,22 @@ const Sidebar = () => {
     {
       name: 'Overview',
       path: '',
+      icon: <BsPieChart />,
     },
     {
       name: 'Portfolio',
       path: 'portfolio',
+      icon: <BsCardList />,
     },
     {
       name: 'Live Market',
       path: 'live-market',
+      icon: <BsActivity />,
+    },
+    {
+      name: 'Buy/Sell',
+      path: 'buy-sell',
+      icon: <BsCart2 />,
     },
   ];
 
@@ -49,9 +58,10 @@ const Sidebar = () => {
             <li key={_.name}>
               <Link
                 to={_.path}
-                className="flex items-center rounded-lg p-2 text-base font-medium transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="flex items-center justify-between rounded-lg p-2 text-base font-medium transition duration-75 hover:translate-x-2 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <span className="ml-3">{_.name}</span>
+                {_.icon}
               </Link>
             </li>
           ))}
