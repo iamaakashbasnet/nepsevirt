@@ -7,7 +7,8 @@ from .views.token import (
     CustomTokenBlacklistView,
 )
 from .views.user import (
-    CurrentUserDetailView
+    CurrentUserDetailView,
+    CreateUserView,
 )
 
 
@@ -17,5 +18,6 @@ urlpatterns = [
     path('token/verify/', CustomTokenVerifyView.as_view(), name='token-verify'),
     path('token/blacklist/', CustomTokenBlacklistView.as_view(),
          name='token-blacklist'),
+    path('signup/', CreateUserView.as_view(), name='signup'),
     path('user/me/', CurrentUserDetailView.as_view(), name='user-me')
 ]

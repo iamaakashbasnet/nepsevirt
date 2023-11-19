@@ -12,3 +12,8 @@ class CurrentUserDetailView(generics.RetrieveAPIView):
 
     def get_object(self):
         return self.request.user
+
+
+class CreateUserView(generics.CreateAPIView):
+    serializer_class = user.CreateUserSerializer
+    permission_classes = [permissions.AllowAny]
