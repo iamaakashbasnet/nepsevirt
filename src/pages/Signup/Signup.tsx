@@ -1,8 +1,40 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import logo from 'assets/logo.png';
+import { AppDispatch, RootState } from 'state/store';
+import { signupAsync, SignupFormData } from 'state/user/authSlice';
 
 const Signup = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
+  const [signupData, setSignupData] = useState<SignupFormData>({
+    firstname: '',
+    lastname: '',
+    username: '',
+    email: '',
+    password: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSignupData((prevSignupData) => ({ ...prevSignupData, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    // Need to find better approach than this
+    const { type } = await dispatch(signupAsync(signupData));
+    if (type != 'auth/signupAsync/rejected') {
+      navigate('/login');
+    }
+  };
+
+  if (isAuthenticated) {
+    return <Navigate to="/dashboard" />;
+  }
+
   return (
     <div className="mx-auto flex h-screen flex-col items-center justify-center px-5">
       <a href="#" className="mb-6 flex items-center text-2xl font-semibold text-gray-900 dark:text-white">
@@ -14,7 +46,49 @@ const Signup = () => {
           <h1 className="text-center text-xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-2xl">
             Create and account
           </h1>
-          <form className="space-y-4 md:space-y-6" action="#">
+          <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="email" className="mb-2 block font-medium">
+                First name
+              </label>
+              <input
+                type="text"
+                name="firstname"
+                id="firstname"
+                className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-blue-600 focus:ring-blue-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm"
+                placeholder="Ex: John"
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="mb-2 block font-medium">
+                Last name
+              </label>
+              <input
+                type="text"
+                name="lastname"
+                id="lastname"
+                className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-blue-600 focus:ring-blue-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm"
+                placeholder="Ex: Doe"
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="mb-2 block font-medium">
+                Username
+              </label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-blue-600 focus:ring-blue-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm"
+                placeholder="Ex: johndoe"
+                onChange={handleChange}
+                required
+              />
+            </div>
             <div>
               <label htmlFor="email" className="mb-2 block font-medium">
                 Your email
@@ -25,6 +99,7 @@ const Signup = () => {
                 id="email"
                 className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-blue-600 focus:ring-blue-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm"
                 placeholder="example@example.com"
+                onChange={handleChange}
                 required
               />
             </div>
@@ -38,19 +113,7 @@ const Signup = () => {
                 id="password"
                 placeholder="••••••••"
                 className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-blue-600 focus:ring-blue-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm"
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="confirm-password" className="mb-2 block font-medium">
-                Confirm password
-              </label>
-              <input
-                type="confirm-password"
-                name="confirm-password"
-                id="confirm-password"
-                placeholder="••••••••"
-                className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-blue-600 focus:ring-blue-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm"
+                onChange={handleChange}
                 required
               />
             </div>

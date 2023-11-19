@@ -4,7 +4,15 @@ import { toast } from 'react-toastify';
 
 import { AuthState, UserState } from 'types/state/user/authSlice';
 
-interface FormData {
+export interface FormData {
+  email: string;
+  password: string;
+}
+
+export interface SignupFormData {
+  firstname: string;
+  lastname: string;
+  username: string;
   email: string;
   password: string;
 }
@@ -127,6 +135,18 @@ export const logoutAsync = createAsyncThunk('auth/logoutAsync', async (_, thunkA
     })
     .catch(() => {
       return thunkAPI.rejectWithValue('Something went wrong, cannot logout.');
+    });
+});
+
+export const signupAsync = createAsyncThunk('auth/signupAsync', async (signupFormData: SignupFormData, thunkAPI) => {
+  return axios
+    .post('/api/accounts/signup/', signupFormData)
+    .then(() => {
+      toast.success('Account created, now you can login.');
+    })
+    .catch(() => {
+      toast.error('Something went wrong.');
+      return thunkAPI.rejectWithValue('Something went wrong.');
     });
 });
 
