@@ -20,6 +20,18 @@ const Topbar = () => {
     setOpen(!open);
   };
 
+  const dropdownMenuData = [
+    {
+      name: 'Profile',
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+      path: `profile/${user?.username}`,
+    },
+    {
+      name: 'Account Settings',
+      path: 'settings',
+    },
+  ];
+
   return (
     <>
       <nav className="fixed left-0 right-0 top-0 z-50 border-b border-gray-200 bg-white px-4 py-2.5 dark:border-gray-700 dark:bg-gray-800">
@@ -36,7 +48,7 @@ const Topbar = () => {
             </button>
 
             <a href="/" className="mr-4 flex items-center justify-between">
-              <img src={logo} className="mr-3 h-8" alt="Flowbite Logo" />
+              <img src={logo} className="mr-3 h-8" alt="NepseVirt Logo" />
               <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">NEPSE Virt</span>
             </a>
           </div>
@@ -65,23 +77,16 @@ const Topbar = () => {
                 </span>
               </div>
               <ul className="py-1 text-gray-700 dark:text-gray-300">
-                <li>
-                  <Link
-                    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-                    to={`profile/${user?.username}`}
-                    className="block px-4 py-2 text-sm hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    My profile
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="settings"
-                    className="block px-4 py-2 text-sm hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    Account settings
-                  </Link>
-                </li>
+                {dropdownMenuData.map((_) => (
+                  <li>
+                    <Link
+                      to={_.path}
+                      className="block px-4 py-2 text-sm hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      {_.name}
+                    </Link>
+                  </li>
+                ))}
                 <li>
                   <button
                     onClick={logoutHandler}
