@@ -26,3 +26,9 @@ class CreateUserSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'password': {'write_only': True}
         }
+
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ('firstname', 'lastname', 'avatar', 'username',)
