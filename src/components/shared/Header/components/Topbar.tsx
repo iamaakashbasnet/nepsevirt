@@ -67,7 +67,8 @@ const Topbar = () => {
               <ul className="py-1 text-gray-700 dark:text-gray-300">
                 <li>
                   <Link
-                    to="profile"
+                    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+                    to={`profile/${user?.username}`}
                     className="block px-4 py-2 text-sm hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
                   >
                     My profile
