@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
@@ -100,7 +100,9 @@ export const loginAsync = createAsyncThunk('auth/loginAsync', async (formData: F
     axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.at as string}`;
     toast.success('Login successful');
     return response.data;
-  } catch (err) {
+  } catch (error) {
+    const err = error as AxiosError<{ detail: string }>;
+    toast.error(err.response?.data.detail);
     return thunkAPI.rejectWithValue('Credentials invalid.');
   }
 });
