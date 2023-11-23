@@ -58,6 +58,7 @@ const Sidebar = () => {
             <li key={_.name}>
               <Link
                 to={_.path}
+                onClick={() => document.querySelector('#drawer-navigation')?.classList.toggle('translate-x-0')}
                 className="flex items-center justify-between rounded-lg p-2 text-base font-medium transition duration-75 hover:translate-x-2 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <span className="ml-3">{_.name}</span>
