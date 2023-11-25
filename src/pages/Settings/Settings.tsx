@@ -15,17 +15,26 @@ const Settings = () => {
     lastname: user?.lastname,
     username: user?.username,
     email: user?.email,
+    avatar: null,
   });
 
   const { mutateAsync, isLoading } = useMutation({
     mutationFn: () => updateUserData(state),
     onSuccess: async () => {
       await dispatch(loadUserDataAsync());
+      setState((prevData) => ({ ...prevData, avatar: null }));
     },
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setState((prevData) => ({ ...prevData, [e.target.name]: e.target.value }));
+    if (e.target.type === 'file') {
+      if (e.target.files && e.target.files.length > 0) {
+        const file = e.target.files[0];
+        setState((prevData) => ({ ...prevData, avatar: file }));
+      }
+    } else {
+      setState((prevData) => ({ ...prevData, [e.target.name]: e.target.value }));
+    }
   };
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
@@ -41,13 +50,21 @@ const Settings = () => {
         <details className="border-b-2 p-2" open>
           <summary className="mb-3 cursor-pointer font-heading text-lg font-bold">Account Information</summary>
           <div className="ml-8">
-            <form className="mb-2 space-y-4 md:space-y-6" onSubmit={handleSubmit}>
+            <form className="mb-2 space-y-4 md:space-y-6" onSubmit={handleSubmit} encType="multipart/form-data">
               <div className="flex items-end gap-10">
                 <div>
                   <label>Avatar</label>
-                  <img src={user?.avatar} className="mt-2 w-16 rounded-full" />
+                  <div className="flex gap-3">
+                    <img src={user?.avatar} className="mt-2 w-16 rounded-full" />
+                    {state.avatar && (
+                      <img
+                        src={URL.createObjectURL(state.avatar)}
+                        className="mt-2 w-16 animate-pulse rounded-full border-4 border-blue-500"
+                      />
+                    )}
+                  </div>
                 </div>
-                <input type="file" />
+                <input type="file" name="avatar" accept="image/" onChange={handleChange} />
               </div>
               <div>
                 <label htmlFor="email" className="mb-2 block font-medium">
