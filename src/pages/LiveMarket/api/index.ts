@@ -3,6 +3,7 @@ import axios from 'axios';
 export interface StockData {
   id: number;
   name: string;
+  ltp: number;
   open: number;
   high: number;
   low: number;

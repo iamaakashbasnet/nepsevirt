@@ -12,11 +12,14 @@ const LiveMarket = () => {
     <section>
       <h1 className="mb-5 font-heading text-3xl">Live Market</h1>
       <div className="overflow-x-auto">
-        <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
+        <table className="w-full text-left text-sm">
           <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-4 py-3">
                 Name
+              </th>
+              <th scope="col" className="px-4 py-3">
+                LTP
               </th>
               <th scope="col" className="px-4 py-3">
                 Open
@@ -42,10 +45,14 @@ const LiveMarket = () => {
             )}
 
             {data?.map((stockData) => (
-              <tr key={stockData.id} className="border-b dark:border-gray-700">
-                <th scope="row" className="whitespace-nowrap px-4 py-3 font-medium text-gray-900 dark:text-white">
+              <tr
+                key={stockData.id}
+                className={`border-b ${stockData.ltp < stockData.close ? 'bg-red-500' : 'bg-green-500'}`}
+              >
+                <th scope="row" className="whitespace-nowrap px-4 py-3 font-medium">
                   {stockData.name}
                 </th>
+                <td className="px-4 py-3">{stockData.ltp}</td>
                 <td className="px-4 py-3">{stockData.open}</td>
                 <td className="px-4 py-3">{stockData.high}</td>
                 <td className="px-4 py-3">{stockData.low}</td>
