@@ -28,19 +28,21 @@ class FetchLiveData(APIView):
                         name=stock_name,
                         # Defaults if doesn't exist
                         defaults={
-                            'open': row['open'].replace(',', ''),
-                            'high': row['high'].replace(',', ''),
-                            'low': row['low'].replace(',', ''),
-                            'close': row['close'].replace(',', '')
+                            'ltp': row['ltp'],
+                            'open': row['open'],
+                            'high': row['high'],
+                            'low': row['low'],
+                            'close': row['close'],
                         }
                     )
 
                     # Update existing entry if necessary
                     if not created:
-                        stock_data.open = row['open'].replace(',', '')
-                        stock_data.high = row['high'].replace(',', '')
-                        stock_data.low = row['low'].replace(',', '')
-                        stock_data.close = row['close'].replace(',', '')
+                        stock_data.ltp = row['ltp']
+                        stock_data.open = row['open']
+                        stock_data.high = row['high']
+                        stock_data.low = row['low']
+                        stock_data.close = row['close']
                         stock_data.save()
 
         return Response({'result': 'fetched'})
