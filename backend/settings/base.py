@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     # API v1
     'v1.accounts',
     'v1.data',
+    'v1.portfolio',
 ]
 
 
