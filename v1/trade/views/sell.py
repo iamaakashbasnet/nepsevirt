@@ -1,7 +1,6 @@
 from decimal import Decimal
-from rest_framework import generics
+from rest_framework import generics, status
 from rest_framework.response import Response
-from rest_framework import status
 
 from v1.trade.serializers.portfoliostocks import PortfolioStockSerializer
 from v1.portfolio.models import Portfolio, PortfolioStock
@@ -15,25 +14,39 @@ class SellStock(generics.GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        ltp = Decimal(StockName.objects.get(
-            id=self.request.data.get('stock')).stockdata.ltp)
+        stock_id = self.request.data.get('stock')
         quantity = self.request.data.get('quantity')
 
-        portfolio_stock = PortfolioStock.objects.get(
-            portfolio=Portfolio.objects.get(user=self.request.user),
-            stock_id=self.request.data.get('stock'),
-        )
+        try:
+            user_portfolio = Portfolio.objects.get(user=self.request.user)
+            portfolio_stock = PortfolioStock.objects.get(
+                portfolio=user_portfolio, stock_id=stock_id)
+        except Portfolio.DoesNotExist:
+            return Response({'error': 'User portfolio does not exist'}, status=status.HTTP_400_BAD_REQUEST)
+        except PortfolioStock.DoesNotExist:
+            return Response({'error': 'Portfolio stock does not exist for the given stock'}, status=status.HTTP_400_BAD_REQUEST)
+
+        if portfolio_stock.total_quantity >= quantity:
+            self.update_portfolio_stock(portfolio_stock, quantity, stock_id)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response({'error': 'Quantity greater than holding quantity'}, status=status.HTTP_400_BAD_REQUEST)
+
+    def update_portfolio_stock(self, portfolio_stock, quantity, stock_id):
+        ltp = Decimal(StockName.objects.get(id=stock_id).stockdata.ltp)
 
         portfolio_stock.total_quantity -= quantity
         portfolio_stock.total_investment -= quantity * ltp
-        portfolio_stock.avg_cost = (
-            portfolio_stock.total_investment / portfolio_stock.total_quantity
-        )
 
-        portfolio_stock.total_investment = round(
-            portfolio_stock.total_investment, 2)
-        portfolio_stock.avg_cost = round(portfolio_stock.avg_cost, 2)
+        if portfolio_stock.total_quantity == 0:
+            portfolio_stock.delete()
+        else:
+            portfolio_stock.avg_cost = (
+                portfolio_stock.total_investment / portfolio_stock.total_quantity
+            )
 
-        portfolio_stock.save()
+            portfolio_stock.total_investment = round(
+                portfolio_stock.total_investment, 2)
+            portfolio_stock.avg_cost = round(portfolio_stock.avg_cost, 2)
 
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+            portfolio_stock.save()
