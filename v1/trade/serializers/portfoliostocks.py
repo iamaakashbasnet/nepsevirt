@@ -6,4 +6,4 @@ from v1.portfolio.models import PortfolioStock
 class PortfolioStockSerializer(serializers.ModelSerializer):
     class Meta:
         model = PortfolioStock
-        fields = ['id', 'stock', 'quantity']
+        fields = ['id', 'stock', 'total_quantity']
