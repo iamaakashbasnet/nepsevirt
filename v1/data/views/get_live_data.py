@@ -1,8 +1,9 @@
 import csv
 from django.conf import settings
 from django.db import transaction
+from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.response import Response
 from rest_framework import permissions
 from rest_framework_simplejwt import authentication
@@ -60,3 +61,12 @@ class LiveDataStockNameListView(ListAPIView):
     authentication_classes = [authentication.JWTAuthentication]
     queryset = StockName.objects.all()
     serializer_class = livedata.LiveDataStockNameSerializer
+
+
+class StockDetailView(RetrieveAPIView):
+    serializer_class = livedata.LiveDataSerializer
+    queryset = StockData.objects.all()
+
+    def get_object(self):
+        return get_object_or_404(
+            self.get_queryset(), id=self.kwargs.get('id'))
