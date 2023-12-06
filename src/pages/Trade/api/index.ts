@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export interface StockNames {
   id: number;
@@ -11,6 +12,10 @@ export interface StockDetail extends StockNames {
   high: number;
   low: number;
   close: number;
+}
+
+export interface StockBuyResponse {
+  stock: number;
 }
 
 export const fetchStockNames = async () => {
@@ -28,5 +33,25 @@ export const fetchStockDetail = async (id: number) => {
     return res.data;
   } catch (err) {
     console.log(err);
+  }
+};
+
+export const buyStock = async (quantity: number, stock: number) => {
+  try {
+    const res = await axios.post<StockBuyResponse>(`/api/trade/buy/`, { quantity: Number(quantity), stock: stock });
+    toast.success('Order executed successfully.');
+    return res.data;
+  } catch (err) {
+    toast.success('Order failed to place.');
+  }
+};
+
+export const sellStock = async (quantity: number, stock: number) => {
+  try {
+    const res = await axios.post<StockBuyResponse>(`/api/trade/sell/`, { quantity: Number(quantity), stock: stock });
+    toast.success('Order executed successfully.');
+    return res.data;
+  } catch (err) {
+    toast.error('Order failed to place.');
   }
 };
