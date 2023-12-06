@@ -10,6 +10,7 @@ const Dashboard = lazy(() => import('pages/Dashboard'));
 const LiveMarket = lazy(() => import('pages/LiveMarket'));
 const Profile = lazy(() => import('pages/Profile'));
 const Settings = lazy(() => import('pages/Settings'));
+const Trade = lazy(() => import('pages/Trade'));
 
 export const basicRoutes: routerType[] = [
   {
@@ -26,4 +27,5 @@ export const dashboardRoutes: routerType[] = [
   { title: 'Profile', path: 'profile/:username', element: <Profile /> },
   { title: 'Live Market', path: 'live-market', element: <LiveMarket /> },
   { title: 'Settings', path: 'settings', element: <Settings /> },
+  { title: 'Trade', path: 'trade', element: <Trade /> },
 ];

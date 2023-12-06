@@ -41,7 +41,7 @@ const Sidebar = () => {
     },
     {
       name: 'Buy/Sell',
-      path: 'buy-sell',
+      path: 'trade',
       icon: <BsCart2 />,
     },
   ];
