@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
+    'django_crontab',
 
     # API v1
     'v1.accounts',
@@ -183,3 +184,8 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainSlidingSerializer",
     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
+
+
+CRONJOBS = [
+    ('*/1 * * * *', 'v1.data.scraper.livedata.get_live_data')
+]
