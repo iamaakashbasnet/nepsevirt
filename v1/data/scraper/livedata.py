@@ -1,12 +1,15 @@
 import json
 import csv
 from django.conf import settings
+from django.db import transaction
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
+from v1.data.models import StockName, StockData
 
 
 def get_live_data():
@@ -60,5 +63,35 @@ def get_live_data():
             writer = csv.DictWriter(file, fieldnames=header)
             writer.writeheader()
             writer.writerows(data)
+
+        with open(f'{settings.BASE_DIR}/v1/data/csv/livedata.csv', 'r', encoding='UTF-8') as file:
+            reader = csv.DictReader(file)
+
+            with transaction.atomic():
+                for row in reader:
+                    stock_name, created = StockName.objects.get_or_create(
+                        name=row['name'])
+
+                    stock_data, _ = StockData.objects.get_or_create(
+                        name=stock_name,
+                        # Defaults if doesn't exist
+                        defaults={
+                            'ltp': row['ltp'],
+                            'open': row['open'],
+                            'high': row['high'],
+                            'low': row['low'],
+                            'close': row['close'],
+                        }
+                    )
+
+                    # Update existing entry if necessary
+                    if not created:
+                        stock_data.ltp = row['ltp']
+                        stock_data.open = row['open']
+                        stock_data.high = row['high']
+                        stock_data.low = row['low']
+                        stock_data.close = row['close']
+                        stock_data.save()
+
     finally:
         driver.quit()
