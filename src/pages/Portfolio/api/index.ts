@@ -12,11 +12,19 @@ export interface Portfolio {
   total_investment: number;
   avg_cost: number;
   portfolio: number;
+  current_worth: number;
+}
+
+export interface ResponseData {
+  portfolio: Portfolio[];
+  portfolio_investment: number;
+  portfolio_worth: number;
 }
 
 export const fetchPortfolioData = async () => {
   try {
-    const res = await axios.get<Portfolio[]>('/api/portfolio/list-stocks/');
+    const res = await axios.get<ResponseData>('/api/portfolio/list-stocks/');
+    console.log(res);
     return res.data;
   } catch (err) {
     console.log(err);
