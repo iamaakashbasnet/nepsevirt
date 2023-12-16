@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
-import { BsChevronDoubleUp, BsChevronDoubleDown } from 'react-icons/bs';
 
+import TradePLState from 'components/TradePLState';
 import { fetchPortfolioData } from './api';
 
 const Portfolio = () => {
@@ -53,17 +53,9 @@ const Portfolio = () => {
                 <td className="px-4 py-3">{portfolioData.total_investment}</td>
                 <td className="flex items-center px-4 py-3">
                   Rs. {portfolioData.current_worth.toLocaleString(navigator.language || 'en-US')}
-                  {portfolioData.current_worth > portfolioData.total_investment ? (
-                    <div className="ml-2 flex items-center text-green-500">
-                      ({portfolioData.current_worth - portfolioData.total_investment})
-                      <BsChevronDoubleUp className={`ml-1 animate-bounce`} />
-                    </div>
-                  ) : (
-                    <div className="ml-2 flex items-center text-red-500">
-                      ({portfolioData.current_worth - portfolioData.total_investment})
-                      <BsChevronDoubleDown className={`ml-1 animate-bounce`} />
-                    </div>
-                  )}
+                  <TradePLState diffData={portfolioData.current_worth - portfolioData.total_investment}>
+                    {portfolioData.current_worth - portfolioData.total_investment}
+                  </TradePLState>
                 </td>
               </tr>
             ))}
@@ -79,16 +71,11 @@ const Portfolio = () => {
               <td className="px-4 py-3 text-center font-bold text-white" colSpan={4}>
                 TOTAL WORTH
               </td>
-              <td
-                className={`flex items-center px-4 py-3 ${
-                  data && data?.portfolio_worth > data?.portfolio_investment ? 'text-green-500' : 'text-red-500'
-                }`}
-              >
-                Rs. {data?.portfolio_worth.toLocaleString(navigator.language || 'en-US')}{' '}
-                {data && data?.portfolio_worth > data?.portfolio_investment ? (
-                  <BsChevronDoubleUp className={`ml-2 animate-bounce text-base text-green-500`} />
-                ) : (
-                  <BsChevronDoubleDown className={`ml-2 animate-bounce text-base text-red-500`} />
+              <td>
+                {data && (
+                  <TradePLState diffData={data?.portfolio_worth - data?.portfolio_investment}>
+                    Rs. {data?.portfolio_worth.toLocaleString(navigator.language || 'en-US')}{' '}
+                  </TradePLState>
                 )}
               </td>
             </tr>
