@@ -11,6 +11,7 @@ from .views.user import (
     CreateUserView,
     UserProfileView,
     CurrentUserUpdateView,
+    ActivateAccountView,
 )
 
 
@@ -21,7 +22,9 @@ urlpatterns = [
     path('token/blacklist/', CustomTokenBlacklistView.as_view(),
          name='token-blacklist'),
     path('signup/', CreateUserView.as_view(), name='signup'),
+    path('activate/<uidb64>/<token>/',
+         ActivateAccountView.as_view(), name='activate-user'),
     path('user/me/', CurrentUserDetailView.as_view(), name='user-me'),
     path('user/me/update/', CurrentUserUpdateView.as_view(), name='user-update'),
-    path('profile/<str:username>/', UserProfileView.as_view(), name='user-profile')
+    path('profile/<str:username>/', UserProfileView.as_view(), name='user-profile'),
 ]
