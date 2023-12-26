@@ -10,6 +10,16 @@ class LiveDataStockNameSerializer(serializers.ModelSerializer):
 
 class LiveDataSerializer(serializers.ModelSerializer):
     name = serializers.StringRelatedField()
+    ltp = serializers.DecimalField(
+        default=0.00, max_digits=10, decimal_places=2, coerce_to_string=True)
+    open = serializers.DecimalField(
+        default=0.00, max_digits=10, decimal_places=2, coerce_to_string=True)
+    high = serializers.DecimalField(
+        default=0.00, max_digits=10, decimal_places=2, coerce_to_string=True)
+    low = serializers.DecimalField(
+        default=0.00, max_digits=10, decimal_places=2, coerce_to_string=True)
+    close = serializers.DecimalField(
+        default=0.00, max_digits=10, decimal_places=2, coerce_to_string=True)
 
     class Meta:
         model = StockData

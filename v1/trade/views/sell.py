@@ -1,4 +1,3 @@
-from decimal import Decimal
 from rest_framework import generics, status
 from rest_framework.response import Response
 
@@ -21,8 +20,6 @@ class SellStock(generics.GenericAPIView):
             user_portfolio = Portfolio.objects.get(user=self.request.user)
             portfolio_stock = PortfolioStock.objects.get(
                 portfolio=user_portfolio, stock_id=stock_id)
-        except Portfolio.DoesNotExist:
-            return Response({'error': 'User portfolio does not exist'}, status=status.HTTP_400_BAD_REQUEST)
         except PortfolioStock.DoesNotExist:
             return Response({'error': 'Portfolio stock does not exist for the given stock'}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -33,7 +30,7 @@ class SellStock(generics.GenericAPIView):
             return Response({'error': 'Quantity greater than holding quantity'}, status=status.HTTP_400_BAD_REQUEST)
 
     def update_portfolio_stock(self, portfolio_stock, quantity, stock_id):
-        ltp = Decimal(StockName.objects.get(id=stock_id).stockdata.ltp)
+        ltp = StockName.objects.get(id=stock_id).stockdata.ltp
 
         portfolio_stock.total_quantity -= quantity
         portfolio_stock.total_investment -= quantity * ltp

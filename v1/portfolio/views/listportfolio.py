@@ -1,4 +1,3 @@
-from decimal import Decimal
 from rest_framework import generics
 from rest_framework import permissions
 from rest_framework.response import Response
@@ -23,8 +22,8 @@ class ListPortfolioStocks(generics.ListAPIView):
         res = super().list(request=request).data
 
         # Convert total_investment values to Decimal before summing
-        total_investment_values = [
-            Decimal(stock['total_investment']) for stock in serializer.data]
+        total_investment_values = [stock['total_investment']
+                                   for stock in serializer.data]
 
         for _ in res:
             _['current_worth'] = StockData.objects.get(
@@ -38,4 +37,5 @@ class ListPortfolioStocks(generics.ListAPIView):
             "portfolio_investment": sum(total_investment_values),
             "portfolio": res
         }
+
         return Response(modified_res)

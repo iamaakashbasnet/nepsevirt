@@ -1,4 +1,3 @@
-from decimal import Decimal
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
@@ -15,8 +14,8 @@ class BuyStock(generics.GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        ltp = Decimal(StockName.objects.get(
-            id=self.request.data.get('stock')).stockdata.ltp)
+        ltp = StockName.objects.get(
+            id=self.request.data.get('stock')).stockdata.ltp
         quantity = self.request.data.get('quantity')
 
         portfolio_stock, created = PortfolioStock.objects.get_or_create(
