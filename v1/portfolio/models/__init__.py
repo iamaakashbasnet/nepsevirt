@@ -1,2 +1,2 @@
 from .portfolio import Portfolio
-from .portfoliostock import PortfolioStock
+from .position import Position, POSITION_CHOICES

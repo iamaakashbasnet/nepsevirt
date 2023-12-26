@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from .models import Portfolio, PortfolioStock
+from .models import Portfolio, Position
 
 
 admin.site.register(Portfolio)
-admin.site.register(PortfolioStock)
+admin.site.register(Position)
