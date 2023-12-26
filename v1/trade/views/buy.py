@@ -81,7 +81,7 @@ class Buy(generics.GenericAPIView):
             position = Position.objects.create(
                 portfolio=user_portfolio,
                 stock_id=stock_id,
-                side=POSITION_CHOICES[0][1],
+                side=POSITION_CHOICES[0][0],
                 quantity=quantity,
                 average_fill_price=StockName.objects.get(
                     id=self.request.data.get('stock')).stockdata.ltp

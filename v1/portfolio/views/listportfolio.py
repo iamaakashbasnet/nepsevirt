@@ -14,11 +14,3 @@ class ListPortfolioStocks(generics.ListAPIView):
     def get_queryset(self):
         return Position.objects.filter(
             portfolio=Portfolio.objects.get(user=self.request.user))
-
-    def list(self, request, *args, **kwargs):
-        queryset = self.get_queryset()
-        serializer = self.get_serializer(queryset, many=True)
-
-        res = super().list(request=request).data
-
-        return Response(res)
