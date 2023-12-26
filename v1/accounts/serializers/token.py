@@ -15,6 +15,10 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     #     token['name'] = user.username
     #     return token
 
+    def get_image_url(self, obj):
+        request = self.context.get("request")
+        return request.build_absolute_uri(obj.avatar.url)
+
     # For now sending data separately
     def validate(self, attrs):
         data = super().validate(attrs)
@@ -23,7 +27,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         data['lastname'] = user.lastname
         data['username'] = user.username
         data['email'] = user.email
-        data['avatar'] = user.avatar.url
+        data['avatar'] = self.get_image_url(user)
 
         return data
 
