@@ -1,5 +1,5 @@
 from decimal import Decimal
-from django.db.models import F, ExpressionWrapper, fields
+from django.db.models import F, ExpressionWrapper, Case, When, fields
 from rest_framework import generics
 from rest_framework import permissions
 from rest_framework.response import Response
@@ -23,7 +23,14 @@ class ListPortfolioStocks(generics.ListAPIView):
                 output_field=fields.DecimalField()
             ),
             current_value=ExpressionWrapper(
-                F('quantity') * F('stock__stockdata__ltp'),
+                Case(
+                    When(side='LONG', then=F('quantity')
+                         * F('stock__stockdata__ltp')),
+                    When(side='SHORT', then=-F('quantity')
+                         * F('stock__stockdata__ltp')),
+                    default=0,
+                    output_field=fields.DecimalField()
+                ),
                 output_field=fields.DecimalField()
             )
         )
@@ -32,14 +39,8 @@ class ListPortfolioStocks(generics.ListAPIView):
 
     def list(self, request, *args, **kwargs):
         queryset = self.get_queryset()
-
-        total_investment_value = sum(
-            item.investment_value for item in queryset)
-        total_current_value = sum(item.current_value for item in queryset)
         serializer = self.get_serializer(queryset, many=True)
 
-        response_data = {'total_investment_value': total_investment_value,
-                         'total_current_value': total_current_value,
-                         'positions': serializer.data}
+        response_data = {'positions': serializer.data}
 
         return Response(response_data)
