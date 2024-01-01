@@ -12,8 +12,6 @@ export interface Position {
 }
 
 export interface Portfolio {
-  total_investment_value: number;
-  total_current_value: number;
   positions: Position[];
 }
 

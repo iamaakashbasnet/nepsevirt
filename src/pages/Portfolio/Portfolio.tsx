@@ -57,31 +57,20 @@ const Portfolio = () => {
                 <td className="px-4 py-3">{position.quantity}</td>
                 <td className="px-4 py-3">Rs. {position.investment_value.toLocaleString('en-IN')}</td>
                 <td className="flex items-center px-4 py-3">
-                  Rs. {position.current_value.toLocaleString('en-IN')}
-                  <TradePLState diffData={position.current_value - position.investment_value} />
+                  {position.side === 'LONG' ? (
+                    <>
+                      Rs. {position.current_value.toLocaleString('en-IN')}
+                      <TradePLState diffData={position.current_value - position.investment_value} />
+                    </>
+                  ) : (
+                    <>
+                      Rs. {Math.abs(position.current_value).toLocaleString('en-IN')}
+                      <TradePLState diffData={position.investment_value + position.current_value} />
+                    </>
+                  )}
                 </td>
               </tr>
             ))}
-
-            <tr className="border-b dark:border-gray-700">
-              <td className="px-4 py-3 text-center font-bold text-white" colSpan={5}>
-                TOTAL INVESTMENT
-              </td>
-              <td className="px-4 py-3">Rs. {data?.total_investment_value.toLocaleString('en-IN')}</td>
-            </tr>
-            <tr className="border-b dark:border-gray-700">
-              <td className="px-4 py-3 text-center font-bold text-white" colSpan={5}>
-                EQUITY
-              </td>
-              <td>
-                {data && (
-                  <div className="flex items-center px-3">
-                    Rs. {data.total_current_value.toLocaleString('en-IN')}
-                    <TradePLState diffData={data.total_current_value - data.total_investment_value} />
-                  </div>
-                )}
-              </td>
-            </tr>
           </tbody>
         </table>
       </div>
