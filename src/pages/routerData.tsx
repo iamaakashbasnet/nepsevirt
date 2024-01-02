@@ -12,6 +12,7 @@ const Profile = lazy(() => import('pages/Profile'));
 const Settings = lazy(() => import('pages/Settings'));
 const Trade = lazy(() => import('pages/Trade'));
 const Portfolio = lazy(() => import('pages/Portfolio'));
+const Verified = lazy(() => import('pages/Verified'));
 
 export const basicRoutes: routerType[] = [
   {
@@ -21,6 +22,7 @@ export const basicRoutes: routerType[] = [
   },
   { title: 'Login', path: 'login', element: <Login /> },
   { title: 'Signup', path: 'signup', element: <Signup /> },
+  { title: 'Verification', path: 'activate/:hash/:token/', element: <Verified /> },
 ];
 
 export const dashboardRoutes: routerType[] = [

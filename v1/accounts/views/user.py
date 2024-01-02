@@ -7,6 +7,7 @@ from rest_framework import permissions
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
+from rest_framework_simplejwt.tokens import RefreshToken
 
 from v1.accounts.serializers import (
     CreateUserSerializer, CurrentUserSerializer, UserProfileSerializer)
@@ -73,6 +74,9 @@ class CurrentUserUpdateView(generics.UpdateAPIView):
             instance.is_active = False
 
         self.perform_update(serializer)
+
+        refresh_token = RefreshToken.for_user(instance)
+        refresh_token.blacklist()
 
         send_account_verification_email(request, self.request.user)
 
