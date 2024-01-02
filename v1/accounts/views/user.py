@@ -1,38 +1,27 @@
-from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
-from django.template.loader import render_to_string
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.utils.encoding import force_bytes, force_str
-from django.core.mail import EmailMessage
+from django.utils.http import urlsafe_base64_decode
+from django.utils.encoding import force_str
 from rest_framework import generics
 from rest_framework import permissions
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 
-from v1.accounts.serializers import user
-from v1.accounts.utils.token import account_activation_token
+from v1.accounts.serializers import (
+    CreateUserSerializer, CurrentUserSerializer, UserProfileSerializer)
+from v1.accounts.utils import send_account_verification_email, account_activation_token
 
 
 class CreateUserView(generics.CreateAPIView):
-    serializer_class = user.CreateUserSerializer
+    serializer_class = CreateUserSerializer
     permission_classes = [permissions.AllowAny]
 
     def create(self, request, *args, **kwargs):
         response = super().create(request, *args, **kwargs)
 
         user = get_user_model().objects.get(username=response.data.get('username'))
-        mail_subject = 'Activation link has been sent to your email address.'
-        message = render_to_string(f'{settings.BASE_DIR}/v1/accounts/templates/activate_account_email.html', {
-            'user': user,
-            'domain': request.META.get('HTTP_ORIGIN'),
-            'uid': urlsafe_base64_encode(force_bytes(user.id)),
-            'token': account_activation_token.make_token(user)
-        })
-        to_email = user.email
-        email = EmailMessage(mail_subject, message, to=[to_email])
-        email.send()
+        send_account_verification_email(request, user)
 
         return response
 
@@ -57,7 +46,7 @@ class ActivateAccountView(APIView):
 
 class CurrentUserDetailView(generics.RetrieveAPIView):
     queryset = get_user_model().objects.all()
-    serializer_class = user.CurrentUserSerializer
+    serializer_class = CurrentUserSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_object(self):
@@ -66,17 +55,34 @@ class CurrentUserDetailView(generics.RetrieveAPIView):
 
 class CurrentUserUpdateView(generics.UpdateAPIView):
     queryset = get_user_model().objects.all()
-    serializer_class = user.CurrentUserSerializer
+    serializer_class = CurrentUserSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_object(self):
         return self.request.user
 
+    def update(self, request, *args, **kwargs):
+        partial = kwargs.pop('partial', False)
+        instance = self.get_object()
+        serializer = self.get_serializer(
+            instance, data=request.data, partial=partial)
+        serializer.is_valid(raise_exception=True)
+
+        # Check if the email is being updated
+        if 'email' in serializer.validated_data:
+            instance.is_active = False
+
+        self.perform_update(serializer)
+
+        send_account_verification_email(request, self.request.user)
+
+        return Response(serializer.data)
+
 
 class UserProfileView(generics.RetrieveAPIView):
     queryset = get_user_model().objects.all()
     permission_classes = [permissions.IsAuthenticated]
-    serializer_class = user.UserProfileSerializer
+    serializer_class = UserProfileSerializer
 
     def get_object(self):
         user = get_object_or_404(
