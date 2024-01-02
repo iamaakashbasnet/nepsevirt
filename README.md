@@ -4,6 +4,10 @@
 <h3 align="center">NEPSE Virt</h3>
 <p align="center">Paper trading platform for NEPSE</p>
 
+<hr />
+
+Learning how in general full stack app works. This project seamlessly integrates Django and JavaScript, leveraging the power of Django Rest Framework on the backend and React with TypeScript on the frontend.
+
 ## Project Setup
 
 Install required packages
