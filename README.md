@@ -28,6 +28,7 @@ $ python manage.py crontab add
 ## Features
 - [x] Live data
 - [x] Long/Short position
+- [ ] Account balance
 - [ ] Technical analysis chart (Currently using nepsealpha for placeholder)
 
 <br />
