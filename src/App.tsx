@@ -6,8 +6,8 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import Router from 'pages/router';
-import { FallbackLoading } from 'components';
+import Router from 'routers/router';
+import FallbackLoading from 'components/FallbackLoading';
 import { reAuthAsync } from 'state/user/authSlice';
 import { AppDispatch } from 'state/store';
 

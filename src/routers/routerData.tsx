@@ -14,7 +14,7 @@ const Trade = lazy(() => import('pages/Trade'));
 const Portfolio = lazy(() => import('pages/Portfolio'));
 const Verified = lazy(() => import('pages/Verified'));
 
-export const basicRoutes: routerType[] = [
+export const basic: routerType[] = [
   {
     title: 'Home',
     path: '',
@@ -25,7 +25,7 @@ export const basicRoutes: routerType[] = [
   { title: 'Verification', path: 'activate/:hash/:token/', element: <Verified /> },
 ];
 
-export const dashboardRoutes: routerType[] = [
+export const dashboard: routerType[] = [
   { title: 'Dashboard', path: '', element: <Dashboard /> },
   { title: 'Profile', path: 'profile/:username', element: <Profile /> },
   { title: 'Live Market', path: 'live-market', element: <LiveMarket /> },
