@@ -14,42 +14,6 @@ class Buy(generics.GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        ltp = StockName.objects.get(
-            id=self.request.data.get('stock')).stockdata.ltp
-        quantity = self.request.data.get('quantity')
-
-        position, created = Position.objects.get_or_create(
-            portfolio=Portfolio.objects.get(user=self.request.user),
-            stock_id=self.request.data.get('stock'),
-            defaults={'quantity': quantity,
-                      'average_fill_price': ltp,
-                      'side': POSITION_CHOICES[0][0]}
-        )
-
-        if not created:
-            # Update existing position entry
-            position.quantity += quantity
-            position.average_fill_price = (
-                (position.average_fill_price * position.quantity) / position.quantity
-            )
-
-        position.save()
-
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-
-class Buy(generics.GenericAPIView):
-    serializer_class = PositionSerializer
-
-    POSITION_CHOICES = [
-        ('LONG', 'Long'),
-        ('SHORT', 'Short'),
-    ]
-
-    def post(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-
         stock_id = self.request.data.get('stock')
         quantity = self.request.data.get('quantity')
 
