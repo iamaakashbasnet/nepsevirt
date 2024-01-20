@@ -80,7 +80,11 @@ class CurrentUserUpdateView(generics.UpdateAPIView):
 
         send_account_verification_email(request, self.request.user)
 
-        return Response(serializer.data)
+        response = Response(serializer.data)
+        response.delete_cookie('at')
+        response.delete_cookie('rt')
+
+        return response
 
 
 class UserProfileView(generics.RetrieveAPIView):
