@@ -6,7 +6,7 @@ const LiveMarket = () => {
   const { data, isLoading } = useQuery({
     queryFn: () => fetchLiveData(),
     queryKey: ['live-data'],
-    refetchInterval: 60000,
+    refetchInterval: 120000,
   });
 
   return (
