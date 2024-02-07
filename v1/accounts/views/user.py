@@ -71,20 +71,24 @@ class CurrentUserUpdateView(generics.UpdateAPIView):
 
         # Check if the email is being updated
         if 'email' in serializer.validated_data:
-            instance.is_active = False
+            if serializer.validated_data['email'] != instance.email:
+                # If email is being updated, make the user inactive
+                instance.is_active = False
+                instance.save()
+                self.perform_update(serializer)
+                # Revoke the refresh token
+                refresh_token = RefreshToken.for_user(instance)
+                refresh_token.blacklist()
+                # Send verification email
+                send_account_verification_email(request, self.request.user)
+                # Delete cookies for access token and refresh token
+                response = Response(serializer.data)
+                response.delete_cookie('at')
+                response.delete_cookie('rt')
+                return response
 
         self.perform_update(serializer)
-
-        refresh_token = RefreshToken.for_user(instance)
-        refresh_token.blacklist()
-
-        send_account_verification_email(request, self.request.user)
-
-        response = Response(serializer.data)
-        response.delete_cookie('at')
-        response.delete_cookie('rt')
-
-        return response
+        return Response(serializer.data)
 
 
 class UserProfileView(generics.RetrieveAPIView):
