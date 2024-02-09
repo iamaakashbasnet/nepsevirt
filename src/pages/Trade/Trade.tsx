@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { BsChevronDoubleUp, BsChevronDoubleDown } from 'react-icons/bs';
+import axios from 'axios';
 
 import { fetchStockNames, fetchStockDetail, buyStock, sellStock } from './api';
+import { DataState as StockDataState } from 'components/Chart/Chart';
+import Chart from 'components/Chart';
 
 const Trade = () => {
   const [selectedOption, setSelectedOption] = useState<number>(0);
   const [buyData, setBuyData] = useState({ quantity: 0, stock: 0 });
+  const [stockData, setStockData] = useState<StockDataState[]>([]);
 
   const { data, isLoading } = useQuery({
     queryFn: () => fetchStockNames(),
@@ -34,7 +38,20 @@ const Trade = () => {
   };
 
   useEffect(() => {
-    if (selectedOption != 0) void refetch();
+    if (selectedOption != 0) {
+      void refetch();
+      axios
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+        .get<StockDataState[]>(`/api/data/historic-data/${data?.find((item) => item.id === selectedOption)?.name}/`)
+        .then((res) => {
+          const formattedData: StockDataState[] = res.data.map((item) => ({
+            time: new Date(item.time).toISOString().slice(0, 10),
+            value: item.value,
+          }));
+          setStockData(formattedData);
+        })
+        .catch((err) => console.log(err));
+    }
   }, [refetch, selectedOption]);
 
   return (
@@ -69,22 +86,27 @@ const Trade = () => {
             <section className="mx-10 flex flex-col md:flex-row md:items-center">
               <div className="w-full text-center md:text-left">
                 <h1 className="my-2 font-heading text-5xl">{stockDetailData?.name}</h1>
-                <p
-                  className={`my-4 flex animate-pulse flex-row items-center justify-center gap-2 text-base md:justify-start ${
-                    stockDetailData && stockDetailData?.ltp > stockDetailData?.close ? `text-green-500` : `text-red-500`
-                  }`}
-                >
-                  Last Trading Price: {stockDetailData?.ltp}{' '}
-                  {stockDetailData && stockDetailData?.ltp > stockDetailData?.close ? (
-                    <BsChevronDoubleUp className={`animate-bounce text-base text-green-500`} />
-                  ) : (
-                    <BsChevronDoubleDown className={`animate-bounce text-base text-red-500`} />
-                  )}
-                </p>
-                <p className="my-4 text-base">Open Price: {stockDetailData?.open}</p>
-                <p className="my-4 text-base">High Price: {stockDetailData?.high}</p>
-                <p className="my-4 text-base">Low Price: {stockDetailData?.low}</p>
-                <p className="my-4 text-base">Close Price: {stockDetailData?.close}</p>
+                <Chart data={stockData} />
+                <div className="text-center">
+                  <p
+                    className={`my-4 animate-pulse text-base ${
+                      stockDetailData && stockDetailData?.ltp > stockDetailData?.close
+                        ? `text-green-500`
+                        : `text-red-500`
+                    }`}
+                  >
+                    Last Trading Price: {stockDetailData?.ltp}{' '}
+                    {stockDetailData && stockDetailData?.ltp > stockDetailData?.close ? (
+                      <BsChevronDoubleUp className={`inline-block animate-bounce text-base text-green-500`} />
+                    ) : (
+                      <BsChevronDoubleDown className={`inline-block animate-bounce text-base text-red-500`} />
+                    )}
+                  </p>
+                  <p className="my-4 text-base">Open Price: {stockDetailData?.open}</p>
+                  <p className="my-4 text-base">High Price: {stockDetailData?.high}</p>
+                  <p className="my-4 text-base">Low Price: {stockDetailData?.low}</p>
+                  <p className="my-4 text-base">Close Price: {stockDetailData?.close}</p>
+                </div>
               </div>
 
               <div className="w-full rounded-lg bg-white shadow dark:border dark:border-gray-700 dark:bg-gray-800 md:mt-0 xl:p-0">

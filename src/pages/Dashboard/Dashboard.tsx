@@ -24,16 +24,11 @@ const Dashboard = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const yDomain = [
-    Math.min(...data.map((entry) => Math.min(entry.value))),
-    Math.max(...data.map((entry) => Math.max(entry.value))),
-  ];
-
   return (
     <section>
       <h1 className="mb-5 font-heading text-3xl">Dashboard</h1>
       <div className="text-center">
-        <Chart data={data} yDomain={yDomain} />
+        <Chart data={data} />
         <p className="my-5">NEPSE Index</p>
       </div>
     </section>
