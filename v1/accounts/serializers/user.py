@@ -32,3 +32,14 @@ class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
         fields = ('firstname', 'lastname', 'avatar', 'username',)
+
+
+class ChangePasswordSerializer(serializers.Serializer):
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)
+    confirm_password = serializers.CharField(required=True)
+
+    def validate(self, data):
+        if data.get('new_password') != data.get('confirm_password'):
+            raise serializers.ValidationError("New passwords do not match.")
+        return data
