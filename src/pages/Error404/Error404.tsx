@@ -12,14 +12,12 @@ const Error404 = () => {
         <p className="mb-4 font-heading text-3xl font-bold tracking-tight text-gray-900 dark:text-white md:text-4xl">
           Something's missing.
         </p>
-        <p className="mb-4 text-lg font-light text-gray-500 dark:text-gray-400">
-          Sorry, we can't find that page. You'll find lots to explore on the home page.{' '}
-        </p>
+        <p className="mb-4 text-lg font-light text-gray-500 dark:text-gray-400">Sorry, we can't find that page.</p>
         <button
           onClick={() => navigate(-1)}
           className="my-4 inline-flex rounded-lg bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
         >
-          Back to Homepage
+          Go back
         </button>
       </div>
     </div>

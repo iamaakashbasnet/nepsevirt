@@ -25,15 +25,6 @@ const Verified = () => {
             <p className="mb-4 font-heading text-3xl font-bold tracking-tight text-gray-900 dark:text-white md:text-4xl">
               Invalid link
             </p>
-            <p className="mb-4 text-lg font-light text-gray-500 dark:text-gray-400">
-              Now you can use our services as usual.
-            </p>
-            <button
-              onClick={() => navigate('/dashboard')}
-              className="my-4 inline-flex rounded-lg bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
-            >
-              Go to dashboard
-            </button>
           </>
         )}
 

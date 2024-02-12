@@ -1,11 +1,11 @@
 import { useQuery } from 'react-query';
 
-import { fetchLiveData } from './api';
+import { fetchLiveMarketData } from './api';
 
 const LiveMarket = () => {
   const { data, isLoading } = useQuery({
-    queryFn: () => fetchLiveData(),
-    queryKey: ['live-data'],
+    queryFn: () => fetchLiveMarketData(),
+    queryKey: ['fetch-live-market-data'],
     refetchInterval: 120000,
   });
 
@@ -14,7 +14,7 @@ const LiveMarket = () => {
       <h1 className="mb-5 font-heading text-3xl">Live Market</h1>
       <div className="overflow-x-auto">
         <table className="w-full text-left text-sm">
-          <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+          <thead className="bg-gray-300 uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-4 py-3">
                 Name
@@ -36,10 +36,11 @@ const LiveMarket = () => {
               </th>
             </tr>
           </thead>
-          <tbody>
+
+          <tbody className="text-white">
             {isLoading && (
-              <tr>
-                <td className="text-center" colSpan={5}>
+              <tr className="border-b">
+                <td className="animate-pulse py-3 text-center" colSpan={6}>
                   Loading...
                 </td>
               </tr>

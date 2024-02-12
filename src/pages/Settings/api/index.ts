@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-export interface UserProfile {
+export interface UserProfileTypes {
   firstname: string | undefined;
   lastname: string | undefined;
   username: string | undefined;
@@ -15,9 +15,9 @@ export interface StateProps {
   confirm_password: string;
 }
 
-export const updateUserData = async (data: UserProfile) => {
+export const updateUserData = async (data: UserProfileTypes) => {
   try {
-    const res = await axios.patch<UserProfile>('/api/accounts/user/me/update/', data, {
+    const res = await axios.patch<UserProfileTypes>('/api/accounts/user/me/update/', data, {
       headers: {
         'content-type': 'multipart/form-data',
       },
@@ -33,10 +33,8 @@ export const passwordChange = async (data: StateProps) => {
   try {
     const res = await axios.post<StateProps>('/api/accounts/password-change/', data);
     toast.success('Password Changed.');
-    console.log(res.data);
     return res.data;
   } catch (err) {
-    console.log(err);
     toast.error('Something went wrong.');
   }
 };

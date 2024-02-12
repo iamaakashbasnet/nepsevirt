@@ -8,8 +8,8 @@ import { signupAsync, SignupFormData } from 'state/user/authSlice';
 
 const Signup = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
+  const navigate = useNavigate();
   const [signupData, setSignupData] = useState<SignupFormData>({
     firstname: '',
     lastname: '',

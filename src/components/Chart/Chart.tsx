@@ -1,15 +1,11 @@
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
-export interface DataState {
+export interface DataStateTypes {
   time: string;
   value: number;
 }
 
-interface ChartProps {
-  data: DataState[];
-}
-
-const Chart = ({ data }: ChartProps) => {
+export const Chart = ({ data }: { data: DataStateTypes[] }) => {
   const yDomain = [
     Math.min(...data.map((entry) => Math.min(entry.value))),
     Math.max(...data.map((entry) => Math.max(entry.value))),
@@ -37,5 +33,3 @@ const Chart = ({ data }: ChartProps) => {
     </>
   );
 };
-
-export default Chart;

@@ -1,25 +1,20 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiMenu } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
+import { FiMenu } from 'react-icons/fi';
 
 import logo from 'assets/logo.png';
 import { AppDispatch, RootState } from 'state/store';
 import { logoutAsync } from 'state/user/authSlice';
 
-const Topbar = () => {
-  const [open, setOpen] = useState(false);
+interface DropdownProps {
+  open: boolean;
+  dropdownHandler: () => void;
+}
+
+const Dropdown = ({ open, dropdownHandler }: DropdownProps) => {
   const dispatch = useDispatch<AppDispatch>();
   const user = useSelector((state: RootState) => state.auth.user);
-
-  const logoutHandler = async () => {
-    await dispatch(logoutAsync());
-  };
-
-  const dropdownHandler = () => {
-    setOpen(!open);
-  };
-
   const dropdownMenuData = [
     {
       name: 'Profile',
@@ -31,6 +26,55 @@ const Topbar = () => {
       path: 'settings',
     },
   ];
+
+  const logoutHandler = async () => {
+    await dispatch(logoutAsync());
+  };
+
+  return (
+    <div
+      className={`absolute right-2 top-10 z-50 my-4 ${
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+        !open && 'hidden'
+      } w-56 list-none divide-y divide-gray-100 rounded bg-white text-base shadow dark:divide-gray-600 dark:bg-gray-700`}
+      id="dropdown"
+    >
+      <div className="px-4 py-3">
+        <span className="block text-sm font-semibold text-gray-900 dark:text-white">
+          {user?.firstname} {user?.lastname}
+        </span>
+      </div>
+      <ul className="py-1 text-gray-700 dark:text-gray-300">
+        {dropdownMenuData.map((_) => (
+          <li key={_.name} onClick={dropdownHandler}>
+            <Link
+              to={_.path}
+              className="block px-4 py-2 text-sm hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              {_.name}
+            </Link>
+          </li>
+        ))}
+        <li>
+          <button
+            onClick={logoutHandler}
+            className="block w-full px-4 py-2 text-left text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+          >
+            Sign out
+          </button>
+        </li>
+      </ul>
+    </div>
+  );
+};
+
+const Topbar = () => {
+  const [open, setOpen] = useState(false);
+  const user = useSelector((state: RootState) => state.auth.user);
+
+  const dropdownHandler = () => {
+    setOpen(!open);
+  };
 
   return (
     <>
@@ -52,6 +96,7 @@ const Topbar = () => {
               <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">NEPSE Virt</span>
             </a>
           </div>
+
           <div className="flex items-center lg:order-2">
             <button
               type="button"
@@ -63,40 +108,7 @@ const Topbar = () => {
               <img className="h-8 w-8 rounded-full" src={user?.avatar} alt="User photo" />
             </button>
 
-            {/* Dropdown menu  */}
-            <div
-              className={`absolute right-2 top-10 z-50 my-4 ${
-                // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-                !open && 'hidden'
-              } w-56 list-none divide-y divide-gray-100 rounded bg-white text-base shadow dark:divide-gray-600 dark:bg-gray-700`}
-              id="dropdown"
-            >
-              <div className="px-4 py-3">
-                <span className="block text-sm font-semibold text-gray-900 dark:text-white">
-                  {user?.firstname} {user?.lastname}
-                </span>
-              </div>
-              <ul className="py-1 text-gray-700 dark:text-gray-300">
-                {dropdownMenuData.map((_) => (
-                  <li key={_.name} onClick={dropdownHandler}>
-                    <Link
-                      to={_.path}
-                      className="block px-4 py-2 text-sm hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      {_.name}
-                    </Link>
-                  </li>
-                ))}
-                <li>
-                  <button
-                    onClick={logoutHandler}
-                    className="block w-full px-4 py-2 text-left text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    Sign out
-                  </button>
-                </li>
-              </ul>
-            </div>
+            <Dropdown open={open} dropdownHandler={dropdownHandler} />
           </div>
         </div>
       </nav>

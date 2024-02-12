@@ -22,6 +22,7 @@ const PasswordSecurity = () => {
     e.preventDefault();
     await mutateAsync();
   };
+
   return (
     <>
       <form className="mb-2 space-y-4 md:space-y-6" onSubmit={handleSubmit} encType="multipart/form-data">

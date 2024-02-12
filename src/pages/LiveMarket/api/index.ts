@@ -10,11 +10,9 @@ export interface StockData {
   close: number;
 }
 
-export const fetchLiveData = async () => {
+export const fetchLiveMarketData = async () => {
   try {
     const res = await axios.get<StockData[]>('/api/data/live-data/');
-    // TODO: Stock name
-    console.log(res.data);
     return res.data;
   } catch (err) {
     console.log(err);

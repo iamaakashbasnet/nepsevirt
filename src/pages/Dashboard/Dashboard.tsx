@@ -1,21 +1,16 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import Chart from 'components/Chart';
-
-interface DataState {
-  time: string;
-  value: number;
-}
+import { Chart, DataStateTypes } from 'components/Chart';
 
 const Dashboard = () => {
-  const [data, setData] = useState<DataState[]>([]);
+  const [data, setData] = useState<DataStateTypes[]>([]);
 
   useEffect(() => {
     axios
-      .get<DataState[]>(`/api/data/historic-data/NEPSE/`)
+      .get<DataStateTypes[]>(`/api/data/historic-data/NEPSE/`)
       .then((res) => {
-        const formattedData: DataState[] = res.data.map((item) => ({
+        const formattedData: DataStateTypes[] = res.data.map((item) => ({
           time: new Date(item.time).toISOString().slice(0, 10),
           value: item.value,
         }));

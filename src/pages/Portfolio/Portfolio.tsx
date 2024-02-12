@@ -6,15 +6,15 @@ import { fetchPortfolioData } from './api';
 const Portfolio = () => {
   const { data, isLoading } = useQuery({
     queryFn: () => fetchPortfolioData(),
-    queryKey: ['portfolio-data'],
+    queryKey: ['fetch-portfolio-data'],
   });
 
   return (
     <section>
       <h1 className="mb-5 font-heading text-3xl">Portfolio</h1>
       <div className="overflow-x-auto">
-        <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
-          <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+        <table className="w-full text-left text-sm">
+          <thead className="bg-gray-300 uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-4 py-3">
                 Stock
@@ -36,10 +36,11 @@ const Portfolio = () => {
               </th>
             </tr>
           </thead>
+
           <tbody>
             {isLoading && (
-              <tr>
-                <td className="text-center" colSpan={4}>
+              <tr className="border-b">
+                <td className="animate-pulse py-3 text-center" colSpan={6}>
                   Loading...
                 </td>
               </tr>

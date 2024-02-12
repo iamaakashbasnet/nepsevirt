@@ -4,13 +4,13 @@ import { BsChevronDoubleUp, BsChevronDoubleDown } from 'react-icons/bs';
 import axios from 'axios';
 
 import { fetchStockNames, fetchStockDetail, buyStock, sellStock } from './api';
-import { DataState as StockDataState } from 'components/Chart/Chart';
-import Chart from 'components/Chart';
+import { Chart, DataStateTypes } from 'components/Chart';
 
+// TODO: Refactoring needed
 const Trade = () => {
   const [selectedOption, setSelectedOption] = useState<number>(0);
   const [buyData, setBuyData] = useState({ quantity: 0, stock: 0 });
-  const [stockData, setStockData] = useState<StockDataState[]>([]);
+  const [stockData, setStockData] = useState<DataStateTypes[]>([]);
 
   const { data, isLoading } = useQuery({
     queryFn: () => fetchStockNames(),
@@ -42,9 +42,9 @@ const Trade = () => {
       void refetch();
       axios
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        .get<StockDataState[]>(`/api/data/historic-data/${data?.find((item) => item.id === selectedOption)?.name}/`)
+        .get<DataStateTypes[]>(`/api/data/historic-data/${data?.find((item) => item.id === selectedOption)?.name}/`)
         .then((res) => {
-          const formattedData: StockDataState[] = res.data.map((item) => ({
+          const formattedData: DataStateTypes[] = res.data.map((item) => ({
             time: new Date(item.time).toISOString().slice(0, 10),
             value: item.value,
           }));
@@ -52,7 +52,7 @@ const Trade = () => {
         })
         .catch((err) => console.log(err));
     }
-  }, [refetch, selectedOption]);
+  }, [refetch, selectedOption, data]);
 
   return (
     <>

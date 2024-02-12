@@ -4,25 +4,6 @@ import { BsPieChart, BsCardList, BsActivity, BsCart2 } from 'react-icons/bs';
 
 const Sidebar = () => {
   const sideNavRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        sideNavRef.current &&
-        !sideNavRef.current.contains(event.target as Node) &&
-        !document.querySelector('#sidebar-toggler')?.contains(event.target as Node)
-      ) {
-        document.querySelector('#drawer-navigation')?.classList.remove('translate-x-0');
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
-
   const sidebarData = [
     {
       name: 'Overview',
@@ -45,6 +26,24 @@ const Sidebar = () => {
       icon: <BsCart2 />,
     },
   ];
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        sideNavRef.current &&
+        !sideNavRef.current.contains(event.target as Node) &&
+        !document.querySelector('#sidebar-toggler')?.contains(event.target as Node)
+      ) {
+        document.querySelector('#drawer-navigation')?.classList.remove('translate-x-0');
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <aside

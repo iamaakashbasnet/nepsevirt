@@ -1,14 +1,14 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
-import { userProfileData } from './api';
+import { fetchUserProfileData } from './api';
 
 const Profile = () => {
   const { username } = useParams();
 
   const { data, isLoading } = useQuery({
-    queryFn: () => userProfileData(username),
-    queryKey: ['user-profile-data'],
+    queryFn: () => fetchUserProfileData(username),
+    queryKey: ['fetch-user-profile-data'],
   });
 
   if (isLoading) {

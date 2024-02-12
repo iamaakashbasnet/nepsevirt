@@ -18,7 +18,6 @@ export interface Portfolio {
 export const fetchPortfolioData = async () => {
   try {
     const res = await axios.get<Portfolio>('/api/portfolio/list-stocks/');
-    console.log(res.data);
     return res.data;
   } catch (err) {
     console.log(err);

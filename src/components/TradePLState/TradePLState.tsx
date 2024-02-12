@@ -1,14 +1,11 @@
-import React from 'react';
 import { BsChevronDoubleUp, BsChevronDoubleDown } from 'react-icons/bs';
 
 interface TradePLStateProps {
   diffData: number;
 }
 
-const TradePLState: React.FC<TradePLStateProps> = ({ diffData }) => {
-  const isPositive = diffData > 0;
-  const isNegative = diffData < 0;
-  const colorClass = isPositive ? 'text-green-500' : isNegative ? 'text-red-500' : '';
+const TradePLState = ({ diffData }: TradePLStateProps) => {
+  const colorClass = diffData > 0 ? 'text-green-500' : diffData < 0 ? 'text-red-500' : '';
 
   return (
     <div className={`ml-2 flex items-center ${colorClass}`}>

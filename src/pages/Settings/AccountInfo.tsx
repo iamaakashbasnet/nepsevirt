@@ -4,13 +4,12 @@ import { useMutation } from 'react-query';
 
 import { RootState, AppDispatch } from 'state/store';
 import { loadUserDataAsync } from 'state/user/authSlice';
-import { updateUserData, UserProfile } from './api';
+import { updateUserData, UserProfileTypes } from './api';
 
 const AccountInfo = () => {
   const dispatch = useDispatch<AppDispatch>();
-
   const user = useSelector((state: RootState) => state.auth.user);
-  const [state, setState] = useState<UserProfile>({
+  const [state, setState] = useState<UserProfileTypes>({
     firstname: user?.firstname,
     lastname: user?.lastname,
     username: user?.username,

@@ -6,20 +6,12 @@ import logo from 'assets/logo.png';
 import { AppDispatch, RootState } from 'state/store';
 import { loginAsync } from 'state/user/authSlice';
 
-type LoginData = {
-  email: '';
-  password: '';
-};
-
-type LocationState = {
-  next: string;
-};
-
 const Login = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const location = useLocation();
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
-  const [loginData, setLoginData] = useState<LoginData>({ email: '', password: '' });
+  const location = useLocation();
+  const state = location.state as { next: string };
+  const [loginData, setLoginData] = useState<{ email: string; password: string }>({ email: '', password: '' });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLoginData((prevLoginData) => ({ ...prevLoginData, [e.target.name]: e.target.value }));
@@ -29,8 +21,6 @@ const Login = () => {
     e.preventDefault();
     await dispatch(loginAsync(loginData));
   };
-
-  const state = location.state as LocationState;
 
   if (isAuthenticated) {
     if (location.state) {
