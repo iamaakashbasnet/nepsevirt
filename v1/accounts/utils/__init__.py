@@ -1,2 +1,0 @@
-from .token import account_activation_token
-from .email_verification import send_account_verification_email

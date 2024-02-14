@@ -1,6 +1,15 @@
 from django.db import models
+from django.db import models
 
-from .stock_name import StockName
+
+class StockName(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return f"{self.name}"
 
 
 class StockData(models.Model):

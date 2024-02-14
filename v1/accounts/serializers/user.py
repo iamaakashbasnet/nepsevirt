@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 
-class CurrentUserSerializer(serializers.ModelSerializer):
+class RequestUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
         fields = ('firstname', 'lastname', 'username', 'email', 'avatar',)
@@ -28,12 +28,6 @@ class CreateUserSerializer(serializers.ModelSerializer):
         }
 
 
-class UserProfileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = get_user_model()
-        fields = ('firstname', 'lastname', 'avatar', 'username',)
-
-
 class ChangePasswordSerializer(serializers.Serializer):
     old_password = serializers.CharField(required=True)
     new_password = serializers.CharField(required=True)
@@ -43,3 +37,9 @@ class ChangePasswordSerializer(serializers.Serializer):
         if data.get('new_password') != data.get('confirm_password'):
             raise serializers.ValidationError("New passwords do not match.")
         return data
+
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ('firstname', 'lastname', 'avatar', 'username',)

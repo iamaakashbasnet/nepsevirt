@@ -9,9 +9,14 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from v1.accounts.serializers import (
-    CreateUserSerializer, CurrentUserSerializer, UserProfileSerializer, ChangePasswordSerializer)
-from v1.accounts.utils import send_account_verification_email, account_activation_token
+from v1.accounts.serializers.user import (
+    CreateUserSerializer,
+    RequestUserSerializer,
+    UserProfileSerializer,
+    ChangePasswordSerializer
+)
+from v1.accounts.utils.token import account_activation_token
+from v1.accounts.utils.email_verification import send_account_verification_email
 
 
 class CreateUserView(generics.CreateAPIView):
@@ -30,7 +35,7 @@ class CreateUserView(generics.CreateAPIView):
 class ActivateAccountView(APIView):
     permission_classes = [permissions.AllowAny]
 
-    def get(self, request, uidb64, token):
+    def get(self, uidb64, token):
         try:
             uid = force_str(urlsafe_base64_decode(uidb64))
             user = get_object_or_404(get_user_model(), pk=uid)
@@ -45,18 +50,18 @@ class ActivateAccountView(APIView):
             return Response({'detail': 'Invalid activation link'}, status=status.HTTP_400_BAD_REQUEST)
 
 
-class CurrentUserDetailView(generics.RetrieveAPIView):
+class RequestUserDetailView(generics.RetrieveAPIView):
     queryset = get_user_model().objects.all()
-    serializer_class = CurrentUserSerializer
+    serializer_class = RequestUserSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_object(self):
         return self.request.user
 
 
-class CurrentUserUpdateView(generics.UpdateAPIView):
+class RequestUserUpdateView(generics.UpdateAPIView):
     queryset = get_user_model().objects.all()
-    serializer_class = CurrentUserSerializer
+    serializer_class = RequestUserSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_object(self):
@@ -91,7 +96,7 @@ class CurrentUserUpdateView(generics.UpdateAPIView):
         return Response(serializer.data)
 
 
-class CurrentUserPasswordChangeView(APIView):
+class PasswordChangeView(APIView):
     def post(self, request):
         serializer = ChangePasswordSerializer(data=request.data)
         if serializer.is_valid():

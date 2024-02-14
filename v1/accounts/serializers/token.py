@@ -8,18 +8,10 @@ from rest_framework_simplejwt.exceptions import InvalidToken
 
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
-    # Confused if to send user data in token itself or separately
-    # @classmethod
-    # def get_token(cls, user):
-    #     token = super().get_token(user)
-    #     token['name'] = user.username
-    #     return token
-
     def get_image_url(self, obj):
         request = self.context.get("request")
         return request.build_absolute_uri(obj.avatar.url)
 
-    # For now sending data separately
     def validate(self, attrs):
         data = super().validate(attrs)
         user = self.user

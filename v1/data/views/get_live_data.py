@@ -49,18 +49,18 @@ class FetchLiveData(APIView):
         return Response({'result': 'fetched'})
 
 
-class LiveDataListView(ListAPIView):
-    permission_classes = [permissions.IsAuthenticated]
-    authentication_classes = [authentication.JWTAuthentication]
-    queryset = StockData.objects.all()
-    serializer_class = livedata.LiveDataSerializer
-
-
 class LiveDataStockNameListView(ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [authentication.JWTAuthentication]
     queryset = StockName.objects.all()
     serializer_class = livedata.LiveDataStockNameSerializer
+
+
+class LiveDataListView(ListAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [authentication.JWTAuthentication]
+    queryset = StockData.objects.all()
+    serializer_class = livedata.LiveDataSerializer
 
 
 class StockDetailView(RetrieveAPIView):

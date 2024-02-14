@@ -1,4 +1,3 @@
-from decimal import Decimal
 from django.db.models import F, ExpressionWrapper, Case, When, fields
 from rest_framework import generics
 from rest_framework import permissions
@@ -6,7 +5,6 @@ from rest_framework.response import Response
 
 from v1.portfolio.serializers.portfolio import PositionSerializer
 from v1.portfolio.models import Portfolio, Position
-from v1.data.models import StockData, StockName
 
 
 class ListPortfolioStocks(generics.ListAPIView):
