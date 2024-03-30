@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useMutation } from 'react-query';
 
-import { passwordChange, StateProps } from './api';
+import { passwordChange, StateProps } from '../api';
 
 const PasswordSecurity = () => {
   const [state, setState] = useState<StateProps>({

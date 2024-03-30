@@ -1,5 +1,5 @@
-import AccountInfo from './AccountInfo';
-import PasswordSecurity from './PasswordSecurity';
+import AccountInfo from './components/AccountInfo';
+import PasswordSecurity from './components/PasswordSecurity';
 
 const Settings = () => {
   return (

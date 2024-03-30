@@ -4,7 +4,7 @@ import { useMutation } from 'react-query';
 
 import { RootState, AppDispatch } from 'state/store';
 import { loadUserDataAsync } from 'state/user/authSlice';
-import { updateUserData, UserProfileTypes } from './api';
+import { updateUserData, UserProfileTypes } from '../api';
 
 const AccountInfo = () => {
   const dispatch = useDispatch<AppDispatch>();
