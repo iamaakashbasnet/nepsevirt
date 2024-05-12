@@ -4,6 +4,7 @@ interface UserState {
   username: string | undefined;
   email: string | undefined;
   avatar: string | undefined;
+  is_verified: boolean | undefined;
   at?: string | undefined;
 }
 
@@ -13,4 +14,17 @@ interface AuthState {
   user?: null | UserState;
 }
 
-export type { UserState, AuthState };
+interface LoginFormData {
+  email: string;
+  password: string;
+}
+
+interface SignupFormData {
+  firstname: string;
+  lastname: string;
+  username: string;
+  email: string;
+  password: string;
+}
+
+export type { UserState, AuthState, LoginFormData, SignupFormData };

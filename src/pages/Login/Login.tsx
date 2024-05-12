@@ -5,13 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import logo from 'assets/logo.png';
 import { AppDispatch, RootState } from 'state/store';
 import { loginAsync } from 'state/user/authSlice';
+import { LoginFormData } from 'types/state/user/authSlice';
 
 const Login = () => {
   const dispatch = useDispatch<AppDispatch>();
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
   const location = useLocation();
   const state = location.state as { next: string };
-  const [loginData, setLoginData] = useState<{ email: string; password: string }>({ email: '', password: '' });
+  const [loginData, setLoginData] = useState<LoginFormData>({ email: '', password: '' });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLoginData((prevLoginData) => ({ ...prevLoginData, [e.target.name]: e.target.value }));

@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import logo from 'assets/logo.png';
 import { AppDispatch, RootState } from 'state/store';
-import { signupAsync, SignupFormData } from 'state/user/authSlice';
+import { signupAsync } from 'state/user/authSlice';
+import { SignupFormData } from 'types/state/user/authSlice';
 
 const Signup = () => {
   const dispatch = useDispatch<AppDispatch>();

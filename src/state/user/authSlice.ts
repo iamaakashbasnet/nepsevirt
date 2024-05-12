@@ -2,20 +2,7 @@ import axios, { AxiosError, AxiosResponse } from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
-import { AuthState, UserState } from 'types/state/user/authSlice';
-
-export interface FormData {
-  email: string;
-  password: string;
-}
-
-export interface SignupFormData {
-  firstname: string;
-  lastname: string;
-  username: string;
-  email: string;
-  password: string;
-}
+import { AuthState, UserState, SignupFormData, LoginFormData } from 'types/state/user/authSlice';
 
 const initialState: AuthState = {
   isLoading: false,
@@ -94,7 +81,7 @@ const authSlice = createSlice({
   },
 });
 
-export const loginAsync = createAsyncThunk('auth/loginAsync', async (formData: FormData, thunkAPI) => {
+export const loginAsync = createAsyncThunk('auth/loginAsync', async (formData: LoginFormData, thunkAPI) => {
   try {
     const response = await axios.post<UserState>('/api/accounts/token/', formData);
     axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.at as string}`;
@@ -122,7 +109,6 @@ export const reAuthAsync = createAsyncThunk('auth/reAuthAsync', async (_, thunkA
     .then(async (response) => {
       axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.at as string}`;
       await thunkAPI.dispatch(loadUserDataAsync());
-      toast.success(`Welcome back`);
     })
     .catch(() => {
       return thunkAPI.rejectWithValue('Re authentication failed.');

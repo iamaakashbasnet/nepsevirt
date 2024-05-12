@@ -5,7 +5,8 @@ from rest_framework import serializers
 class RequestUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ('firstname', 'lastname', 'username', 'email', 'avatar',)
+        fields = ('firstname', 'lastname', 'username',
+                  'email', 'avatar', 'is_verified',)
 
 
 class CreateUserSerializer(serializers.ModelSerializer):
