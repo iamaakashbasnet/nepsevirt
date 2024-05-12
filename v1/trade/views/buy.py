@@ -25,17 +25,14 @@ class Buy(generics.GenericAPIView):
 
             # Buy for long positions
             if position.side != POSITION_CHOICES[1][0]:
-                position.quantity += quantity
-                position.average_fill_price = (
-                    (position.average_fill_price *
-                     position.quantity) / position.quantity
-                )
-                position.save()
+                self.update_long_position(position, quantity, StockName.objects.get(
+                    id=self.request.data.get('stock')).stockdata.ltp)
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             # For short position
             else:
                 if position.quantity >= quantity:
-                    self.update_position(position, quantity)
+                    self.update_short_position(position, quantity, StockName.objects.get(
+                        id=self.request.data.get('stock')).stockdata.ltp)
                     return Response(serializer.data, status=status.HTTP_201_CREATED)
                 else:
                     return Response({'error': 'Quantity greater than holding quantity'}, status=status.HTTP_400_BAD_REQUEST)
@@ -54,14 +51,18 @@ class Buy(generics.GenericAPIView):
             position.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-    def update_position(self, position, quantity):
+    def update_long_position(self, position, quantity, purchase_price):
+        total_quantity = position.quantity + quantity
+        total_value = position.average_fill_price * \
+            position.quantity + purchase_price * quantity
+        position.average_fill_price = total_value / total_quantity
+        position.quantity = total_quantity
+        position.save()
+
+    def update_short_position(self, position, quantity, purchase_price):
         position.quantity -= quantity
 
         if position.quantity == 0:
             position.delete()
         else:
-            position.average_fill_price = (
-                (position.average_fill_price *
-                 position.quantity) / position.quantity
-            )
             position.save()
