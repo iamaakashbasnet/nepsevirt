@@ -86,3 +86,12 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self) -> str:
         return f'{self.username}'
+
+
+class Fund(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    balance = models.DecimalField(
+        default=0.00, max_digits=10, decimal_places=2)
+
+    def __str__(self) -> str:
+        return f'Funds for {self.username} - {self.balance}'

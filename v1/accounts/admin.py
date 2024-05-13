@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin  # commit 5a59e13
+from .models import Fund
 
 
 @admin.register(get_user_model())
@@ -43,3 +44,8 @@ class UserAdmin(BaseUserAdmin):
     ordering = ('username',)
     search_fields = ('username',)
     readonly_fields = ('date_joined', 'last_login',)
+
+
+@admin.register(Fund)
+class FundAdmin(admin.ModelAdmin):
+    pass
