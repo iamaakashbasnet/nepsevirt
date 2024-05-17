@@ -17,6 +17,12 @@ $ pip install -r requirements.txt
 $ npm i
 ```
 
+Create .env file
+```
+SECRET_KEY=django-insecure-v^81vr#=p19zvn+@+h8v3*opqlr_3c5i6ltxwj&d7vt3o&^qf^
+DEBUG=TRUE
+```
+
 Initialize database:
 
 ```
@@ -28,12 +34,6 @@ Initialize cron job:
 ```
 $ python manage.py crontab add
 ```
-
-## Features
-- [x] Live data
-- [x] Long/Short position
-- [ ] Account balance
-- [ ] Technical analysis chart (Currently using nepsealpha for placeholder)
 
 <br />
 
