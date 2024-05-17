@@ -1,11 +1,16 @@
+import os
 from pathlib import Path
 from datetime import timedelta
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
-SECRET_KEY = 'django-insecure-v^81vr#=p19zvn+@+h8v3*opqlr_3c5i6ltxwj&d7vt3o&^qf^'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 
 INSTALLED_APPS = [

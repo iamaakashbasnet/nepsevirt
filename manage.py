@@ -2,10 +2,18 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-from backend.settings.env import SETTINGS_MODULE
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 
 def main():
+    if os.getenv('DEBUG') == 'TRUE':
+        SETTINGS_MODULE = 'backend.settings.dev'
+    elif os.getenv('DEBUG') == 'FALSE':
+        SETTINGS_MODULE = 'backend.settings.prod'
+
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', SETTINGS_MODULE)
     try:
