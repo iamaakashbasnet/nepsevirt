@@ -94,4 +94,4 @@ class Fund(models.Model):
         default=0.00, max_digits=10, decimal_places=2)
 
     def __str__(self) -> str:
-        return f'Funds for {self.username} - {self.balance}'
+        return f'Funds for {self.user.username} - {self.balance}'

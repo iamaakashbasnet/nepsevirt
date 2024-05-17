@@ -7,13 +7,14 @@ from rest_framework import permissions
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework_simplejwt.tokens import RefreshToken
 
+from v1.accounts.models import Fund
 from v1.accounts.serializers.user import (
     CreateUserSerializer,
     RequestUserSerializer,
     UserProfileSerializer,
-    ChangePasswordSerializer
+    ChangePasswordSerializer,
+    RequestUserFundSerializer,
 )
 from v1.accounts.utils.token import account_activation_token
 from v1.accounts.utils.email_verification import send_account_verification_email
@@ -108,6 +109,14 @@ class PasswordChangeView(APIView):
             return Response({"message": "Password successfully changed."}, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class RequestUserFundView(generics.RetrieveAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = RequestUserFundSerializer
+
+    def get_object(self):
+        return Fund.objects.get(user=self.request.user)
 
 
 class UserProfileView(generics.RetrieveAPIView):

@@ -1,12 +1,22 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
+from v1.accounts.models import Fund
+
+
+class RequestUserFundSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Fund
+        fields = ('balance',)
+
 
 class RequestUserSerializer(serializers.ModelSerializer):
+    fund = RequestUserFundSerializer(read_only=True)  # Nested serializer
+
     class Meta:
         model = get_user_model()
         fields = ('firstname', 'lastname', 'username',
-                  'email', 'avatar', 'is_verified',)
+                  'email', 'avatar', 'is_verified', 'fund',)
 
 
 class CreateUserSerializer(serializers.ModelSerializer):

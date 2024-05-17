@@ -12,7 +12,8 @@ from .views.user import (
     UserProfileView,
     RequestUserUpdateView,
     ActivateAccountView,
-    PasswordChangeView
+    PasswordChangeView,
+    RequestUserFundView,
 )
 
 
@@ -34,4 +35,5 @@ urlpatterns = [
          PasswordChangeView.as_view(),
          name='password-change'),
     path('profile/<str:username>/', UserProfileView.as_view(), name='user-profile'),
+    path('funds/', RequestUserFundView.as_view(), name='user-funds'),
 ]
