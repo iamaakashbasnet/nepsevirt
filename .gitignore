@@ -4,6 +4,7 @@
 !.vscode/extensions.json
 .idea
 
+.venv
 # Python cache and db files
 __pycache__
 *.pyc
