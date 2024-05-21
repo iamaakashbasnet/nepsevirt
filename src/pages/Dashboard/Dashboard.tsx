@@ -9,18 +9,22 @@ const Dashboard = () => {
   const [data, setData] = useState<DataStateTypes[]>([]);
   const user = useSelector((state: RootState) => state.auth.user);
 
-  useEffect(() => {
-    axios
-      .get<DataStateTypes[]>(`/api/data/historic-data/NEPSE Index/`)
-      .then((res) => {
-        const formattedData: DataStateTypes[] = res.data.map((item) => ({
-          time: new Date(item.time).toISOString().slice(0, 10),
-          value: item.value,
-        }));
-        setData(formattedData);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  // BUG: Not able to chart NEPSE data
+  // useEffect(() => {
+  //   axios
+  //     .get<DataStateTypes[]>(`/api/data/historic-data/NEPSE Index/`)
+  //     .then((res) => {
+  // const formattedData: DataStateTypes[] = res.data.map((item) => ({
+  //   open: item.open,
+  //   high: item.high,
+  //   low: item.low,
+  //   close: item.close,
+  //   time: new Date(item.time).toISOString().slice(0, 10),
+  // }));
+  // setData(formattedData);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   return (
     <section>
@@ -38,7 +42,7 @@ const Dashboard = () => {
         </div>
         <div className="w-3/5 text-center">
           <Chart data={data} />
-          <p>NEPSE Index Chart</p>
+          <p className="mt-4">NEPSE Index Chart</p>
         </div>
       </div>
     </section>

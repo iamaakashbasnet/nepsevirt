@@ -45,8 +45,11 @@ const Trade = () => {
         .get<DataStateTypes[]>(`/api/data/historic-data/${data?.find((item) => item.id === selectedOption)?.name}/`)
         .then((res) => {
           const formattedData: DataStateTypes[] = res.data.map((item) => ({
+            open: item.open,
+            high: item.high,
+            low: item.low,
+            close: item.close,
             time: new Date(item.time).toISOString().slice(0, 10),
-            value: item.value,
           }));
           setStockData(formattedData);
         })
@@ -109,7 +112,7 @@ const Trade = () => {
                 </div>
               </div>
 
-              <div className="w-full rounded-lg bg-white shadow dark:border dark:border-gray-700 dark:bg-gray-800 md:mt-0 xl:p-0">
+              <div className="w-full rounded-lg bg-white shadow dark:border dark:border-gray-700 dark:bg-gray-800 md:ml-5 md:mt-0 xl:p-0">
                 <div className="space-y-4 p-6 sm:p-8 md:space-y-6">
                   <h2 className="text-xl font-bold leading-tight tracking-tight">Position Entry</h2>
                   <div>

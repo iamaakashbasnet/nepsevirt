@@ -36,11 +36,14 @@ class NepseData:
 
                 # Extract OHLC data
                 timestamps = ohlc_data['t']
+                open_prices = ohlc_data["o"]
+                high_prices = ohlc_data["h"]
+                low_prices = ohlc_data["l"]
                 close_prices = ohlc_data["c"]
 
                 # Convert timestamps to ISO format and pair with close prices
                 formatted_data = [{'time': datetime.utcfromtimestamp(ts).strftime(
-                    '%Y-%m-%dT%H:%M:%S'), 'value': close} for ts, close in zip(timestamps, close_prices)]
+                    '%Y-%m-%dT%H:%M:%S'), 'open': open, 'high': high, 'low': low, 'close': close} for ts, open, high, low, close in zip(timestamps, open_prices, high_prices, low_prices, close_prices)]
 
                 return formatted_data
             else:
