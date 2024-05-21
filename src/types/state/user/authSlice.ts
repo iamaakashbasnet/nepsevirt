@@ -6,6 +6,7 @@ interface UserState {
   avatar: string | undefined;
   is_verified: boolean | undefined;
   at?: string | undefined;
+  fund: { balance: number };
 }
 
 interface AuthState {
