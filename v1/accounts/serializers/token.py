@@ -20,6 +20,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         data['username'] = user.username
         data['email'] = user.email
         data['avatar'] = self.get_image_url(user)
+        data['is_verified'] = user.is_verified
 
         return data
 
