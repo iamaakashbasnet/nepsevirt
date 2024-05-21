@@ -11,7 +11,11 @@ class NepseData:
         self.date_to = self.date_to_unix_timestamp(date_to)
         self.currency = currency
         self.time_frame = time_frame
-        self.url = f'https://nepsealpha.com/trading/1/history?symbol={self.symbol}&resolution={self.time_frame}&from={self.date_from}&to={self.date_to}&pass=ok&currencyCode={self.currency}'
+        self.url = f'https://www.sharesansar.com/{'nepse-candlestick-chart' if self.symbol == 'NEPSE Index' else 'company-chart'}/history?symbol={
+            self.symbol}&resolution={self.time_frame}&from={self.date_from}&to={self.date_to}'
+
+        print(self.symbol)
+        print(self.url)
 
     def date_to_unix_timestamp(self, date_str):
         date_obj = datetime.strptime(date_str, "%Y-%m-%d")
