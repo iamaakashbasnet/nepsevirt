@@ -6,6 +6,8 @@ from rest_framework_simplejwt.serializers import (
 )
 from rest_framework_simplejwt.exceptions import InvalidToken
 
+from v1.accounts.serializers.user import RequestUserFundSerializer
+
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     def get_image_url(self, obj):
@@ -21,6 +23,10 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         data['email'] = user.email
         data['avatar'] = self.get_image_url(user)
         data['is_verified'] = user.is_verified
+
+        fund_serializer = RequestUserFundSerializer(
+            user.fund, context=self.context)
+        data['fund'] = fund_serializer.data
 
         return data
 
