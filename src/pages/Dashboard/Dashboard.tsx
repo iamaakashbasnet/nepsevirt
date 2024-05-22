@@ -10,21 +10,22 @@ const Dashboard = () => {
   const user = useSelector((state: RootState) => state.auth.user);
 
   // BUG: Not able to chart NEPSE data
-  // useEffect(() => {
-  //   axios
-  //     .get<DataStateTypes[]>(`/api/data/historic-data/NEPSE Index/`)
-  //     .then((res) => {
-  // const formattedData: DataStateTypes[] = res.data.map((item) => ({
-  //   open: item.open,
-  //   high: item.high,
-  //   low: item.low,
-  //   close: item.close,
-  //   time: new Date(item.time).toISOString().slice(0, 10),
-  // }));
-  // setData(formattedData);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
+  useEffect(() => {
+    axios
+      .get<DataStateTypes[]>(`/api/data/historic-data/NEPSE Index/`)
+      .then((res) => {
+        const formattedData: DataStateTypes[] = res.data.map((item) => ({
+          open: Number(item.open),
+          high: Number(item.high),
+          low: Number(item.low),
+          close: Number(item.close),
+          time: new Date(item.time).toISOString().slice(0, 10),
+        }));
+        setData(formattedData);
+        console.log(formattedData);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <section>

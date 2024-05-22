@@ -45,10 +45,10 @@ const Trade = () => {
         .get<DataStateTypes[]>(`/api/data/historic-data/${data?.find((item) => item.id === selectedOption)?.name}/`)
         .then((res) => {
           const formattedData: DataStateTypes[] = res.data.map((item) => ({
-            open: item.open,
-            high: item.high,
-            low: item.low,
-            close: item.close,
+            open: Number(item.open),
+            high: Number(item.high),
+            low: Number(item.low),
+            close: Number(item.close),
             time: new Date(item.time).toISOString().slice(0, 10),
           }));
           setStockData(formattedData);
