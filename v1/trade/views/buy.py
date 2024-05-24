@@ -1,6 +1,7 @@
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
+from django.contrib.auth import get_user_model
 
 from v1.trade.serializers.portfoliostocks import PositionSerializer
 from v1.portfolio.models import Portfolio, Position, POSITION_CHOICES
@@ -18,6 +19,11 @@ class Buy(generics.GenericAPIView):
         quantity = self.request.data.get('quantity')
 
         user_portfolio = Portfolio.objects.get(user=self.request.user)
+
+        # Check if fund is available or not
+        if self.request.user.fund.balance < quantity * StockName.objects.get(id=stock_id).stockdata.ltp:
+            return Response({'error': 'Insufficient funds'}, status=status.HTTP_400_BAD_REQUEST)
+
         # Check if the position already exists
         try:
             position = Position.objects.get(
@@ -27,6 +33,13 @@ class Buy(generics.GenericAPIView):
             if position.side != POSITION_CHOICES[1][0]:
                 self.update_long_position(position, quantity, StockName.objects.get(
                     id=self.request.data.get('stock')).stockdata.ltp)
+
+                fund = self.request.user.fund
+                fund.balance -= quantity * \
+                    StockName.objects.get(id=stock_id).stockdata.ltp
+                print(fund)
+                fund.save()
+
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             # For short position
             else:

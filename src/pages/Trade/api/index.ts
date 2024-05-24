@@ -1,6 +1,9 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+import { store } from 'state/store';
+import { loadUserDataAsync } from 'state/user/authSlice';
+
 export interface StockNames {
   id: number;
   name: string;
@@ -42,9 +45,10 @@ export const buyStock = async (quantity: number, stock: number) => {
   try {
     const res = await axios.post<StockBuyResponse>(`/api/trade/buy/`, { quantity: Number(quantity), stock: stock });
     toast.success('Order executed successfully.');
+    await store.dispatch(loadUserDataAsync());
     return res.data;
   } catch (err) {
-    toast.success('Order failed to place.');
+    toast.error('Order failed to place.');
   }
 };
 
