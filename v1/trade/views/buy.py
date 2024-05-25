@@ -6,6 +6,7 @@ from django.contrib.auth import get_user_model
 from v1.trade.serializers.portfoliostocks import PositionSerializer
 from v1.portfolio.models import Portfolio, Position, POSITION_CHOICES
 from v1.data.models import StockName
+from v1.accounts.models import Fund
 
 
 class Buy(generics.GenericAPIView):
@@ -23,46 +24,45 @@ class Buy(generics.GenericAPIView):
         # Check if fund is available or not
         if self.request.user.fund.balance < quantity * StockName.objects.get(id=stock_id).stockdata.ltp:
             return Response({'error': 'Insufficient funds'}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            # Check if the position already exists
+            try:
+                position = Position.objects.get(
+                    portfolio=user_portfolio, stock_id=stock_id)
 
-        # Check if the position already exists
-        try:
-            position = Position.objects.get(
-                portfolio=user_portfolio, stock_id=stock_id)
-
-            # Buy for long positions
-            if position.side != POSITION_CHOICES[1][0]:
-                self.update_long_position(position, quantity, StockName.objects.get(
-                    id=self.request.data.get('stock')).stockdata.ltp)
-
-                fund = self.request.user.fund
-                fund.balance -= quantity * \
-                    StockName.objects.get(id=stock_id).stockdata.ltp
-                print(fund)
-                fund.save()
-
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-            # For short position
-            else:
-                if position.quantity >= quantity:
-                    self.update_short_position(position, quantity, StockName.objects.get(
+                # Buy for long positions
+                if position.side != POSITION_CHOICES[1][0]:
+                    self.update_long_position(position, quantity, StockName.objects.get(
                         id=self.request.data.get('stock')).stockdata.ltp)
+
+                    fund = Fund.objects.get(user=self.request.user)
+                    fund.balance -= quantity * \
+                        StockName.objects.get(id=stock_id).stockdata.ltp
+                    fund.save()
+
                     return Response(serializer.data, status=status.HTTP_201_CREATED)
+                # For short position
                 else:
-                    return Response({'error': 'Quantity greater than holding quantity'}, status=status.HTTP_400_BAD_REQUEST)
+                    if position.quantity >= quantity:
+                        self.update_short_position(position, quantity, StockName.objects.get(
+                            id=self.request.data.get('stock')).stockdata.ltp)
+                        return Response(serializer.data, status=status.HTTP_201_CREATED)
+                    else:
+                        return Response({'error': 'Quantity greater than holding quantity'}, status=status.HTTP_400_BAD_REQUEST)
 
-        except Position.DoesNotExist:
-            # Create a new position
-            position = Position.objects.create(
-                portfolio=user_portfolio,
-                stock_id=stock_id,
-                side=POSITION_CHOICES[0][0],
-                quantity=quantity,
-                average_fill_price=StockName.objects.get(
-                    id=self.request.data.get('stock')).stockdata.ltp
-            )
+            except Position.DoesNotExist:
+                # Create a new position
+                position = Position.objects.create(
+                    portfolio=user_portfolio,
+                    stock_id=stock_id,
+                    side=POSITION_CHOICES[0][0],
+                    quantity=quantity,
+                    average_fill_price=StockName.objects.get(
+                        id=self.request.data.get('stock')).stockdata.ltp
+                )
 
-            position.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+                position.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def update_long_position(self, position, quantity, purchase_price):
         total_quantity = position.quantity + quantity
