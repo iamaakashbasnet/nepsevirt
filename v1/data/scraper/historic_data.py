@@ -11,8 +11,9 @@ class NepseData:
         self.date_to = self.date_to_unix_timestamp(date_to)
         self.currency = currency
         self.time_frame = time_frame
-        self.url = f'https://www.sharesansar.com/{'nepse-candlestick-chart' if self.symbol == 'NEPSE Index' else 'company-chart'}/history?symbol={
-            self.symbol}&resolution={self.time_frame}&from={self.date_from}&to={self.date_to}'
+
+        chart_type = 'nepse-candlestick-chart' if self.symbol == 'NEPSE Index' else 'company-chart'
+        self.url = f'https://www.sharesansar.com/{chart_type}/history?symbol={self.symbol}&resolution={self.time_frame}&from={self.date_from}&to={self.date_to}'
 
         print(self.symbol)
         print(self.url)

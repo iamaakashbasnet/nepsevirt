@@ -9,6 +9,8 @@ load_dotenv()
 
 
 def main():
+    SETTINGS_MODULE = 'backend.settings.dev'
+
     if os.getenv('DEBUG') == 'TRUE':
         SETTINGS_MODULE = 'backend.settings.dev'
     elif os.getenv('DEBUG') == 'FALSE':
