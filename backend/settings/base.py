@@ -196,3 +196,7 @@ SIMPLE_JWT = {
 CRONJOBS = [
     ('*/1 * * * *', 'v1.data.scraper.livedata.get_live_data')
 ]
+
+AUTHENTICATION_BACKENDS = [
+    "v1.accounts.authenticator.UsernameAndEmailBackend",
+]
