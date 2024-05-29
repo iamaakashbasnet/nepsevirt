@@ -6,7 +6,7 @@ from django.db import transaction
 from v1.trade.serializers.portfoliostocks import PositionSerializer
 from v1.portfolio.models import Portfolio, Position, POSITION_CHOICES
 from v1.data.models import StockName
-from v1.accounts.models import Fund
+from v1.accounts.models import Fund, ProfitLoss
 
 
 class Buy(generics.GenericAPIView):
@@ -21,6 +21,7 @@ class Buy(generics.GenericAPIView):
 
         user_portfolio = Portfolio.objects.get(user=self.request.user)
         user_fund = Fund.objects.get(user=self.request.user)
+        user_profit_loss = ProfitLoss.objects.get(user=self.request.user)
 
         stock_price = StockName.objects.get(id=stock_id).stockdata.ltp
         total_cost = stock_price * quantity
@@ -40,7 +41,7 @@ class Buy(generics.GenericAPIView):
                 else:
                     if position.quantity >= quantity:
                         self.update_short_position(
-                            position, quantity, stock_price)
+                            position, quantity, stock_price, user_profit_loss)
                     else:
                         return Response({'error': 'Quantity greater than holding quantity'}, status=status.HTTP_400_BAD_REQUEST)
             except Position.DoesNotExist:
@@ -68,7 +69,11 @@ class Buy(generics.GenericAPIView):
         position.quantity = total_quantity
         position.save()
 
-    def update_short_position(self, position, quantity, purchase_price):
+    def update_short_position(self, position, quantity, purchase_price, user_profit_loss):
+        profit = (position.average_fill_price - purchase_price) * quantity
+        user_profit_loss.amount += profit
+        user_profit_loss.save()
+
         position.quantity -= quantity
         if position.quantity == 0:
             position.delete()
