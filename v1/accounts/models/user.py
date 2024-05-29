@@ -96,3 +96,12 @@ class Fund(models.Model):
 
     def __str__(self) -> str:
         return f'Funds for {self.user.username} - {self.balance}'
+
+
+class ProfitLoss(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    amount = models.DecimalField(
+        default=0.00, max_digits=10, decimal_places=2)
+
+    def __str__(self) -> str:
+        return f'Profit/Loss for user {self.user.username} - {self.amount}'

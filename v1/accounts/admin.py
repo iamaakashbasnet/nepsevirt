@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin  # commit 5a59e13
-from .models import Fund
+from .models import Fund, ProfitLoss
 
 
 @admin.register(get_user_model())
@@ -48,4 +48,9 @@ class UserAdmin(BaseUserAdmin):
 
 @admin.register(Fund)
 class FundAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(ProfitLoss)
+class ProfitLossAdmin(admin.ModelAdmin):
     pass
