@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-from v1.accounts.models import Fund
+from v1.accounts.models import Fund, ProfitLoss
 
 
 class RequestUserFundSerializer(serializers.ModelSerializer):
@@ -10,13 +10,20 @@ class RequestUserFundSerializer(serializers.ModelSerializer):
         fields = ('balance',)
 
 
+class RequestUserProfitLossSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProfitLoss
+        fields = ('amount',)
+
+
 class RequestUserSerializer(serializers.ModelSerializer):
     fund = RequestUserFundSerializer(read_only=True)  # Nested serializer
+    profitloss = RequestUserProfitLossSerializer(read_only=True)
 
     class Meta:
         model = get_user_model()
         fields = ('firstname', 'lastname', 'username',
-                  'email', 'avatar', 'is_verified', 'fund',)
+                  'email', 'avatar', 'is_verified', 'fund', 'profitloss')
 
 
 class CreateUserSerializer(serializers.ModelSerializer):

@@ -7,6 +7,7 @@ interface UserState {
   is_verified: boolean | undefined;
   at?: string | undefined;
   fund: { balance: number };
+  profitloss: { amount: number };
 }
 
 interface AuthState {
