@@ -39,3 +39,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+# Stock data
+v1/data/csv
+v1/data/json
