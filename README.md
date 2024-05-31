@@ -27,6 +27,12 @@ $ python manage.py makemigrations
 $ python manage.py migrate
 ```
 
+Fetch stock data (Hit GET request to this route):
+```
+http://localhost:8000/data/fetch-live-data/
+```
+or
+
 Initialize cron job:
 ```
 $ python manage.py crontab add
