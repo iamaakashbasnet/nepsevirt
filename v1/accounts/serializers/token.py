@@ -6,7 +6,7 @@ from rest_framework_simplejwt.serializers import (
 )
 from rest_framework_simplejwt.exceptions import InvalidToken
 
-from v1.accounts.serializers.user import RequestUserFundSerializer
+from v1.accounts.serializers.user import RequestUserFundSerializer, RequestUserProfitLossSerializer
 
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -27,6 +27,10 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         fund_serializer = RequestUserFundSerializer(
             user.fund, context=self.context)
         data['fund'] = fund_serializer.data
+
+        profitloss_serializer = RequestUserProfitLossSerializer(
+            user.profitloss, context=self.context)
+        data['profitloss'] = profitloss_serializer.data
 
         return data
 
