@@ -1,12 +1,35 @@
 version: '3.8'
 
 services:
+  db: 
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: nespsevirt
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sql/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+    entrypoint: ["docker-entrypoint.sh"]
+    command: ["postgres"]
+
   backend:
     build:
       context: .
       dockerfile: backend.Dockerfile
     ports:
       - "8000:8000"
+    depends_on:
+      - db 
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend.Dockerfile
+    ports:
+      - "3000:3000"
 
 volumes:
   postgres_data:
