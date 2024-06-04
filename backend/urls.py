@@ -8,7 +8,8 @@ urlpatterns = [
     path('accounts/', include('v1.accounts.urls')),
     path('data/', include('v1.data.urls')),
     path('portfolio/', include('v1.portfolio.urls')),
-    path('trade/', include('v1.trade.urls'))
+    path('trade/', include('v1.trade.urls')),
+    path('officialapi/', include('v1.officialapi.urls')),
 ]
 
 if settings.DEBUG:

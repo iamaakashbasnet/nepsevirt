@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'v1.data',
     'v1.portfolio',
     'v1.trade',
+    'v1.officialapi'
 ]
 
 
