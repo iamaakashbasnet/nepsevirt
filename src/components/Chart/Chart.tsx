@@ -1,6 +1,5 @@
-// import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { ColorType, createChart, IChartApi, ISeriesApi } from 'lightweight-charts';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export interface DataStateTypes {
   time: string;
@@ -12,10 +11,11 @@ export interface DataStateTypes {
 
 export const Chart = ({ data }: { data: DataStateTypes[] }) => {
   const chartContainerRef = useRef<HTMLDivElement | null>(null);
+  const [chart, setChart] = useState<IChartApi | null>(null);
 
   useEffect(() => {
     if (chartContainerRef.current) {
-      const chart: IChartApi = createChart(chartContainerRef.current, {
+      const newChart: IChartApi = createChart(chartContainerRef.current, {
         width: chartContainerRef.current.clientWidth,
         height: 600,
         layout: {
@@ -32,14 +32,34 @@ export const Chart = ({ data }: { data: DataStateTypes[] }) => {
         },
       });
 
-      const candlestickSeries: ISeriesApi<'Candlestick'> = chart.addCandlestickSeries();
-      candlestickSeries.setData(data);
+      setChart(newChart);
 
       return () => {
-        chart.remove();
+        newChart.remove();
       };
     }
-  }, [data]);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (chart) {
+        chart.resize(chartContainerRef.current?.clientWidth || 0, 600);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [chart]);
+
+  useEffect(() => {
+    if (chart && data) {
+      const candlestickSeries: ISeriesApi<'Candlestick'> = chart.addCandlestickSeries();
+      candlestickSeries.setData(data);
+    }
+  }, [chart, data]);
 
   return (
     <>

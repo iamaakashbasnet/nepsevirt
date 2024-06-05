@@ -48,7 +48,7 @@ const Dashboard = () => {
                 <p>Total Loss: Rs.{user.profitloss.amount}</p>
               </div>
             </div>
-            <div className="w-3/5 text-center">
+            <div className="w-full text-center md:w-3/5">
               <Chart data={data} />
               <p className="mt-4">NEPSE Index Chart</p>
             </div>
