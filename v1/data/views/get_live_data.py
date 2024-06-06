@@ -1,6 +1,3 @@
-import csv
-from django.conf import settings
-from django.db import transaction
 from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView, RetrieveAPIView
@@ -16,35 +13,6 @@ from v1.data.serializers import livedata
 class FetchLiveData(APIView):
     def get(self, request):
         get_live_data()
-
-        with open(f'{settings.BASE_DIR}/v1/data/csv/livedata.csv', 'r', encoding='UTF-8') as file:
-            reader = csv.DictReader(file)
-
-            with transaction.atomic():
-                for row in reader:
-                    stock_name, created = StockName.objects.get_or_create(
-                        name=row['name'])
-
-                    stock_data, _ = StockData.objects.get_or_create(
-                        name=stock_name,
-                        # Defaults if doesn't exist
-                        defaults={
-                            'ltp': row['ltp'],
-                            'open': row['open'],
-                            'high': row['high'],
-                            'low': row['low'],
-                            'close': row['close'],
-                        }
-                    )
-
-                    # Update existing entry if necessary
-                    if not created:
-                        stock_data.ltp = row['ltp']
-                        stock_data.open = row['open']
-                        stock_data.high = row['high']
-                        stock_data.low = row['low']
-                        stock_data.close = row['close']
-                        stock_data.save()
 
         return Response({'result': 'fetched'})
 
