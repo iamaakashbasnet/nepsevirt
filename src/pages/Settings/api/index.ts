@@ -26,7 +26,7 @@ export const updateUserData = async (data: UserProfileTypes) => {
     return res.data;
   } catch (err) {
     if (axios.isAxiosError(err) && err.response) {
-      toast.error((err.response.data as { detail: string }).detail);
+      toast.error(err.response.data as string);
     }
   }
 };
@@ -38,7 +38,7 @@ export const passwordChange = async (data: StateProps) => {
     return res.data;
   } catch (err) {
     if (axios.isAxiosError(err) && err.response) {
-      toast.error((err.response.data as { detail: string }).detail);
+      toast.error(err.response.data as string);
     }
   }
 };

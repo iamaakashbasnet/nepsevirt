@@ -27,7 +27,7 @@ export const fetchStockNames = async () => {
     return res.data;
   } catch (err) {
     if (axios.isAxiosError(err) && err.response) {
-      toast.error((err.response.data as { detail: string }).detail);
+      toast.error(err.response.data as string);
     }
   }
 };
@@ -38,7 +38,7 @@ export const fetchStockDetail = async (id: number) => {
     return res.data;
   } catch (err) {
     if (axios.isAxiosError(err) && err.response) {
-      toast.error((err.response.data as { detail: string }).detail);
+      toast.error(err.response.data as string);
     }
   }
 };
@@ -51,7 +51,7 @@ export const buyStock = async (quantity: number, stock: number) => {
     return res.data;
   } catch (err) {
     if (axios.isAxiosError(err) && err.response) {
-      toast.error((err.response.data as { detail: string }).detail);
+      toast.error(err.response.data as string);
     }
   }
 };
@@ -64,7 +64,7 @@ export const sellStock = async (quantity: number, stock: number) => {
     return res.data;
   } catch (err) {
     if (axios.isAxiosError(err) && err.response) {
-      toast.error((err.response.data as { detail: string }).detail);
+      toast.error(err.response.data as string);
     }
   }
 };

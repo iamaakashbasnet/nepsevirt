@@ -17,7 +17,10 @@ export const fetchLiveMarketData = async () => {
     return res.data;
   } catch (err) {
     if (axios.isAxiosError(err) && err.response) {
-      toast.error((err.response.data as { detail: string }).detail);
+      toast.error(err.response.data as string);
     }
+    // if (axios.isAxiosError(err) && err.response) {
+    //   toast.error((err.response.data as { detail: string }).detail);
+    // }
   }
 };
