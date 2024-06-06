@@ -26,7 +26,9 @@ export const fetchStockNames = async () => {
     const res = await axios.get<StockNames[]>('/api/data/live-data-stockname/');
     return res.data;
   } catch (err) {
-    toast.error('Unable to fetch stock names');
+    if (axios.isAxiosError(err) && err.response) {
+      toast.error((err.response.data as { detail: string }).detail);
+    }
   }
 };
 
@@ -35,7 +37,9 @@ export const fetchStockDetail = async (id: number) => {
     const res = await axios.get<StockDetail>(`/api/data/stock-detail/${id}/`);
     return res.data;
   } catch (err) {
-    toast.error('Unable to fetch stock detail');
+    if (axios.isAxiosError(err) && err.response) {
+      toast.error((err.response.data as { detail: string }).detail);
+    }
   }
 };
 
@@ -46,7 +50,9 @@ export const buyStock = async (quantity: number, stock: number) => {
     await store.dispatch(loadUserDataAsync());
     return res.data;
   } catch (err) {
-    toast.error('Order failed to place.');
+    if (axios.isAxiosError(err) && err.response) {
+      toast.error((err.response.data as { detail: string }).detail);
+    }
   }
 };
 
@@ -57,6 +63,8 @@ export const sellStock = async (quantity: number, stock: number) => {
     await store.dispatch(loadUserDataAsync());
     return res.data;
   } catch (err) {
-    toast.error('Order failed to place.');
+    if (axios.isAxiosError(err) && err.response) {
+      toast.error((err.response.data as { detail: string }).detail);
+    }
   }
 };

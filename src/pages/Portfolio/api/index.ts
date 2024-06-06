@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export interface Position {
   id: number;
@@ -20,6 +21,8 @@ export const fetchPortfolioData = async () => {
     const res = await axios.get<Portfolio>('/api/portfolio/list-stocks/');
     return res.data;
   } catch (err) {
-    console.log(err);
+    if (axios.isAxiosError(err) && err.response) {
+      toast.error((err.response.data as { detail: string }).detail);
+    }
   }
 };

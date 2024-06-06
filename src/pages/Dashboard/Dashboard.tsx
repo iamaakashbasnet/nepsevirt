@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import { RootState } from 'state/store';
 import { Chart, DataStateTypes } from 'components/Chart';
@@ -21,9 +22,8 @@ const Dashboard = () => {
           time: new Date(item.time).toISOString().slice(0, 10),
         }));
         setData(formattedData);
-        console.log(formattedData);
       })
-      .catch((err) => console.log(err));
+      .catch(() => toast.error('Error fetching data'));
   }, []);
 
   return (

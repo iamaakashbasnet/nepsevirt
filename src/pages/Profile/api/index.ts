@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export interface UserProfileTypes {
   firstname: string;
@@ -13,6 +14,8 @@ export const fetchUserProfileData = async (username: string | undefined) => {
     const res = await axios.get<UserProfileTypes>(`/api/accounts/profile/${username}/`);
     return res.data;
   } catch (err) {
-    console.log(err);
+    if (axios.isAxiosError(err) && err.response) {
+      toast.error((err.response.data as { detail: string }).detail);
+    }
   }
 };

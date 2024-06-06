@@ -12,6 +12,7 @@ export interface DataStateTypes {
 export const Chart = ({ data }: { data: DataStateTypes[] }) => {
   const chartContainerRef = useRef<HTMLDivElement | null>(null);
   const [chart, setChart] = useState<IChartApi | null>(null);
+  const [candlestickSeries, setCandlestickSeries] = useState<ISeriesApi<'Candlestick'> | null>(null);
 
   useEffect(() => {
     if (chartContainerRef.current) {
@@ -34,6 +35,9 @@ export const Chart = ({ data }: { data: DataStateTypes[] }) => {
 
       setChart(newChart);
 
+      const newCandlestickSeries = newChart.addCandlestickSeries();
+      setCandlestickSeries(newCandlestickSeries);
+
       return () => {
         newChart.remove();
       };
@@ -55,11 +59,10 @@ export const Chart = ({ data }: { data: DataStateTypes[] }) => {
   }, [chart]);
 
   useEffect(() => {
-    if (chart && data) {
-      const candlestickSeries: ISeriesApi<'Candlestick'> = chart.addCandlestickSeries();
+    if (chart && candlestickSeries) {
       candlestickSeries.setData(data);
     }
-  }, [chart, data]);
+  }, [chart, candlestickSeries, data]);
 
   return (
     <>

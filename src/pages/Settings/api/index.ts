@@ -25,7 +25,9 @@ export const updateUserData = async (data: UserProfileTypes) => {
     toast.success('Account information updated.');
     return res.data;
   } catch (err) {
-    toast.error('Something went wrong.');
+    if (axios.isAxiosError(err) && err.response) {
+      toast.error((err.response.data as { detail: string }).detail);
+    }
   }
 };
 
@@ -35,6 +37,8 @@ export const passwordChange = async (data: StateProps) => {
     toast.success('Password Changed.');
     return res.data;
   } catch (err) {
-    toast.error('Something went wrong.');
+    if (axios.isAxiosError(err) && err.response) {
+      toast.error((err.response.data as { detail: string }).detail);
+    }
   }
 };
