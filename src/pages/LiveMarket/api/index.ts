@@ -11,6 +11,12 @@ export interface StockData {
   close: number;
 }
 
+export interface IsMarketOpen {
+  isOpen: string;
+  asOf: string;
+  id: number;
+}
+
 export const fetchLiveMarketData = async () => {
   try {
     const res = await axios.get<StockData[]>('/api/data/live-data/');
@@ -22,5 +28,16 @@ export const fetchLiveMarketData = async () => {
     // if (axios.isAxiosError(err) && err.response) {
     //   toast.error((err.response.data as { detail: string }).detail);
     // }
+  }
+};
+
+export const isMarketOpen = async () => {
+  try {
+    const res = await axios.get<IsMarketOpen>('/api/officialapi/is-market-open/');
+    return res.data;
+  } catch (err) {
+    if (axios.isAxiosError(err) && err.response) {
+      toast.error(err.response.data as string);
+    }
   }
 };

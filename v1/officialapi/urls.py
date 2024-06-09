@@ -1,8 +1,8 @@
 from django.urls import path
 
-from .views.index import Test
+from .views.market import IsMarketOpen
 
 
 urlpatterns = [
-    path('test/', Test.as_view(), name='test'),
+    path('is-market-open/', IsMarketOpen.as_view(), name='is-market-open'),
 ]

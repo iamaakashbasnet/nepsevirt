@@ -10,9 +10,7 @@ from v1.officialapi.bypasser import Nepse
 nepse = Nepse()
 
 
-class Test(APIView):
-    permission_classes = [permissions.AllowAny]
-
+class IsMarketOpen(APIView):
     def get(self, request, *args, **kwargs):
         path = '/nepse-data/market-open'
         post_data = request.POST if request.method == 'POST' else None
