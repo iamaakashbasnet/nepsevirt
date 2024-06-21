@@ -6,6 +6,9 @@ export interface UserProfileTypes {
   lastname: string;
   username: string;
   avatar: string;
+  profitloss: {
+    amount: number;
+  };
 }
 
 export const fetchUserProfileData = async (username: string | undefined) => {
