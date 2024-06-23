@@ -13,6 +13,23 @@ export const Chart = ({ data }: { data: DataStateTypes[] }) => {
   const chartContainerRef = useRef<HTMLDivElement | null>(null);
   const [chart, setChart] = useState<IChartApi | null>(null);
   const [candlestickSeries, setCandlestickSeries] = useState<ISeriesApi<'Candlestick'> | null>(null);
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark'); // Default theme is dark
+
+  // Themes configuration
+  const themes = {
+    dark: {
+      background: { type: ColorType.Solid, color: '#131722' },
+      textColor: '#d9d9d9',
+      gridLinesColor: '#2B2B43',
+      borderColor: '#2d2f4d',
+    },
+    light: {
+      background: { type: ColorType.Solid, color: '#FFFFFF' },
+      textColor: '#333333',
+      gridLinesColor: '#CCCCCC',
+      borderColor: '#CCCCCC',
+    },
+  };
 
   useEffect(() => {
     if (chartContainerRef.current) {
@@ -20,15 +37,15 @@ export const Chart = ({ data }: { data: DataStateTypes[] }) => {
         width: chartContainerRef.current.clientWidth,
         height: 600,
         layout: {
-          background: { type: ColorType.Solid, color: '#131722' },
-          textColor: '#d9d9d9',
+          background: themes[theme].background,
+          textColor: themes[theme].textColor,
         },
         grid: {
           vertLines: {
-            color: '#2B2B43',
+            color: themes[theme].gridLinesColor,
           },
           horzLines: {
-            color: '#2B2B43',
+            color: themes[theme].gridLinesColor,
           },
         },
       });
@@ -42,7 +59,7 @@ export const Chart = ({ data }: { data: DataStateTypes[] }) => {
         newChart.remove();
       };
     }
-  }, []);
+  }, [theme]); // Re-render the chart when theme changes
 
   useEffect(() => {
     const handleResize = () => {
@@ -59,6 +76,23 @@ export const Chart = ({ data }: { data: DataStateTypes[] }) => {
   }, [chart]);
 
   useEffect(() => {
+    // Detect system theme preference
+    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const listener = (e: MediaQueryListEventInit) => {
+      const newTheme = e.matches ? 'dark' : 'light';
+      setTheme(newTheme);
+    };
+
+    // Set initial theme based on system preference
+    darkModeMediaQuery.addEventListener('change', listener);
+    listener(darkModeMediaQuery); // Call listener initially to set the theme
+
+    return () => {
+      darkModeMediaQuery.removeEventListener('change', listener);
+    };
+  }, []);
+
+  useEffect(() => {
     if (chart && candlestickSeries) {
       candlestickSeries.setData(data);
     }
@@ -66,7 +100,10 @@ export const Chart = ({ data }: { data: DataStateTypes[] }) => {
 
   return (
     <>
-      <div ref={chartContainerRef} style={{ border: `2px solid #2d2f4d`, borderRadius: `.7rem` }}></div>
+      <div
+        ref={chartContainerRef}
+        style={{ border: `2px solid ${themes[theme].borderColor}`, borderRadius: `.7rem` }}
+      ></div>
     </>
   );
 };
