@@ -103,7 +103,9 @@ const Profile = () => {
                   <li className="py-3 sm:py-4">
                     <div className="flex items-center justify-between rtl:space-x-reverse">
                       <div className="flex-shrink-0">Ranking</div>
-                      <div className="inline-flex items-center text-base text-gray-900 dark:text-white">101</div>
+                      <div className="inline-flex items-center text-base text-gray-900 dark:text-white">
+                        {data.ranking}
+                      </div>
                     </div>
                   </li>
                 </>

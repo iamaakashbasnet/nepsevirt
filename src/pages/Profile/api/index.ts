@@ -9,6 +9,7 @@ export interface UserProfileTypes {
   profitloss: {
     amount: number;
   };
+  ranking: number;
 }
 
 export const fetchUserProfileData = async (username: string | undefined) => {
