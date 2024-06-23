@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 from django.utils.http import urlsafe_base64_decode
 from django.utils.encoding import force_str
+from django.db.models import Sum
 from rest_framework import generics
 from rest_framework import permissions
 from rest_framework.views import APIView
@@ -125,7 +126,17 @@ class UserProfileView(generics.RetrieveAPIView):
     serializer_class = UserProfileSerializer
 
     def get_object(self):
-        user = get_object_or_404(
-            self.get_queryset(), username=self.kwargs.get('username'))
+        User = get_user_model()
+        current_user = self.request.user
 
-        return user
+        # Determine the ranking based on profitloss (or any other criterion)
+        all_users = User.objects.annotate(total_profitloss=Sum(
+            'profitloss__amount')).order_by('-total_profitloss')
+
+        # Find the ranking of the current user
+        for index, user in enumerate(all_users):
+            if user.id == current_user.id:
+                current_user.ranking = index + 1  # Rank is 1-based
+                break
+
+        return current_user

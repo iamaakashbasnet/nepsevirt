@@ -59,8 +59,9 @@ class ChangePasswordSerializer(serializers.Serializer):
 
 class UserProfileSerializer(serializers.ModelSerializer):
     profitloss = RequestUserProfitLossSerializer(read_only=True)
+    ranking = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = get_user_model()
         fields = ('firstname', 'lastname', 'avatar',
-                  'username', 'profitloss')
+                  'username', 'profitloss', 'ranking',)
