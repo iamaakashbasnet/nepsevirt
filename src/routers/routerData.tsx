@@ -13,6 +13,7 @@ const Settings = lazy(() => import('pages/Settings'));
 const Trade = lazy(() => import('pages/Trade'));
 const Portfolio = lazy(() => import('pages/Portfolio'));
 const Verified = lazy(() => import('pages/Verified'));
+const Leaderboard = lazy(() => import('pages/Leaderboard'));
 
 export const basic: routerType[] = [
   {
@@ -32,4 +33,5 @@ export const dashboard: routerType[] = [
   { title: 'Settings', path: 'settings', element: <Settings /> },
   { title: 'Trade', path: 'trade', element: <Trade /> },
   { title: 'Portfolio', path: 'portfolio', element: <Portfolio /> },
+  { title: 'Leaderboard', path: 'leaderboard', element: <Leaderboard /> },
 ];
