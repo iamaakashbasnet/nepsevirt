@@ -13,7 +13,7 @@ from v1.accounts.serializers.ranking import (
 
 class UserRankingView(ListAPIView):
     serializer_class = UserRankingSerializer
-    permission_classes = permissions.IsAuthenticatedOrReadOnly
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         User = get_user_model()
@@ -29,7 +29,7 @@ class UserRankingView(ListAPIView):
 
 class RequestUserRankingView(RetrieveAPIView):
     serializer_class = UserRankingSerializer
-    permission_classes = permissions.IsAuthenticated
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_object(self):
         User = get_user_model()
