@@ -15,6 +15,7 @@ from .views.user import (
     PasswordChangeView,
     RequestUserFundView,
 )
+from .views.ranking import UserRankingView, RequestUserRankingView
 
 
 urlpatterns = [
@@ -36,4 +37,6 @@ urlpatterns = [
          name='password-change'),
     path('profile/<str:username>/', UserProfileView.as_view(), name='user-profile'),
     path('funds/', RequestUserFundView.as_view(), name='user-funds'),
+    path('user-ranking/', UserRankingView.as_view(), name='user-ranking'),
+    path('my-ranking/', RequestUserRankingView.as_view(), name='my-ranking'),
 ]
