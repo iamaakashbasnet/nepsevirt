@@ -38,7 +38,19 @@ const Leaderboard = () => {
             {data?.map((single, index) => (
               <tr key={index} className="border-b dark:border-gray-700">
                 <td className="flex items-center gap-5 px-4 py-3">
-                  <img className="h-6 w-6 rounded-full" src={single.avatar} alt="Trader photo" />
+                  <div className="relative me-4 flex">
+                    <img className="h-10 w-10 rounded-full" src={single.avatar} alt="Trader avatar" />
+                    <span
+                      className={`absolute right-0 inline-flex h-3 w-3 animate-ping rounded-full ${
+                        single.profitloss.amount < 0 ? 'bg-red-500' : 'bg-emerald-500'
+                      } opacity-75`}
+                    ></span>
+                    <span
+                      className={`relative inline-flex h-3 w-3 rounded-full ${
+                        single.profitloss.amount < 0 ? 'bg-red-500' : 'bg-emerald-500'
+                      }`}
+                    ></span>
+                  </div>
                   {single.firstname} {single.lastname}
                 </td>
                 <td className="px-4 py-3">{single.ranking}</td>
