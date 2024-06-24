@@ -30,7 +30,7 @@ lazy-object-proxy==1.9.0
 lxml==4.9.3
 MarkupSafe==2.1.5
 mccabe==0.7.0
-nepse @ git+https://github.com/basic-bgnr/NepseUnofficialApi@c71df4c4de016739497fc37af30647c03bbf5599
+nepse @ git+https://github.com/basic-bgnr/NepseUnofficialApi@e5cf6ee3eac7d6e152bb53ec2acbe73d5530c49b
 numpy==1.26.4
 outcome==1.3.0.post0
 Pillow==10.0.0
