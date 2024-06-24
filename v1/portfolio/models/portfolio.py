@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
-from v1.data.models import StockName
+from v1.data.models import Security
 
 
 POSITION_CHOICES = [
@@ -12,7 +12,7 @@ POSITION_CHOICES = [
 
 class Portfolio(models.Model):
     user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)
-    stocks = models.ManyToManyField(StockName, through='Position')
+    stocks = models.ManyToManyField(Security, through='Position')
 
     def __str__(self) -> str:
         return f"{self.user.firstname} {self.user.lastname}'s portfolio"
@@ -20,7 +20,7 @@ class Portfolio(models.Model):
 
 class Position(models.Model):
     portfolio = models.ForeignKey(Portfolio, on_delete=models.CASCADE)
-    stock = models.ForeignKey(StockName, on_delete=models.CASCADE)
+    stock = models.ForeignKey(Security, on_delete=models.CASCADE)
     side = models.CharField(
         max_length=5, choices=POSITION_CHOICES, default='LONG')
     quantity = models.PositiveIntegerField(default=0)

@@ -5,35 +5,40 @@ from rest_framework.response import Response
 from rest_framework import permissions
 from rest_framework_simplejwt import authentication
 
-from v1.data.scraper.livedata import get_live_data
-from v1.data.models import StockName, StockData
+# from v1.data.scraper.livedata import get_live_data
+from v1.data.models import Security, SecurityData
 from v1.data.serializers import livedata
 
 
-class FetchLiveData(APIView):
-    def get(self, request):
-        get_live_data()
+# class FetchLiveData(APIView):
+#     def get(self, request):
+#         get_live_data()
 
-        return Response({'result': 'fetched'})
+#         return Response({'result': 'fetched'})
 
+# class FetchLiveData(APIView):
+#     def get(self, request):
+#         get_live_data()
+
+#         return Response({'result': 'fetched'})
 
 class LiveDataStockNameListView(ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [authentication.JWTAuthentication]
-    queryset = StockName.objects.all()
+    queryset = Security.objects.all()
     serializer_class = livedata.LiveDataStockNameSerializer
 
 
 class LiveDataListView(ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [authentication.JWTAuthentication]
-    queryset = StockData.objects.all()
+    queryset = SecurityData.objects.all()
     serializer_class = livedata.LiveDataSerializer
 
 
 class StockDetailView(RetrieveAPIView):
     serializer_class = livedata.LiveDataSerializer
-    queryset = StockData.objects.all()
+    queryset = SecurityData.objects.all()
 
     def get_object(self):
         return get_object_or_404(

@@ -4,7 +4,7 @@ from django.db import transaction
 
 from v1.trade.serializers.portfoliostocks import PositionSerializer
 from v1.portfolio.models import Portfolio, Position, POSITION_CHOICES
-from v1.data.models import StockName
+from v1.data.models import Security
 from v1.accounts.models import Fund, ProfitLoss
 
 
@@ -22,7 +22,8 @@ class Sell(generics.GenericAPIView):
         user_fund = Fund.objects.get(user=self.request.user)
         user_profit_loss = ProfitLoss.objects.get(user=self.request.user)
 
-        stock_price = StockName.objects.get(id=stock_id).stockdata.ltp
+        stock_price = Security.objects.get(
+            id=stock_id).securitydata.lastTradePrice
         total_value = stock_price * quantity
 
         with transaction.atomic():

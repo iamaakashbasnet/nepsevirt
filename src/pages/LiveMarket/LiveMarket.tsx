@@ -51,7 +51,7 @@ const LiveMarket = () => {
                 Low
               </th>
               <th scope="col" className="px-4 py-3">
-                Close
+                Previous Close
               </th>
             </tr>
           </thead>

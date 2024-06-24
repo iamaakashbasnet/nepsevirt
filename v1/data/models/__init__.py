@@ -1,1 +1,1 @@
-from .stock import StockName, StockData
+from .stock import Security, SecurityData
