@@ -24,6 +24,8 @@ class SecurityData(models.Model):
         default=0.00, max_digits=10, decimal_places=2)
     previousClose = models.DecimalField(
         default=0.00, max_digits=10, decimal_places=2)
+    lastUpdatedDateTime = models.DateTimeField(
+        null=True, blank=True, default=None)
 
     class Meta:
         ordering = ['security']

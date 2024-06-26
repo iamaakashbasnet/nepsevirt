@@ -1,3 +1,4 @@
+import time
 from django.db import transaction
 from nepse import Nepse
 from v1.data.models import Security, SecurityData
@@ -38,9 +39,16 @@ def get_live_market():
                         'openPrice': security_data['openPrice'],
                         'highPrice': security_data['highPrice'],
                         'lowPrice': security_data['lowPrice'],
-                        'previousClose': security_data['previousClose']
+                        'previousClose': security_data['previousClose'],
+                        'lastUpdatedDateTime': security_data['lastUpdatedDateTime']
                     }
                 )
     except Exception as e:
         raise Exception(
             f"An error occurred while processing live market data: {e}")
+
+
+def run_every_15_seconds():
+    for _ in range(4):  # This will run the function 4 times (every 15 seconds) within one minute
+        get_live_market()
+        time.sleep(15)  # Wait for 15 seconds

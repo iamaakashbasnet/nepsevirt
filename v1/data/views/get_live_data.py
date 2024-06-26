@@ -39,7 +39,7 @@ class LiveDataStockNameListView(ListAPIView):
 class LiveDataListView(ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [authentication.JWTAuthentication]
-    queryset = SecurityData.objects.all()
+    queryset = SecurityData.objects.all().order_by('-lastUpdatedDateTime')
     serializer_class = livedata.LiveDataSerializer
 
 
