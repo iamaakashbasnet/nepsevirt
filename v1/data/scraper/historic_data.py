@@ -13,8 +13,7 @@ class NepseData:
         self.time_frame = time_frame
 
         chart_type = 'nepse-candlestick-chart' if self.symbol == 'NEPSE Index' else 'company-chart'
-        self.url = f'https://www.sharesansar.com/{chart_type}/history?symbol={
-            self.symbol}&resolution={self.time_frame}&from={self.date_from}&to={self.date_to}'
+        self.url = f'https://www.sharesansar.com/{chart_type}/history?symbol={self.symbol}&resolution={self.time_frame}&from={self.date_from}&to={self.date_to}'
 
     def date_to_unix_timestamp(self, date_str):
         date_obj = datetime.strptime(date_str, "%Y-%m-%d")
