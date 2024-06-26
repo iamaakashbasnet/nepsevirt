@@ -46,7 +46,7 @@ export const fetchStockDetail = async (id: number) => {
 
 export const buyStock = async (quantity: number, stock: number) => {
   try {
-    const res = await axios.post<StockBuyResponse>(`/api/trade/buy/`, { quantity: Number(quantity), stock: stock });
+    const res = await axios.post<StockBuyResponse>(`/api/trade/buy/`, { quantity: Number(quantity), security: stock });
     toast.success('Order executed successfully.');
     await store.dispatch(loadUserDataAsync());
     return res.data;
@@ -59,7 +59,7 @@ export const buyStock = async (quantity: number, stock: number) => {
 
 export const sellStock = async (quantity: number, stock: number) => {
   try {
-    const res = await axios.post<StockBuyResponse>(`/api/trade/sell/`, { quantity: Number(quantity), stock: stock });
+    const res = await axios.post<StockBuyResponse>(`/api/trade/sell/`, { quantity: Number(quantity), security: stock });
     toast.success('Order executed successfully.');
     await store.dispatch(loadUserDataAsync());
     return res.data;

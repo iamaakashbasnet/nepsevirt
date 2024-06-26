@@ -24,9 +24,9 @@ class ListPortfolioStocks(generics.ListAPIView):
             current_value=ExpressionWrapper(
                 Case(
                     When(side='LONG', then=F('quantity')
-                         * F('stock__securitydata__lastTradedPrice')),
+                         * F('security__securitydata__lastTradedPrice')),
                     When(side='SHORT', then=-F('quantity')
-                         * F('stock__securitydata__lastTradedPrice')),
+                         * F('security__securitydata__lastTradedPrice')),
                     default=0,
                     output_field=fields.DecimalField()
                 ),

@@ -16,7 +16,7 @@ class Buy(generics.GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        stock_id = self.request.data.get('stock')
+        stock_id = self.request.data.get('security')
         quantity = self.request.data.get('quantity')
 
         user_portfolio = Portfolio.objects.get(user=self.request.user)
@@ -34,10 +34,10 @@ class Buy(generics.GenericAPIView):
         with transaction.atomic():
             try:
                 position = Position.objects.get(
-                    portfolio=user_portfolio, stock_id=stock_id)
+                    portfolio=user_portfolio, security_id=stock_id)
 
                 # Buy for long positions
-                if position.side != POSITION_CHOICES[1][0]:
+                if position.side != POSITION_CHOICES[1][0]:  # If not short
                     self.update_long_position(position, quantity, stock_price)
                 else:
                     if position.quantity >= quantity:
@@ -49,8 +49,8 @@ class Buy(generics.GenericAPIView):
                 # Create a new position
                 position = Position.objects.create(
                     portfolio=user_portfolio,
-                    stock_id=stock_id,
-                    side=POSITION_CHOICES[0][0],
+                    security_id=stock_id,
+                    side=POSITION_CHOICES[0][0],  # Long position
                     quantity=quantity,
                     average_fill_price=stock_price
                 )

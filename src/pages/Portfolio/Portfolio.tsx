@@ -49,7 +49,7 @@ const Portfolio = () => {
             {data?.positions.map((position) => (
               <tr key={position.id} className="border-b dark:border-gray-700">
                 <th scope="row" className="whitespace-nowrap px-4 py-3 font-medium text-gray-900 dark:text-white">
-                  {position.stock}
+                  {position.security.symbol}
                 </th>
                 <td className={`px-4 py-3 ${position.side == 'SHORT' ? 'text-red-500' : 'text-green-500'}`}>
                   {position.side}

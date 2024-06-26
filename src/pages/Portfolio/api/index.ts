@@ -3,7 +3,11 @@ import { toast } from 'react-toastify';
 
 export interface Position {
   id: number;
-  stock: string;
+  security: {
+    id: number;
+    symbol: string;
+    securityName: string;
+  };
   average_fill_price: number;
   investment_value: number;
   current_value: number;

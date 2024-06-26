@@ -15,7 +15,7 @@ class Sell(generics.GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        stock_id = self.request.data.get('stock')
+        stock_id = self.request.data.get('security')
         quantity = self.request.data.get('quantity')
 
         user_portfolio = Portfolio.objects.get(user=self.request.user)
@@ -23,16 +23,16 @@ class Sell(generics.GenericAPIView):
         user_profit_loss = ProfitLoss.objects.get(user=self.request.user)
 
         stock_price = Security.objects.get(
-            id=stock_id).securitydata.lastTradePrice
+            id=stock_id).securitydata.lastTradedPrice
         total_value = stock_price * quantity
 
         with transaction.atomic():
             try:
                 position = Position.objects.get(
-                    portfolio=user_portfolio, stock_id=stock_id)
+                    portfolio=user_portfolio, security_id=stock_id)
 
                 # Sell for long positions
-                if position.side != POSITION_CHOICES[1][0]:
+                if position.side != POSITION_CHOICES[1][0]:  # If not short
                     if position.quantity >= quantity:
                         profit = (stock_price -
                                   position.average_fill_price) * quantity
@@ -52,8 +52,8 @@ class Sell(generics.GenericAPIView):
                 # Create a new short position
                 position = Position.objects.create(
                     portfolio=user_portfolio,
-                    stock_id=stock_id,
-                    side=POSITION_CHOICES[1][0],
+                    security_id=stock_id,
+                    side=POSITION_CHOICES[1][0],  # Short position
                     quantity=quantity,
                     average_fill_price=stock_price
                 )

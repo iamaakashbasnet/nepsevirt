@@ -6,4 +6,4 @@ from v1.portfolio.models import Position
 class PositionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Position
-        fields = ['id', 'stock', 'quantity']
+        fields = ['id', 'security', 'quantity']
