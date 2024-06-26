@@ -6,15 +6,16 @@ import { loadUserDataAsync } from 'state/user/authSlice';
 
 export interface StockNames {
   id: number;
-  name: string;
+  symbol: string;
+  securityName: string;
 }
 
 export interface StockDetail extends StockNames {
-  ltp: number;
-  open: number;
-  high: number;
-  low: number;
-  close: number;
+  lastTradedPrice: number;
+  openPrice: number;
+  highPrice: number;
+  lowPrice: number;
+  previousClose: number;
 }
 
 export interface StockBuyResponse {

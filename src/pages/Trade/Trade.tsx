@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { BsChevronDoubleUp, BsChevronDoubleDown } from 'react-icons/bs';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 
 import { fetchStockNames, fetchStockDetail, buyStock, sellStock } from './api';
@@ -41,8 +42,10 @@ const Trade = () => {
     if (selectedOption != 0) {
       void refetch();
       axios
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        .get<DataStateTypes[]>(`/api/data/historic-data/${data?.find((item) => item.id === selectedOption)?.name}/`)
+        .get<DataStateTypes[]>(
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+          `/api/data/historic-data/${data?.find((item) => item.id === selectedOption)?.symbol}/`,
+        )
         .then((res) => {
           const formattedData: DataStateTypes[] = res.data.map((item) => ({
             open: Number(item.open),
@@ -53,7 +56,7 @@ const Trade = () => {
           }));
           setStockData(formattedData);
         })
-        .catch((err) => console.log(err));
+        .catch(() => toast.error('Error fetching stock candlestick data'));
     }
   }, [refetch, selectedOption, data]);
 
@@ -71,7 +74,7 @@ const Trade = () => {
             <option>Select a stock</option>
             {data?.map((single) => (
               <option key={single.id} value={single.id}>
-                {single.name}
+                {single.symbol}
               </option>
             ))}
           </>
@@ -88,27 +91,27 @@ const Trade = () => {
           selectedOption !== 0 && (
             <section className="mx-10 flex flex-col md:flex-row md:items-center">
               <div className="w-full text-center md:text-left">
-                <h1 className="my-2 font-heading text-5xl">{stockDetailData?.name}</h1>
+                <h1 className="my-2 font-heading text-5xl">{stockDetailData?.securityName}</h1>
                 <Chart data={stockData} />
                 <div className="text-center">
                   <p
                     className={`my-4 animate-pulse text-base ${
-                      stockDetailData && stockDetailData?.ltp > stockDetailData?.close
+                      stockDetailData && stockDetailData?.lastTradedPrice > stockDetailData?.previousClose
                         ? `text-green-500`
                         : `text-red-500`
                     }`}
                   >
-                    Last Trading Price: {stockDetailData?.ltp}{' '}
-                    {stockDetailData && stockDetailData?.ltp > stockDetailData?.close ? (
+                    Last Trading Price: {stockDetailData?.lastTradedPrice}{' '}
+                    {stockDetailData && stockDetailData?.lastTradedPrice > stockDetailData?.previousClose ? (
                       <BsChevronDoubleUp className={`inline-block animate-bounce text-base text-green-500`} />
                     ) : (
                       <BsChevronDoubleDown className={`inline-block animate-bounce text-base text-red-500`} />
                     )}
                   </p>
-                  <p className="my-4 text-base">Open Price: {stockDetailData?.open}</p>
-                  <p className="my-4 text-base">High Price: {stockDetailData?.high}</p>
-                  <p className="my-4 text-base">Low Price: {stockDetailData?.low}</p>
-                  <p className="my-4 text-base">Close Price: {stockDetailData?.close}</p>
+                  <p className="my-4 text-base">Open Price: {stockDetailData?.openPrice}</p>
+                  <p className="my-4 text-base">High Price: {stockDetailData?.highPrice}</p>
+                  <p className="my-4 text-base">Low Price: {stockDetailData?.lowPrice}</p>
+                  <p className="my-4 text-base">Previous Close Price: {stockDetailData?.previousClose}</p>
                 </div>
               </div>
 
