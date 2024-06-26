@@ -195,7 +195,7 @@ SIMPLE_JWT = {
 
 
 CRONJOBS = [
-    ('*/1 * * * *', 'v1.data.scraper.livedata.get_live_data')
+    ('*/1 * * * *', 'v1.data.fetcher.live_data.run_every_15_seconds')
 ]
 
 AUTHENTICATION_BACKENDS = [

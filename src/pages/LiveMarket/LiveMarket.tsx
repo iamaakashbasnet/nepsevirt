@@ -6,12 +6,12 @@ const LiveMarket = () => {
     {
       queryKey: ['fetch-live-market-data'],
       queryFn: fetchLiveMarketData,
-      refetchInterval: 120000,
+      refetchInterval: 20000,
     },
     {
       queryKey: ['is-market-open'],
       queryFn: isMarketOpen,
-      refetchInterval: 120000,
+      refetchInterval: 60000,
     },
   ]);
 
