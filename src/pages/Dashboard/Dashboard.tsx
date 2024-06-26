@@ -33,7 +33,7 @@ const Dashboard = () => {
           <h1 className="mb-5 font-heading text-3xl">Dashboard</h1>
           <div className="md:flex md:w-full md:items-center md:justify-between">
             <div className="w-full md:w-2/6">
-              <div className="mb-8 rounded-md bg-gradient-to-r from-cyan-500 to-gray-500 p-5">
+              <div className="mb-8 rounded-md bg-gradient-to-r from-cyan-500 to-gray-500 p-5 text-white">
                 <h2 className="text-2xl font-bold">Funds</h2>
                 <p>Total amount: {user?.fund.balance}</p>
               </div>
@@ -42,7 +42,7 @@ const Dashboard = () => {
                   user.profitloss.amount < 0
                     ? 'from-red-500 from-50% to-emerald-500 to-100%'
                     : 'from-emerald-500 from-50% to-red-500 to-100%'
-                }  p-5`}
+                }  p-5 text-white`}
               >
                 <h2 className="text-2xl font-bold">Overall P/L</h2>
                 <p>Total Loss: Rs.{user.profitloss.amount}</p>
