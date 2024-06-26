@@ -36,7 +36,7 @@ const LiveMarket = () => {
           <thead className="bg-gray-300 uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-4 py-3">
-                Name
+                Symbol
               </th>
               <th scope="col" className="px-4 py-3">
                 LTP
@@ -66,16 +66,18 @@ const LiveMarket = () => {
             {marketData?.map((stockData) => (
               <tr
                 key={stockData.id}
-                className={`border-b ${stockData.ltp < stockData.close ? 'bg-red-500' : 'bg-green-500'}`}
+                className={`border-b ${
+                  stockData.lastTradedPrice < stockData.previousClose ? 'bg-red-500' : 'bg-green-500'
+                }`}
               >
                 <th scope="row" className="whitespace-nowrap px-4 py-3 font-medium">
-                  {stockData.name}
+                  {stockData.security.symbol}
                 </th>
-                <td className="px-4 py-3">{stockData.ltp}</td>
-                <td className="px-4 py-3">{stockData.open}</td>
-                <td className="px-4 py-3">{stockData.high}</td>
-                <td className="px-4 py-3">{stockData.low}</td>
-                <td className="px-4 py-3">{stockData.close}</td>
+                <td className="px-4 py-3">{stockData.lastTradedPrice}</td>
+                <td className="px-4 py-3">{stockData.openPrice}</td>
+                <td className="px-4 py-3">{stockData.highPrice}</td>
+                <td className="px-4 py-3">{stockData.lowPrice}</td>
+                <td className="px-4 py-3">{stockData.previousClose}</td>
               </tr>
             ))}
           </tbody>

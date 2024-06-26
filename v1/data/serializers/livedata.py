@@ -10,7 +10,7 @@ class LiveDataStockNameSerializer(serializers.ModelSerializer):
 
 
 class LiveDataSerializer(serializers.ModelSerializer):
-    security = serializers.StringRelatedField()
+    security = LiveDataStockNameSerializer()
     lastTradedPrice = serializers.DecimalField(
         default=0.00, max_digits=10, decimal_places=2, coerce_to_string=True)
     openPrice = serializers.DecimalField(

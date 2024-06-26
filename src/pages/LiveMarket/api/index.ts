@@ -3,12 +3,16 @@ import { toast } from 'react-toastify';
 
 export interface StockData {
   id: number;
-  name: string;
-  ltp: number;
-  open: number;
-  high: number;
-  low: number;
-  close: number;
+  security: {
+    id: number;
+    symbol: string;
+    securituName: string;
+  };
+  lastTradedPrice: number;
+  openPrice: number;
+  highPrice: number;
+  lowPrice: number;
+  previousClose: number;
 }
 
 export interface IsMarketOpen {
@@ -33,7 +37,7 @@ export const fetchLiveMarketData = async () => {
 
 export const isMarketOpen = async () => {
   try {
-    const res = await axios.get<IsMarketOpen>('/api/officialapi/is-market-open/');
+    const res = await axios.get<IsMarketOpen>('/api/data/is-market-open/');
     return res.data;
   } catch (err) {
     if (axios.isAxiosError(err) && err.response) {
