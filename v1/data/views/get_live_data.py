@@ -5,22 +5,29 @@ from rest_framework.response import Response
 from rest_framework import permissions
 from rest_framework_simplejwt import authentication
 
-# from v1.data.scraper.livedata import get_live_data
+from v1.data.fetcher.live_data import get_live_market
 from v1.data.models import Security, SecurityData
 from v1.data.serializers import livedata
+from nepse import Nepse
 
 
-# class FetchLiveData(APIView):
-#     def get(self, request):
-#         get_live_data()
+nepse = Nepse()
+nepse.setTLSVerification(False)
 
-#         return Response({'result': 'fetched'})
 
-# class FetchLiveData(APIView):
-#     def get(self, request):
-#         get_live_data()
+class FetchLiveData(APIView):
+    def get(self, request):
+        get_live_market()
 
-#         return Response({'result': 'fetched'})
+        return Response({'result': 'fetched'})
+
+
+class IsMarketOpen(APIView):
+    permission_classes = [permissions.AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        return Response(nepse.isNepseOpen())
+
 
 class LiveDataStockNameListView(ListAPIView):
     permission_classes = [permissions.IsAuthenticated]

@@ -2,7 +2,7 @@ from datetime import date, timedelta
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from v1.data.scraper.historic_data import NepseData
+from v1.data.fetcher.historic_data import NepseData
 
 
 class FetchHistoricData(APIView):

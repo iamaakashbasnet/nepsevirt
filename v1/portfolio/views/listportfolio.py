@@ -13,7 +13,8 @@ class ListPortfolioStocks(generics.ListAPIView):
 
     def get_queryset(self):
         queryset = Position.objects.filter(
-            portfolio=Portfolio.objects.get(user=self.request.user))
+            portfolio=Portfolio.objects.get(user=self.request.user)
+        )
 
         queryset = queryset.annotate(
             investment_value=ExpressionWrapper(
@@ -23,9 +24,9 @@ class ListPortfolioStocks(generics.ListAPIView):
             current_value=ExpressionWrapper(
                 Case(
                     When(side='LONG', then=F('quantity')
-                         * F('stock__stockdata__ltp')),
+                         * F('stock__securitydata__lastTradedPrice')),
                     When(side='SHORT', then=-F('quantity')
-                         * F('stock__stockdata__ltp')),
+                         * F('stock__securitydata__lastTradedPrice')),
                     default=0,
                     output_field=fields.DecimalField()
                 ),
