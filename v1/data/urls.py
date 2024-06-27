@@ -5,7 +5,11 @@ from .views.get_live_data import (
     LiveDataListView,
     LiveDataStockNameListView,
     StockDetailView,
-    IsMarketOpen
+    IsMarketOpen,
+)
+from .views.get_live_indexes import (
+    MainIndices,
+    SubIndices,
 )
 
 from .views.get_historic_data import FetchHistoricData
@@ -19,4 +23,6 @@ urlpatterns = [
     path('stock-detail/<int:id>/', StockDetailView.as_view(), name='stock-detail'),
     path('historic-data/<str:stockname>/',
          FetchHistoricData.as_view(), name='historic-data'),
+    path('main-indices/', MainIndices.as_view(), name='main-indices'),
+    path('sub-indices/', SubIndices.as_view(), name='sub-indices')
 ]
