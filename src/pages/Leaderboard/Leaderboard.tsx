@@ -39,7 +39,7 @@ const Leaderboard = () => {
               <tr key={index} className="border-b dark:border-gray-700">
                 <td className="flex items-center gap-5 px-4 py-3">
                   <div className="relative me-4 flex">
-                    <img className="h-10 w-10 rounded-full" src={single.avatar} alt="Trader avatar" />
+                    <img className="h-10 w-10 rounded-full object-cover" src={single.avatar} alt="Trader avatar" />
                     <span
                       className={`absolute right-0 inline-flex h-3 w-3 animate-ping rounded-full ${
                         single.profitloss.amount < 0 ? 'bg-red-500' : 'bg-emerald-500'
