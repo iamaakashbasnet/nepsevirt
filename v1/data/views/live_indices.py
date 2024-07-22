@@ -8,15 +8,21 @@ nepse = Nepse()
 nepse.setTLSVerification(False)
 
 
-class MainIndices(APIView):
-    permission_classes = [permissions.AllowAny]
+class MainIndicesView(APIView):
+    """Gets indices information
+    """
+
+    permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request, *args, **kwargs):
         return Response(nepse.getNepseIndex())
 
 
-class SubIndices(APIView):
-    permission_classes = [permissions.AllowAny]
+class SubIndicesView(APIView):
+    """Gets sub indices information
+    """
+
+    permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request, *args, **kwargs):
         return Response(nepse.getNepseSubIndices())

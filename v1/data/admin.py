@@ -3,7 +3,7 @@ from .models import Security, SecurityData
 
 
 @admin.register(Security)
-class StockNameAdmin(admin.ModelAdmin):
+class SecurityAdmin(admin.ModelAdmin):
     list_display = ['securityName']
     list_filter = ['securityName']
     search_fields = ['securityName']
@@ -11,9 +11,9 @@ class StockNameAdmin(admin.ModelAdmin):
 
 
 @admin.register(SecurityData)
-class StockDataAdmin(admin.ModelAdmin):
+class SecurityDataAdmin(admin.ModelAdmin):
     list_display = ['security', 'lastTradedPrice',
                     'openPrice', 'highPrice', 'lowPrice', 'previousClose']
     list_filter = ['security']
     search_fields = ['security']
-    ordering = ['security']
+    ordering = ['-lastUpdatedDateTime']

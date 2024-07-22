@@ -1,11 +1,11 @@
 from rest_framework import serializers
 
 from v1.portfolio.models import Position
-from v1.data.serializers.livedata import LiveDataStockNameSerializer
+from v1.data.serializers.security import SecurityDataSerializer
 
 
 class PositionSerializer(serializers.ModelSerializer):
-    security = LiveDataStockNameSerializer()
+    security = SecurityDataSerializer()
     average_fill_price = serializers.DecimalField(
         max_digits=10, decimal_places=2, coerce_to_string=True)
     investment_value = serializers.DecimalField(

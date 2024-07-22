@@ -3,7 +3,10 @@ import requests
 import json
 
 
-class NepseData:
+class OHLCData:
+    """Gets OHLC data for index or any security from sharesansar
+    """
+
     def __init__(self, symbol, date_from, date_to, currency,
                  time_frame) -> None:
         self.symbol = symbol
@@ -13,7 +16,8 @@ class NepseData:
         self.time_frame = time_frame
 
         chart_type = 'nepse-candlestick-chart' if self.symbol == 'NEPSE Index' else 'company-chart'
-        self.url = f'https://www.sharesansar.com/{chart_type}/history?symbol={self.symbol}&resolution={self.time_frame}&from={self.date_from}&to={self.date_to}'
+        self.url = f'https://www.sharesansar.com/{chart_type}/history?symbol={
+            self.symbol}&resolution={self.time_frame}&from={self.date_from}&to={self.date_to}'
 
     def date_to_unix_timestamp(self, date_str):
         date_obj = datetime.strptime(date_str, "%Y-%m-%d")

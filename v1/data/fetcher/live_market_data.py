@@ -8,7 +8,10 @@ nepse = Nepse()
 nepse.setTLSVerification(False)
 
 
-def get_live_market():
+def get_live_market_data():
+    """Gets live market data for all the listed securities
+    """
+
     data = nepse.getLiveMarket()
     try:
         with transaction.atomic():
@@ -50,5 +53,5 @@ def get_live_market():
 
 def run_every_15_seconds():
     for _ in range(4):  # This will run the function 4 times (every 15 seconds) within one minute
-        get_live_market()
+        get_live_market_data()
         time.sleep(15)  # Wait for 15 seconds

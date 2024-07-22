@@ -5,9 +5,9 @@ from rest_framework.response import Response
 from rest_framework import permissions
 from rest_framework_simplejwt import authentication
 
-from v1.data.fetcher.live_data import get_live_market
+from v1.data.fetcher.live_market_data import get_live_market_data
 from v1.data.models import Security, SecurityData
-from v1.data.serializers import livedata
+from v1.data.serializers import security
 from nepse import Nepse
 
 
@@ -15,36 +15,55 @@ nepse = Nepse()
 nepse.setTLSVerification(False)
 
 
-class FetchLiveData(APIView):
+class GetLiveMarketDataView(APIView):
+    """Gets live market data and store it to DB.
+    Mainly used for manual data fetching.
+    """
+
+    permission_classes = [permissions.IsAuthenticated]
+
     def get(self, request):
-        get_live_market()
+        get_live_market_data()
 
         return Response({'result': 'fetched'})
 
 
-class IsMarketOpen(APIView):
-    permission_classes = [permissions.AllowAny]
+class IsMarketOpenView(APIView):
+    """Information related to market status, either open or closed
+    """
+
+    permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request, *args, **kwargs):
         return Response(nepse.isNepseOpen())
 
 
-class LiveDataStockNameListView(ListAPIView):
+class SecurityListView(ListAPIView):
+    """List all the stored security
+    """
+
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [authentication.JWTAuthentication]
     queryset = Security.objects.all()
-    serializer_class = livedata.LiveDataStockNameSerializer
+    serializer_class = security.SecurityDataSerializer
 
 
-class LiveDataListView(ListAPIView):
+class SecurityDataListView(ListAPIView):
+    """List all the stored security with its live data, ordered based
+    on lastUpdatedTime
+    """
+
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [authentication.JWTAuthentication]
     queryset = SecurityData.objects.all().order_by('-lastUpdatedDateTime')
-    serializer_class = livedata.LiveDataSerializer
+    serializer_class = security.SecurityDataSerializer
 
 
-class StockDetailView(RetrieveAPIView):
-    serializer_class = livedata.LiveDataSerializer
+class SecurityDetailView(RetrieveAPIView):
+    """Show details of individual security
+    """
+
+    serializer_class = security.SecurityDataSerializer
     queryset = SecurityData.objects.all()
 
     def get_object(self):
