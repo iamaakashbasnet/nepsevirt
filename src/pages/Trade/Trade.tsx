@@ -44,7 +44,7 @@ const Trade = () => {
       axios
         .get<DataStateTypes[]>(
           // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-          `/api/data/historic-data/${data?.find((item) => item.id === selectedOption)?.symbol}/`,
+          `/api/data/ohlc-data/${data?.find((item) => item.id === selectedOption)?.symbol}/`,
         )
         .then((res) => {
           const formattedData: DataStateTypes[] = res.data.map((item) => ({
