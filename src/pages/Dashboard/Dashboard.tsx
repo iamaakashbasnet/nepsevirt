@@ -32,7 +32,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     axios
-      .get<DataStateTypes[]>(`/api/data/historic-data/NEPSE Index/`)
+      .get<DataStateTypes[]>(`/api/data/ohlc-data/NEPSE Index/`)
       .then((res) => {
         const formattedData: DataStateTypes[] = res.data.map((item) => ({
           open: Number(item.open),

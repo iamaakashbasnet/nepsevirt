@@ -24,7 +24,7 @@ export interface StockBuyResponse {
 
 export const fetchStockNames = async () => {
   try {
-    const res = await axios.get<StockNames[]>('/api/data/live-data-stockname/');
+    const res = await axios.get<StockNames[]>('/api/data/securities/');
     return res.data;
   } catch (err) {
     if (axios.isAxiosError(err) && err.response) {

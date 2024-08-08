@@ -10,7 +10,7 @@ class SecuritySerializer(serializers.ModelSerializer):
 
 
 class SecurityDataSerializer(serializers.ModelSerializer):
-    security = SecurityData()
+    security = SecuritySerializer()
     lastTradedPrice = serializers.DecimalField(
         default=0.00, max_digits=10, decimal_places=2, coerce_to_string=True)
     openPrice = serializers.DecimalField(
