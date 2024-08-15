@@ -29,7 +29,7 @@ $ python manage.py migrate
 
 Fetch stock data (Hit GET request to this route):
 ```
-http://localhost:8000/data/fetch-live-data/
+http://localhost:8000/data/get-live-data/
 ```
 or
 
