@@ -20,7 +20,7 @@ class GetLiveMarketDataView(APIView):
     Mainly used for manual data fetching.
     """
 
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
 
     def get(self, request):
         get_live_market_data()
@@ -45,7 +45,7 @@ class SecurityListView(ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [authentication.JWTAuthentication]
     queryset = Security.objects.all()
-    serializer_class = security.SecurityDataSerializer
+    serializer_class = security.SecuritySerializer
 
 
 class SecurityDataListView(ListAPIView):
