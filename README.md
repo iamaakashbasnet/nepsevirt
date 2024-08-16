@@ -27,7 +27,8 @@ $ python manage.py makemigrations
 $ python manage.py migrate
 ```
 
-Fetch stock data (Hit GET request to this route):
+Fetch stock data (Hit GET request to this route):<br />
+Note: Hit this route only in open market time!
 ```
 http://localhost:8000/data/get-live-data/
 ```
