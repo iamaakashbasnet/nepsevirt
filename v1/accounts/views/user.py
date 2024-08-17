@@ -37,7 +37,7 @@ class CreateUserView(generics.CreateAPIView):
 class ActivateAccountView(APIView):
     permission_classes = [permissions.AllowAny]
 
-    def get(self, uidb64, token):
+    def get(self, request, uidb64, token, *args, **kwargs):
         try:
             uid = force_str(urlsafe_base64_decode(uidb64))
             user = get_object_or_404(get_user_model(), pk=uid)
@@ -46,6 +46,7 @@ class ActivateAccountView(APIView):
 
         if account_activation_token.check_token(user, token):
             user.is_active = True
+            user.is_verified = True
             user.save()
             return Response({'detail': 'Account activated successfully'}, status=status.HTTP_200_OK)
         else:

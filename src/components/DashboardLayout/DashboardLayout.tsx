@@ -11,9 +11,8 @@ const DashboardLayout = () => {
   return (
     <>
       {!user?.is_verified && (
-        <div className="absolute left-0 top-0 z-[100] flex w-full justify-between bg-red-500 p-5 text-center">
+        <div className="absolute left-0 top-0 z-[100] w-full justify-between bg-red-500 p-5 text-center">
           <p>Please verify your email, an email has been sent to your email address</p>
-          <div>x</div>
         </div>
       )}
       <div className="flex min-h-screen flex-col">

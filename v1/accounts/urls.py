@@ -27,7 +27,7 @@ urlpatterns = [
          name='token-blacklist'),
 
     path('signup/', CreateUserView.as_view(), name='signup'),
-    path('activate/<uidb64>/<token>/',
+    path('activate/<str:uidb64>/<str:token>/',
          ActivateAccountView.as_view(),
          name='activate-user'),
     path('user/me/', RequestUserDetailView.as_view(), name='user-me'),

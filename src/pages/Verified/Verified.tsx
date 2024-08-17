@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 
 const Verified = () => {
   const navigate = useNavigate();
-  const { hash, token } = useParams();
+  const { hash, token } = useParams<{ hash: string; token: string }>();
 
   const { isLoading, isError, isSuccess } = useQuery({
     queryFn: async () => {
