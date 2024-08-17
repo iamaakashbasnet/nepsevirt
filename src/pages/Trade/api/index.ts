@@ -35,7 +35,7 @@ export const fetchStockNames = async () => {
 
 export const fetchStockDetail = async (id: number) => {
   try {
-    const res = await axios.get<StockDetail>(`/api/data/stock-detail/${id}/`);
+    const res = await axios.get<StockDetail>(`/api/data/securities/${id}/`);
     return res.data;
   } catch (err) {
     if (axios.isAxiosError(err) && err.response) {
