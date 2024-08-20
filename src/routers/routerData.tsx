@@ -1,4 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
+import TradingPanel from 'pages/TradingPanel';
 import { lazy } from 'react';
 
 import { routerType } from 'types/routerTypes';
@@ -34,4 +35,5 @@ export const dashboard: routerType[] = [
   { title: 'Trade', path: 'trade', element: <Trade /> },
   { title: 'Portfolio', path: 'portfolio', element: <Portfolio /> },
   { title: 'Leaderboard', path: 'leaderboard', element: <Leaderboard /> },
+  { title: 'Trading Panel', path: 'trading-panel', element: <TradingPanel /> },
 ];

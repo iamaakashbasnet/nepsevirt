@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useQuery } from 'react-query';
+import { useQuery, useQueryClient } from 'react-query';
 import { BsChevronDoubleUp, BsChevronDoubleDown } from 'react-icons/bs';
 import { toast } from 'react-toastify';
 import axios from 'axios';
@@ -12,6 +12,7 @@ const Trade = () => {
   const [selectedOption, setSelectedOption] = useState<number>(0);
   const [buyData, setBuyData] = useState({ quantity: 0, stock: 0 });
   const [stockData, setStockData] = useState<DataStateTypes[]>([]);
+  const queryCLient = useQueryClient();
 
   const { data, isLoading } = useQuery({
     queryFn: () => fetchStockNames(),
@@ -36,6 +37,15 @@ const Trade = () => {
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(Number(e.target.value));
+  };
+
+  const handleBuySubmission = async () => {
+    await buyStock(buyData.quantity, buyData.stock);
+    await queryCLient.refetchQueries('fetch-portfolio-data');
+  };
+
+  const handleSellSubmission = async () => {
+    await sellStock(buyData.quantity, buyData.stock);
   };
 
   useEffect(() => {
@@ -135,13 +145,13 @@ const Trade = () => {
                     />
                   </div>
                   <button
-                    onClick={() => buyStock(buyData.quantity, buyData.stock)}
+                    onClick={handleBuySubmission}
                     className="rounded-lg bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
                     Buy
                   </button>{' '}
                   <button
-                    onClick={() => sellStock(buyData.quantity, buyData.stock)}
+                    onClick={handleSellSubmission}
                     className="rounded-lg bg-red-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
                   >
                     Sell
