@@ -1,8 +1,8 @@
 import { lazy } from 'react';
 import { Allotment } from 'allotment';
 
-const Portfolio = lazy(() => import('pages/Portfolio'));
-const Trade = lazy(() => import('pages/Trade'));
+const Portfolio = lazy(() => import('components/Portfolio'));
+const Trade = lazy(() => import('components/Trade'));
 
 const TradingPanel = () => {
   return (

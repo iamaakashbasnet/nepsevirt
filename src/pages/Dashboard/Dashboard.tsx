@@ -31,7 +31,6 @@ const Dashboard = () => {
   const isLoading = results.some((result) => result.isLoading);
 
   useEffect(() => {
-    toast.info('Buy/Sell will soon be replaced by Trading Panel');
     axios
       .get<DataStateTypes[]>(`/api/data/ohlc-data/NEPSE Index/`)
       .then((res) => {

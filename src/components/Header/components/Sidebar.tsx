@@ -1,8 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { BsPieChart, BsCardList, BsActivity, BsCart2 } from 'react-icons/bs';
+import { BsPieChart, BsActivity, BsCart2 } from 'react-icons/bs';
 import { MdOutlineLeaderboard } from 'react-icons/md';
-import { LuPanelBottomInactive } from 'react-icons/lu';
 
 const Sidebar = () => {
   const sideNavRef = useRef<HTMLElement | null>(null);
@@ -13,24 +12,14 @@ const Sidebar = () => {
       icon: <BsPieChart />,
     },
     {
-      name: 'Portfolio',
-      path: 'portfolio',
-      icon: <BsCardList />,
-    },
-    {
       name: 'Live Market',
       path: 'live-market',
       icon: <BsActivity />,
     },
     {
-      name: 'Buy/Sell',
-      path: 'trade',
-      icon: <BsCart2 />,
-    },
-    {
       name: 'Trading Panel',
       path: 'trading-panel',
-      icon: <LuPanelBottomInactive />,
+      icon: <BsCart2 />,
     },
     {
       name: 'Leaderboard',
