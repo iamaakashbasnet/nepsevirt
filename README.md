@@ -66,7 +66,7 @@ $ python manage.py crontab add
     - **Production** - PostgreSQL
     - **Development** - Sqlite
 - Data Source
-    - **Live Data** - Merolagani
+    - **Live Data** - Nepal Stock Exchange
     - **Historic Data** - ShareSansaar
 <p align="center">
     <img src="https://github.com/iamaakashbasnet/nepsevirt/assets/136826895/4d37ae34-85ab-4c16-bea2-b746a6fbd654" width="100%" />
