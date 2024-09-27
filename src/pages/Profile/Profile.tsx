@@ -1,52 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 import { fetchUserProfileData } from './api';
-
-const RenderChart = () => {
-  const chartData = [
-    {
-      name: 'Jan',
-      profit: 0,
-    },
-    {
-      name: 'Feb',
-      profit: 5000,
-    },
-    {
-      name: 'Mar',
-      profit: 3000,
-    },
-    {
-      name: 'Apr',
-      profit: 5000,
-    },
-    {
-      name: 'May',
-      profit: 6000,
-    },
-    {
-      name: 'Jun',
-      profit: 8000,
-    },
-    {
-      name: 'Jul',
-      profit: 6490,
-    },
-  ];
-
-  return (
-    <ResponsiveContainer width="100%" height={400}>
-      <LineChart width={600} height={300} data={chartData} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-        <Line type="monotone" dataKey="profit" stroke="#8884d8" className="animate-pulse" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-      </LineChart>
-    </ResponsiveContainer>
-  );
-};
 
 const Profile = () => {
   const { username } = useParams();
@@ -113,9 +68,25 @@ const Profile = () => {
             </ul>
           </div>
 
-          <div className="w-full text-center md:w-1/2">
-            <RenderChart />
-            <p>Ranking Graph</p>
+          <div className="w-full md:w-1/2">
+            <h1 className="font-heading text-lg font-bold">
+              Minds <span className="animate-pulse text-sm text-blue-600/75 dark:text-blue-500/75">Coming soon*</span>
+            </h1>
+            <div
+              role="status"
+              className="animate-pulse space-y-4 divide-y divide-gray-200 rounded border border-gray-200 p-4 shadow md:p-6 dark:divide-gray-700 dark:border-gray-700"
+            >
+              {Array.from({ length: 4 }).map((_, index) => (
+                <div key={index} className="flex items-center justify-between pt-4">
+                  <div>
+                    <div className="mb-2.5 h-2.5 w-24 rounded-full bg-gray-300 dark:bg-gray-600"></div>
+                    <div className="h-2 w-32 rounded-full bg-gray-200 dark:bg-gray-700"></div>
+                  </div>
+                  <div className="h-2.5 w-12 rounded-full bg-gray-300 dark:bg-gray-700"></div>
+                </div>
+              ))}
+              <span className="sr-only">Loading...</span>
+            </div>
           </div>
         </div>
       </section>
