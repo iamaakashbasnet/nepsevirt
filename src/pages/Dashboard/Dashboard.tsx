@@ -69,9 +69,9 @@ const Dashboard = () => {
                   <p>Total Loss: Rs.{user.profitloss.amount}</p>
                 </div>
               </div>
-              <div className="w-full text-center md:w-3/5">
+              <div className="my-5 w-full text-center md:w-3/5">
                 <Chart data={data} />
-                <p className="mt-4">NEPSE Index Chart</p>
+                <p className="pt-4">NEPSE Index Chart</p>
               </div>
             </div>
           </>
@@ -80,15 +80,15 @@ const Dashboard = () => {
 
       <section className="mt-8">
         <h1 className="mb-5 font-heading text-3xl">Market Overview</h1>
-        <div className="flex justify-between gap-5">
-          <div className="w-full rounded-lg border border-gray-200 bg-white p-4 shadow dark:border-gray-700 dark:bg-gray-800 sm:p-8">
+        <div className="flex flex-col justify-between gap-5 md:flex-row">
+          <div className="w-full rounded-lg border border-gray-200 bg-white p-4 shadow sm:p-8 dark:border-gray-700 dark:bg-gray-800">
             <h5 className="mb-4 text-xl font-bold leading-none text-gray-900 dark:text-white">Main Indices</h5>
             <div className="flow-root">
               {isLoading && <p>Loading...</p>}
               {mainIndices && (
                 <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700">
                   {mainIndices.map((index) => (
-                    <li className="py-3 sm:py-4">
+                    <li key={index.id} className="py-3 sm:py-4">
                       <div className="flex items-center gap-10">
                         <div className="min-w-0 flex-1">
                           <p className="truncate text-sm font-medium text-gray-900 dark:text-white">{index.index}</p>
@@ -110,14 +110,14 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="w-full rounded-lg border border-gray-200 bg-white p-4 shadow dark:border-gray-700 dark:bg-gray-800 sm:p-8">
+          <div className="w-full rounded-lg border border-gray-200 bg-white p-4 shadow sm:p-8 dark:border-gray-700 dark:bg-gray-800">
             <h5 className="mb-4 text-xl font-bold leading-none text-gray-900 dark:text-white">Sub Indices</h5>
             <div className="flow-root">
               {isLoading && <p>Loading...</p>}
               {subIndices && (
                 <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700">
                   {subIndices.map((index) => (
-                    <li className="py-3 sm:py-4">
+                    <li key={index.id} className="py-3 sm:py-4">
                       <div className="flex items-center gap-10">
                         <div className="min-w-0 flex-1">
                           <p className="truncate text-sm font-medium text-gray-900 dark:text-white">{index.index}</p>
