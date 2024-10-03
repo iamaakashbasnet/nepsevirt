@@ -22,7 +22,7 @@ const Verified = () => {
 
         {isError && (
           <>
-            <p className="mb-4 font-heading text-3xl font-bold tracking-tight text-gray-900 dark:text-white md:text-4xl">
+            <p className="mb-4 font-heading text-3xl font-bold tracking-tight text-gray-900 md:text-4xl dark:text-white">
               Invalid link
             </p>
           </>
@@ -30,7 +30,7 @@ const Verified = () => {
 
         {isSuccess && (
           <>
-            <p className="mb-4 font-heading text-3xl font-bold tracking-tight text-gray-900 dark:text-white md:text-4xl">
+            <p className="mb-4 font-heading text-3xl font-bold tracking-tight text-gray-900 md:text-4xl dark:text-white">
               Email verified
             </p>
             <p className="mb-4 text-lg font-light text-gray-500 dark:text-gray-400">
