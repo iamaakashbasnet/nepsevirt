@@ -34,11 +34,12 @@ const Trade = () => {
 
   const handleBuySubmission = useCallback(async () => {
     await buyStock(buyData.quantity, buyData.stock);
-    await queryClient.refetchQueries('fetch-portfolio-data'); // await here to handle the promise
+    await queryClient.refetchQueries('fetch-portfolio-data');
   }, [buyData, queryClient]);
 
   const handleSellSubmission = useCallback(async () => {
     await sellStock(buyData.quantity, buyData.stock);
+    await queryClient.refetchQueries('fetch-portfolio-data');
   }, [buyData]);
 
   useEffect(() => {
