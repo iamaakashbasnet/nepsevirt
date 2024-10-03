@@ -86,7 +86,7 @@ const Topbar = () => {
               onClick={() => {
                 document.querySelector('#drawer-navigation')?.classList.toggle('translate-x-0');
               }}
-              className="mr-2 cursor-pointer rounded-lg p-2 text-2xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:ring-2 focus:ring-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:bg-gray-700 dark:focus:ring-gray-700 md:hidden"
+              className="mr-2 cursor-pointer rounded-lg p-2 text-2xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:ring-2 focus:ring-gray-100 md:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:bg-gray-700 dark:focus:ring-gray-700"
             >
               <FiMenu />
             </button>
@@ -100,7 +100,7 @@ const Topbar = () => {
           <div className="flex items-center lg:order-2">
             <button
               type="button"
-              className="mx-3 flex rounded-full bg-gray-800 text-sm focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 md:mr-0"
+              className="mx-3 flex rounded-full bg-gray-800 text-sm focus:ring-4 focus:ring-gray-300 md:mr-0 dark:focus:ring-gray-600"
               id="user-menu-button"
               onClick={dropdownHandler}
             >
