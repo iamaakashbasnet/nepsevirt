@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -7,7 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'allotment/dist/style.css';
 
-import Router from 'routers/router';
+import mainRouter from 'routers/router';
 import FallbackLoading from 'components/FallbackLoading';
 import { reAuthAsync } from 'state/user/authSlice';
 import { AppDispatch } from 'state/store';
@@ -47,11 +47,9 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <React.Suspense fallback={<FallbackLoading />}>
-          <Router />
-        </React.Suspense>
-      </BrowserRouter>
+      <React.Suspense fallback={<FallbackLoading />}>
+        <RouterProvider router={mainRouter} />
+      </React.Suspense>
       <ToastContainer
         position="bottom-right"
         autoClose={5000}
