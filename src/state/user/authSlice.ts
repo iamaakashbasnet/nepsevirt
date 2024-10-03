@@ -7,7 +7,20 @@ import { AuthState, UserState, SignupFormData, LoginFormData } from 'types/state
 const initialState: AuthState = {
   isLoading: false,
   isAuthenticated: false,
-  user: null,
+  user: {
+    firstname: '',
+    lastname: '',
+    username: '',
+    email: '',
+    avatar: '',
+    fund: {
+      balance: 0,
+    },
+    profitloss: {
+      amount: 0,
+    },
+    is_verified: true,
+  },
 };
 
 const authSlice = createSlice({
