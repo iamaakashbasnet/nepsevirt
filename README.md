@@ -39,17 +39,6 @@ Initialize cron job:
 $ python manage.py crontab add
 ```
 
-<br />
-
-<details>
-    <summary>MVP Demo</summary>
-    <br>
-    <p align="center">
-        <img src="https://github.com/iamaakashbasnet/nepsevirt/assets/136826895/2952d50f-8d0d-4480-8d09-68db05224890" alt="NEPSEVirt demo" width="100%" />
-    </p>
-</details>
-
-
 ## Techstack
 - Frontend
     - **UI** - ReactJS & TailwindCSS
